@@ -1035,3 +1035,16 @@ window.I18N.fr.demo.app.qa.splice(4, 0,
     { date: "9 oct. 2026", title: "Appel à articles : numéro spécial « Méthodes d'enquête »", folder: "Article « Sondages stratifiés » — soumission revue", why: "Le thème correspond à votre manuscrit v4. Date limite : 6 novembre.", src: { type: "external", title: "Appel à articles (exemple fictif)", meta: "Revue de méthodologie · 9 octobre 2026", excerpt: "Manuscripts on sampling design and survey weighting are welcome until 6 November 2026." } }
   ];
 })(window.I18N.fr.fields);
+
+/* Assistant : question posée dans un dossier qui ne contient pas la réponse. */
+window.I18N.fr.demo.app.assistantUi.tip = "Astuce : choisissez un autre dossier dans le filtre avant de poser une question, pour voir ce que répond l'assistant quand la réponse n'y est pas.";
+window.I18N.fr.demo.app.assistantUi.mismatch = {
+  s1: "Analyse de la question", s1d: "réflexion rapide",
+  s2: "Vue d'ensemble du périmètre", s2d: "dossier {f}",
+  s3: "Recherche dans les sources", s3d: "aucun extrait pertinent dans ce dossier",
+  s4: "Rédaction de la réponse", s4d: "premier mot après 1,2 s",
+  p1: "Je n'ai trouvé aucune réponse à cette question dans le dossier « {f} ».",
+  p2: "Deux explications possibles : la question concerne peut-être un autre dossier (« {g} » semble plus pertinent), ou le document qui contient la réponse n'est pas accessible dans ce dossier.",
+  p2none: "Deux explications possibles : vous vous êtes peut-être trompé de dossier pour la poser, ou le document qui contient la réponse n'est pas accessible dans ce dossier.",
+  retryIn: "Relancer dans « {g} »", retryAll: "Relancer dans tous les dossiers"
+};

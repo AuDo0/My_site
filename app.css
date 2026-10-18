@@ -802,3 +802,5 @@ dialog.source-panel.vw { width: min(900px, calc(100vw - 32px)); max-height: calc
 @keyframes scanmove { 0% { left: -30%; } 100% { left: 100%; } }
 .live-status.is-soon { color: var(--info); background: var(--info-bg); }
 .live-status.is-soon::before { background: var(--info); box-shadow: none; animation: none; }
+.ax-tip { font-size: .85rem; }
+.ax-retry { margin-top: 4px; }

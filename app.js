@@ -496,10 +496,41 @@
   }
   function convList() {
     var a = A();
-    var list = state.app.userConvs.map(function (u, i) { return { key: "u" + i, qa: u.qa, when: a.rel.now }; }).reverse();
+    var list = state.app.userConvs.map(function (u, i) { return { key: "u" + i, qa: u.qa, scope: u.scope, when: a.rel.now }; }).reverse();
     a.qa.forEach(function (x, i) { list.push({ key: "b" + i, qa: i, when: a.rel.ago.replace("{n}", x.ago) }); });
     var q = state.app.convQuery.trim().toLowerCase();
     return q ? list.filter(function (c) { return a.qa[c.qa].q.toLowerCase().indexOf(q) > -1; }) : list;
+  }
+  /* Question posée dans un autre dossier que celui qui contient la réponse. */
+  function mismatchQa(i, scope) {
+    var a = A(), qa = a.qa[i], m = a.assistantUi.mismatch, f = folderName(scope);
+    var hint = qa.folder ? m.p2.replace("{g}", folderName(qa.folder)) : m.p2none;
+    return {
+      q: qa.q, folder: scope, absent: true, sources: [],
+      steps: [
+        { t: m.s1, d: m.s1d, s: 1.1 },
+        { t: m.s2, d: m.s2d.replace("{f}", f), s: 1.6 },
+        { t: m.s3, d: m.s3d, s: 4.3 },
+        { t: m.s4, d: m.s4d, s: 3.9 }
+      ],
+      blocks: [{ p: m.p1.replace("{f}", f) }, { p: hint }],
+      retry: { i: i, folder: qa.folder || "" }
+    };
+  }
+  function convData(key) {
+    if (!key) return null;
+    var a = A();
+    if (key.charAt(0) === "b") return a.qa[+key.slice(1)] || null;
+    var u = state.app.userConvs[+key.slice(1)];
+    if (!u) return null;
+    return u.mis ? mismatchQa(u.qa, u.scope) : a.qa[u.qa];
+  }
+  function retryHtml(qa) {
+    if (!qa.retry) return "";
+    var m = A().assistantUi.mismatch, r = qa.retry;
+    return '<div class="ax-actions ax-retry">' +
+      (r.folder ? '<button type="button" class="btn btn-primary btn-sm" data-action="ax-retry" data-i="' + r.i + '" data-scope="' + esc(r.folder) + '">' + esc(m.retryIn.replace("{g}", folderName(r.folder))) + "</button>" : "") +
+      '<button type="button" class="btn btn-quiet btn-sm" data-action="ax-retry" data-i="' + r.i + '" data-scope="">' + esc(m.retryAll) + "</button></div>";
   }
   function convQa(key) {
     if (!key) return null;
@@ -540,24 +571,23 @@
   function answerHtml(qa) {
     var ids = regQaSources(qa);
     return (qa.absent ? '<p class="ax-absent">' + ICO.info + esc(A().assistantUi.absent) + "</p>" : "") +
-      qa.blocks.map(function (b) { return b.quote ? quoteHtml(b, ids, qa) : "<p>" + esc(b.p) + "</p>"; }).join("");
+      qa.blocks.map(function (b) { return b.quote ? quoteHtml(b, ids, qa) : "<p>" + esc(b.p) + "</p>"; }).join("") + retryHtml(qa);
   }
   function scAssistant() {
     var a = A(), as = a.assistant, ui = a.assistantUi;
     var list = convList().map(function (c) {
       var x = a.qa[c.qa];
-      return '<li><button type="button" class="ax-conv" data-action="ax-conv" data-k="' + c.key + '" aria-pressed="' + (c.key === state.app.conv) + '"><span class="ax-conv-t">' + esc(x.q) + '</span><span class="ax-meta">' + esc(folderName(x.folder)) + " · " + esc(c.when) + "</span></button></li>";
+      return '<li><button type="button" class="ax-conv" data-action="ax-conv" data-k="' + c.key + '" aria-pressed="' + (c.key === state.app.conv) + '"><span class="ax-conv-t">' + esc(x.q) + '</span><span class="ax-meta">' + esc(folderName(c.scope !== undefined ? c.scope : x.folder)) + " · " + esc(c.when) + "</span></button></li>";
     }).join("");
     var left = '<aside class="ax-chat-side"><h4>' + esc(as.title) + "</h4>" +
       axBtn("btn-quiet ax-new", "ax-newconv", ICO.plus + esc(as.newConv)) +
       axSearch("ax-convq", "convQuery", as.search) + '<ul class="ax-conv-list">' + list + "</ul></aside>";
-    var key = state.app.conv, qi = convQa(key), msgs = "";
-    if (qi !== null) {
-      var qa = a.qa[qi];
+    var key = state.app.conv, qa = convData(key), msgs = "";
+    if (qa) {
       msgs = '<div class="ax-msg-user"><p>' + esc(qa.q) + "</p></div>" +
         '<div class="ax-msg-bot" id="ax-run-' + key + '"><div id="ax-steps-box">' + stepsHtml(key, qa, qa.steps.length, false) + '</div><div class="ax-answer" id="ax-answer" aria-live="polite">' + answerHtml(qa) + "</div></div>";
     }
-    var chips = '<div class="ax-pick"><p class="ax-meta">' + esc(ui.pick) + '</p><div class="chips">' + a.qa.map(function (x, i) {
+    var chips = '<div class="ax-pick"><p class="ax-meta">' + esc(ui.pick) + '</p><p class="ax-meta ax-tip">' + esc(ui.tip) + '</p><div class="chips">' + a.qa.map(function (x, i) {
       return '<button type="button" class="chip" data-action="ax-ask" data-i="' + i + '">' + esc(x.q) + "</button>";
     }).join("") + "</div></div>";
     var scopeOpts = folderOptions(false);
@@ -570,20 +600,36 @@
     return '<div class="ax-chat">' + left + main + "</div>";
   }
 
+  /* Fait défiler la page pour montrer la question envoyée, puis suit la réponse. */
+  function showMsgs() {
+    var m = document.querySelector("#ax-msgs .ax-msg-user") || document.getElementById("ax-msgs");
+    if (!m) return;
+    var top = m.getBoundingClientRect().top + window.scrollY - 96;
+    window.scrollTo({ top: Math.max(0, top), behavior: reduceMotion ? "auto" : "smooth" });
+  }
+  function followAnswer() {
+    var bot = document.querySelector("#ax-msgs .ax-msg-bot");
+    if (!bot) return;
+    var r = bot.getBoundingClientRect(), limit = window.innerHeight - 32;
+    if (r.bottom > limit) window.scrollBy(0, r.bottom - limit);
+  }
+
   /* Déroulé animé : la question s'écrit, les étapes défilent, la réponse s'écrit. */
   function runQa(i) {
-    var token = ++anim.token, a = A(), qa = a.qa[i];
-    state.app.scope = qa.folder || "";
+    var token = ++anim.token, a = A(), scope = state.app.scope || "";
+    var base = a.qa[i], mis = !!scope && scope !== (base.folder || "");
+    var qa = mis ? mismatchQa(i, scope) : base;
     var alive = function () { return token === anim.token; };
     function send() {
-      state.app.userConvs.push({ qa: i });
+      state.app.userConvs.push({ qa: i, scope: scope, mis: mis });
       var key = "u" + (state.app.userConvs.length - 1);
       state.app.conv = key;
       state.app.convQuery = "";
-      if (reduceMotion) { rerender('[data-action="ax-conv"][data-k="' + key + '"]'); return; }
+      if (reduceMotion) { rerender('[data-action="ax-conv"][data-k="' + key + '"]'); showMsgs(); return; }
       anim.active = true;
       rerender();
       anim.active = false;
+      showMsgs();
       var box = document.getElementById("ax-steps-box"), ans = document.getElementById("ax-answer");
       if (!box || !ans) return;
       ans.innerHTML = "";
@@ -594,7 +640,7 @@
         var d = Math.max(260, Math.min(820, qa.steps[shown - 1].s * 110));
         setTimeout(function () {
           if (!alive()) return;
-          if (shown < qa.steps.length) { shown++; box.innerHTML = stepsHtml(key, qa, shown, true); nextStep(); }
+          if (shown < qa.steps.length) { shown++; box.innerHTML = stepsHtml(key, qa, shown, true); followAnswer(); nextStep(); }
           else { box.innerHTML = stepsHtml(key, qa, qa.steps.length, false); typeAnswer(); }
         }, d);
       })();
@@ -603,10 +649,11 @@
         if (qa.absent) ans.insertAdjacentHTML("beforeend", '<p class="ax-absent ax-fade">' + ICO.info + esc(a.assistantUi.absent) + "</p>");
         (function nextBlock() {
           if (!alive()) return;
-          if (bi >= qa.blocks.length) { anim.token++; return; }
+          if (bi >= qa.blocks.length) { if (qa.retry) { ans.insertAdjacentHTML("beforeend", retryHtml(qa)); followAnswer(); } anim.token++; return; }
           var b = qa.blocks[bi++];
           if (b.quote) {
             ans.insertAdjacentHTML("beforeend", quoteHtml(b, ids, qa).replace('class="ax-quote"', 'class="ax-quote ax-fade"'));
+            followAnswer();
             setTimeout(nextBlock, 260);
             return;
           }
@@ -618,6 +665,7 @@
             if (!alive()) return;
             n = Math.min(text.length, n + 3);
             p.textContent = text.slice(0, n);
+            if (n % 30 < 3) followAnswer();
             if (n < text.length) setTimeout(tick, 16);
             else { p.className = ""; setTimeout(nextBlock, 120); }
           })();
@@ -1460,9 +1508,16 @@
         break;
       }
       case "ax-mail": state.app.mailOpen = state.app.mailOpen === i ? null : i; rerender('[data-action="ax-mail"][data-i="' + i + '"]'); break;
-      case "ax-conv": state.app.conv = el.getAttribute("data-k"); rerender('[data-action="ax-conv"][data-k="' + state.app.conv + '"]'); break;
+      case "ax-conv": {
+        state.app.conv = el.getAttribute("data-k");
+        rerender('[data-action="ax-conv"][data-k="' + state.app.conv + '"]');
+        var mu = document.querySelector("#ax-msgs .ax-msg-user");
+        if (mu && (mu.getBoundingClientRect().top < 70 || mu.getBoundingClientRect().top > window.innerHeight * 0.6)) showMsgs();
+        break;
+      }
       case "ax-newconv": state.app.conv = null; rerender('[data-action="ax-ask"][data-i="0"]'); break;
       case "ax-ask": state.app.conv = null; rerender(); runQa(i); break;
+      case "ax-retry": state.app.scope = el.getAttribute("data-scope") || ""; state.app.conv = null; rerender(); runQa(i); break;
       case "ax-steps": { var sk = el.getAttribute("data-k"); state.app.stepsOpen[sk] = !state.app.stepsOpen[sk]; rerender('[data-action="ax-steps"][data-k="' + sk + '"]'); break; }
       case "vw-page": if (viewer) { viewer.page = Math.max(1, Math.min(viewer.m.pages, viewer.page + Number(el.getAttribute("data-d")))); renderViewer('[data-action="vw-page"][data-d="' + el.getAttribute("data-d") + '"]'); } break;
       case "vw-zoom": if (viewer) { viewer.zoom = Math.max(60, Math.min(180, viewer.zoom + Number(el.getAttribute("data-d")))); renderViewer('[data-action="vw-zoom"][data-d="' + el.getAttribute("data-d") + '"]'); } break;

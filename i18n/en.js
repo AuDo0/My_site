@@ -1014,3 +1014,16 @@ window.I18N.en.demo.app.qa.splice(4, 0,
     { date: "9 Oct 2026", title: "Call for papers: special issue on survey methods", folder: "Paper “Stratified surveys” — journal submission", why: "The theme matches your manuscript v4. Deadline: 6 November.", src: { type: "external", title: "Call for papers (made-up example)", meta: "Methodology journal · 9 October 2026", excerpt: "Manuscripts on sampling design and survey weighting are welcome until 6 November 2026." } }
   ];
 })(window.I18N.en.fields);
+
+/* Assistant: question asked in a folder that doesn't hold the answer. */
+window.I18N.en.demo.app.assistantUi.tip = "Tip: pick another folder in the filter before asking, to see what the assistant says when the answer isn't there.";
+window.I18N.en.demo.app.assistantUi.mismatch = {
+  s1: "Analysing the question", s1d: "quick reasoning",
+  s2: "Scope overview", s2d: "{f} folder",
+  s3: "Searching sources", s3d: "no relevant excerpt in this folder",
+  s4: "Writing the answer", s4d: "first word after 1.2 s",
+  p1: "I found no answer to this question in the “{f}” folder.",
+  p2: "Two possible reasons: the question may concern another folder (“{g}” looks more relevant), or the document holding the answer isn't accessible in this folder.",
+  p2none: "Two possible reasons: you may have asked it in the wrong folder, or the document holding the answer isn't accessible in this folder.",
+  retryIn: "Ask again in “{g}”", retryAll: "Ask again in all folders"
+};
