@@ -1,0 +1,151 @@
+# ======================================================================
+# SITE FAQ — ENGLISH
+# Edit freely. The site reads this file as is.
+#
+# Rules:
+# - One section per page: a line "== page-name ==".
+#   Pages (same names as the French file): accueil, connecteurs, routines,
+#   domaines, donnees, tarifs, commencer, blog
+# - A question starts with "Q:", its answer with "A:" (or "R:").
+#   The answer can continue on the following lines.
+# - A blank line separates two paragraphs in an answer.
+# - {name} is replaced by the product name.
+# - Values in brackets [ ] must be filled in before publishing.
+# - Lines starting with # are ignored.
+# ======================================================================
+
+== accueil ==
+Q: How do I ask my email and documents with AI?
+A: Connect your mailboxes and file spaces, choose which folders to read, then ask your question in plain language. {name} searches your email and documents, writes the answer and cites every passage it used. Clicking a citation opens the document on the right page.
+
+Q: What is {name}, in one sentence?
+A: An assistant that reads your email and documents, answers your questions by citing its sources, and turns what it reads into tasks, deadlines and tidy folders.
+
+Q: How is it different from searching my mailbox?
+A: A search gives you a list of emails to reread. {name} reads those emails and your documents for you, writes the answer and cites every passage it used. It also keeps each folder's memory: timeline, people, key facts, versions.
+
+Q: What if the information doesn't exist?
+A: {name} says so. It never fills an answer with made-up information: no source, no answer.
+
+Q: Does {name} act without asking me?
+A: Not unless you decide so. By default it suggests (filing, a deadline, a task) and you approve. You can create routines that run on their own, with a log of everything done.
+
+Q: Do I need to install anything?
+A: No. {name} is a web app: a browser is enough, on computer, tablet or phone. Installing it on your phone's home screen is coming soon.
+
+Q: Is the demo data real?
+A: No. Every name, folder, email and document in the demo is made up.
+
+== connecteurs ==
+Q: Which email services and file spaces can I connect?
+A: Today: Outlook, Gmail, Google Drive and Dropbox. Calendar and audio recordings are in the works.
+
+Q: Does {name} read my whole mailbox?
+A: No. You choose which mailboxes, folders and labels are read. Everything else is neither read nor copied.
+
+Q: Can I remove a connector?
+A: Yes, at any time. Access is cut off and that source's index is erased.
+
+Q: Can {name} send emails or change my files?
+A: Access is read-only. {name} prepares drafts or filing suggestions, which you approve.
+
+Q: My tool isn't listed. What can I do?
+A: Request it with the form on this page. We build connectors in order of demand, and custom connectors are possible for business tools.
+
+== routines ==
+Q: How do I file my email automatically?
+A: With a routine. You write it once ("when an invoice arrives from this supplier, file it in Suppliers / name / year / month"), then {name} applies it to every new email. You choose whether it asks for your approval each time.
+
+Q: What is a routine?
+A: A rule you write once: when this happens, if this condition is met, then do that. For example: "when I receive an offer from this supplier, file it in Offers / supplier / year / month".
+
+Q: Does a routine act without my approval?
+A: You choose, routine by routine: either {name} asks for your approval each time, or it acts on its own and records everything in the log.
+
+Q: Can I undo what a routine did?
+A: Yes. The log shows each action, its date and its reason, and lets you roll it back.
+
+Q: Who creates routines?
+A: You, with the editor. {name} can also suggest some when it notices you repeat the same action; nothing switches on without your consent.
+
+Q: Can I schedule a routine, for example every evening?
+A: Scheduled routines (such as a summary of unread email every evening) are coming soon.
+
+== domaines ==
+Q: Is {name} suited to lawyers and researchers?
+A: Yes. For lawyers, {name} adds published statutes and case law, and links new rulings to your cases. For researchers, it adds open paper databases and your bibliography. Either way, every answer cites its sources.
+
+Q: What is a field-specific version?
+A: The same assistant, plus your profession's references: statutes and case law for legal work, open paper databases for research, your own standards and frameworks for business.
+
+Q: What does "connected live" mean?
+A: For legal and research, {name} queries up-to-date public databases and analyses new publications as they come out.
+
+Q: What is passive monitoring?
+A: {name} checks every new publication against your folders. When one concerns a folder (a new ruling, a new paper), it tells you, with the source and the reason. You decide whether to add it to the folder or dismiss it.
+
+Q: What about standards for businesses?
+A: You add your standards and frameworks as documents. {name} cites them in its answers like any other source.
+
+Q: My field isn't listed.
+A: Each version is built to measure: vocabulary, rules, document templates, connectors, frameworks. Write to us from "Talk to the team".
+
+== donnees ==
+Q: Where is my data hosted?
+A: Our processing and AI models stay in the European Union: hosting by [HOST], in [HOSTING COUNTRY]; AI models ([AI MODELS]) in [MODELS HOSTING COUNTRY].
+
+The email services and file spaces you connect (Gmail, Outlook, Google Drive, Dropbox) remain governed by their own terms.
+
+Q: Is my data used to train the AI?
+A: No. It is not used to train or improve the product. Nobody accesses your data without your prior permission; every access is logged and visible in your audit log.
+
+Q: What if I flag a bad answer?
+A: That is the only case where an item reaches us, and it's your choice. Only the flagged item is sent; it is anonymised, used to fix the problem, then deleted. Flagging is never on by default and shows in your audit log. [RULE TO BE CONFIRMED]
+
+Q: Can I get my data back or delete it?
+A: Yes. You can export your data at any time. Deleting your account erases your data and its indexes, backups included within [BACKUP PURGE DELAY].
+
+Q: How long is my data kept?
+A: [RETENTION PERIOD].
+
+Q: Who do I contact about my data?
+A: The data protection officer: [DPO EMAIL].
+
+== tarifs ==
+Q: How much does {name} cost during the test phase?
+A: Nothing. Every plan is free during the test phase.
+
+Q: What happens when the test phase ends?
+A: We'll tell you before anything changes. The first paid month stays free, whatever the plan.
+
+Q: Why would you contact me during the test?
+A: To learn what saves you time and what's missing. You can say no.
+
+Q: Which plan should I choose?
+A: Personal for your life and paperwork; Student for students, PhD candidates and early-career researchers; Business for teams that share folders; Custom for a specific field, volume or connectors.
+
+Q: Can I leave with my data?
+A: Yes. Export your data at any time; deleting your account erases your data, backups included within [BACKUP PURGE DELAY].
+
+== commencer ==
+Q: What's the difference between "Request access" and "Sign up now"?
+A: Signing up creates your account right away (or puts you on the waiting list while access opens in waves). An access request goes through the team, who help you get started.
+
+Q: How does the demo work?
+A: 20 minutes by video call: we show you the app on sample data, then answer your questions. The link comes by email with the confirmation.
+
+Q: How quickly does the team reply?
+A: Within 48 hours.
+
+Q: Can I try {name} without connecting my real data?
+A: Yes. The demo on the home page works with entirely made-up email and documents: you can ask questions, open sources and approve suggestions.
+
+Q: Why a work email?
+A: It helps us prepare a demo and access suited to your team. A personal address works too.
+
+== blog ==
+Q: How often are articles published?
+A: [PUBLISHING FREQUENCY].
+
+Q: Can I suggest a topic?
+A: Yes, write to us from "Talk to the team".

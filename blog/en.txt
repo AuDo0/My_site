@@ -1,0 +1,141 @@
+# ======================================================================
+# BLOG — ENGLISH
+# Edit freely. One article per block, newest first.
+#
+# Article format:
+#   === article-address              (letters, digits and hyphens)
+#   Title: ...
+#   Date: YYYY-MM-DD
+#   Category: ...
+#   Summary: ...                     (one or two sentences, shown in the list)
+#   Reading: 4 min
+#   ---
+#   Article text. A blank line separates two paragraphs.
+#   "## " at the start of a line: subheading; "### ": sub-subheading.
+#   "- " at the start of a line: list item.
+#   "> " at the start of a line: pull quote.
+#   {name} is replaced by the product name.
+# Lines starting with # (other than "## ") are ignored.
+# ======================================================================
+
+=== search-your-email-with-ai
+Title: How to search your email with AI: a practical guide
+Date: 2026-10-16
+Category: Guide
+Summary: How to search your email with AI to get a precise, sourced answer instead of a list of messages to reread.
+Reading: 5 min
+---
+Searching your email with AI means asking a question in plain language and getting the answer, with the passages that prove it. Classic search gives you a list of messages containing the right words, and leaves the reading to you.
+
+## Why classic search is no longer enough
+
+- You have to guess the exact words used in the email.
+- Information is often spread across an email, its reply and an attachment.
+- Search doesn't read documents stored elsewhere (shared file spaces).
+
+## How to search your email with AI, in 5 steps
+
+### 1. Connect your sources and set the scope
+
+Connect your mailboxes and file spaces, then choose which folders to read. A clear scope gives more accurate answers and protects what shouldn't be read.
+
+### 2. Ask a real question
+
+Write as you would to a colleague: "What payment terms did we give this client?" rather than "payment terms". Add the person, folder or period if you know them.
+
+### 3. Check the sources
+
+A good answer cites every passage it used. Open the citation: the document appears on the right page, with the passage highlighted. If the tool cites nothing, don't rely on the answer.
+
+### 4. Narrow to a folder if needed
+
+If the answer mixes several cases, ask within the relevant folder. Conversely, if nothing is found, the information may be in another folder.
+
+### 5. Turn the answer into action
+
+A date becomes a deadline, a request becomes a task, a misfiled email joins its folder. You approve each suggestion.
+
+## What to expect from an AI search tool
+
+- Answers that cite their sources, sentence by sentence.
+- A clear message when the information doesn't exist.
+- Control over which mailboxes and folders are read.
+- Verifiable commitments on hosting and how your data is used.
+
+> An answer without a source is not an answer.
+
+=== ask-your-documents-with-ai-without-hallucinations
+Title: Ask your documents with AI without made-up answers
+Date: 2026-10-14
+Category: Guide
+Summary: Why {name} cites every passage it uses, and why it would rather say "I didn't find it" than make something up.
+Reading: 3 min
+---
+To ask your documents with AI with confidence, one rule matters: every answer must show where it comes from. When you ask a colleague what payment terms a client was given, you expect two things: the figure, and where they read it. The 12 March email, clause 5 of the contract. Without that, you will check for yourself, and lose the time the question was meant to save.
+
+## Citing means you can check
+
+{name} follows the same rule. Every sentence of an answer points to the original passage: one click, and the document opens on the right page, with the passage highlighted. You stay in charge of what matters: the decision.
+
+## Saying "I didn't find it"
+
+The reverse matters just as much. When the information is in neither your email nor your documents, {name} says so, and shows where it looked. A made-up answer that sounds right costs far more than an honest "not found".
+
+> No source, no answer.
+
+## What it changes day to day
+
+- You read the answer, and the source only when needed.
+- You can pass an answer on to a colleague with its proof.
+- You know straight away when information is missing, and who to ask.
+
+=== file-your-email-automatically
+Title: File your email automatically by folder: the method
+Date: 2026-10-07
+Category: Guide
+Summary: A simple method so every email and attachment lands in the right folder, with routines doing the repetitive work.
+Reading: 4 min
+---
+Filing your email automatically by folder saves you rebuilding a history by hand. A client, a project, a case: the information is scattered across several mailboxes, attachments and shared drives. The day you need the history, you rebuild the puzzle by hand.
+
+### 1. One folder per subject, not per sender
+
+The right split follows your subjects: a client, a site, a contract, a thesis chapter. The same person can appear in several folders.
+
+### 2. Let the assistant suggest
+
+{name} reads each new email and suggests the most likely folder, saying why (a reference, a person, a subject). You accept or correct it in one click.
+
+### 3. Turn repeated actions into routines
+
+When you file the same thing in the same place three times, there is a routine waiting to be written. For example:
+
+- when an invoice arrives from this supplier, file it in Suppliers / name / year / month;
+- when an offer arrives from this contact, file it in Offers, sorted by month.
+
+You choose whether the routine asks for your approval each time or acts on its own. Either way, the log keeps track of everything.
+
+### 4. Use the folder's memory
+
+Once the folder fills up, {name} extracts its timeline, people, key facts and document versions. The history takes a minute to read instead of an hour.
+
+=== deadlines-in-your-email
+Title: Deadlines in your email: never miss one again, with AI
+Date: 2026-09-30
+Category: Guide
+Summary: Notice periods, invoices, submission dates: deadlines hide in the text of emails and contracts. Here is how to bring them up, with their source.
+Reading: 3 min
+---
+Deadlines hidden in your email are the easiest to miss: they are rarely in the calendar. They are written in passing in an email ("please reply before the 27th") or in a contract clause ("two months' notice").
+
+## Spot them, then approve them
+
+{name} spots these dates in your email and documents and suggests them as deadlines, each with the passage it comes from. You approve, dismiss or correct. Nothing enters your list without your consent.
+
+## Work out implicit dates
+
+A clause rarely states the exact date. "Two months' notice before renewal on 31 January" becomes "last day to cancel: 30 November". The answer cites both passages used for the calculation.
+
+## One view per day
+
+Deadlines are grouped by day, with their status (upcoming, overdue, done) and the folder concerned. Overdue ones stand out in red, without piling on colours.

@@ -1,0 +1,151 @@
+# ======================================================================
+# FAQ DU SITE — FRANÇAIS
+# Fichier à éditer librement. Le site le lit tel quel, sans autre réglage.
+#
+# Règles :
+# - Une section par page : une ligne "== nom-de-page ==".
+#   Pages possibles : accueil, connecteurs, routines, domaines, donnees,
+#   tarifs, commencer, blog
+# - Une question commence par "Q:", sa réponse par "R:".
+#   La réponse peut continuer sur les lignes suivantes.
+# - Une ligne vide sépare deux paragraphes dans une réponse.
+# - {name} est remplacé par le nom du produit.
+# - Les valeurs entre crochets [ ] sont à compléter avant publication.
+# - Les lignes qui commencent par # sont ignorées.
+# ======================================================================
+
+== accueil ==
+Q: Comment interroger ses mails et ses documents avec l'IA ?
+R: Connectez vos boîtes mail et vos espaces de fichiers, choisissez les dossiers à lire, puis posez votre question en langage courant. {name} cherche dans vos mails et vos documents, rédige la réponse et cite chaque passage utilisé. Un clic sur une citation ouvre le document à la bonne page.
+
+Q: Qu'est-ce que {name}, en une phrase ?
+R: Un assistant qui lit vos mails et vos documents, répond à vos questions en citant ses sources, et transforme ce qu'il lit en tâches, en échéances et en dossiers rangés.
+
+Q: En quoi est-ce différent d'un moteur de recherche dans ma messagerie ?
+R: Une recherche vous renvoie une liste de mails à relire. {name} lit ces mails et vos documents pour vous, rédige la réponse et cite chaque passage utilisé. Il garde aussi la mémoire de chaque dossier : chronologie, personnes, faits clés, versions.
+
+Q: Et si l'information n'existe pas ?
+R: {name} le dit. Il ne complète jamais une réponse avec une information inventée : sans source, pas de réponse.
+
+Q: Est-ce que {name} agit sans me demander ?
+R: Non, sauf si vous le décidez. Par défaut, il propose (un rangement, une échéance, une tâche) et vous validez. Vous pouvez créer des routines qui s'exécutent seules, avec un journal de tout ce qui a été fait.
+
+Q: Faut-il installer quelque chose ?
+R: Non. {name} est une application web : un navigateur suffit, sur ordinateur, tablette ou téléphone. L'installation sur l'écran d'accueil du téléphone arrive bientôt.
+
+Q: Les données de la démo sont-elles réelles ?
+R: Non. Tous les noms, dossiers, mails et documents de la démo sont inventés.
+
+== connecteurs ==
+Q: Quelles messageries et quels espaces de fichiers puis-je connecter ?
+R: Aujourd'hui : Outlook, Gmail, Google Drive et Dropbox. Le calendrier et les enregistrements audio sont en préparation.
+
+Q: {name} lit-il toute ma boîte mail ?
+R: Non. Vous choisissez les boîtes, les dossiers et les libellés à lire. Le reste n'est ni lu ni copié.
+
+Q: Puis-je retirer un connecteur ?
+R: Oui, à tout moment. L'accès est coupé et l'index de cette source est effacé.
+
+Q: {name} peut-il envoyer des mails ou modifier mes fichiers ?
+R: L'accès est en lecture. {name} prépare des brouillons ou des propositions de rangement, que vous validez.
+
+Q: Mon outil n'est pas dans la liste, que faire ?
+R: Demandez-le avec le formulaire de cette page. Nous construisons les connecteurs dans l'ordre des demandes, et des connecteurs sur mesure sont possibles pour les outils métier.
+
+== routines ==
+Q: Comment classer ses mails automatiquement ?
+R: Avec une routine. Vous l'écrivez une fois (« quand une facture arrive de tel fournisseur, la ranger dans Fournisseurs / nom / année / mois »), puis {name} l'applique à chaque nouveau mail. Vous choisissez s'il demande votre accord à chaque fois.
+
+Q: Qu'est-ce qu'une routine ?
+R: Une règle que vous écrivez une fois : quand ceci arrive, si cette condition est remplie, alors faire cela. Par exemple : « quand je reçois une offre de tel fournisseur, la ranger dans Offres / fournisseur / année / mois ».
+
+Q: Une routine agit-elle sans mon accord ?
+R: C'est vous qui choisissez, routine par routine : soit {name} demande votre validation à chaque fois, soit il agit seul et note tout dans le journal.
+
+Q: Puis-je annuler ce qu'une routine a fait ?
+R: Oui. Le journal indique chaque action, sa date et sa raison, et permet de revenir en arrière.
+
+Q: Qui crée les routines ?
+R: Vous, avec l'éditeur. {name} peut aussi vous en proposer quand il remarque que vous répétez le même geste ; rien ne s'active sans votre accord.
+
+Q: Puis-je planifier une routine, par exemple chaque soir ?
+R: Les routines planifiées (comme un résumé des mails non lus chaque soir) arrivent bientôt.
+
+== domaines ==
+Q: {name} convient-il aux avocats et aux chercheurs ?
+R: Oui. Pour les avocats, {name} ajoute les textes et la jurisprudence publiés, et relie les nouvelles décisions à vos dossiers. Pour les chercheurs, il ajoute les bases d'articles ouvertes et votre bibliographie. Dans les deux cas, chaque réponse cite ses sources.
+
+Q: Qu'est-ce qu'une version par domaine ?
+R: Le même assistant, avec en plus les références de votre métier : textes et jurisprudence pour le juridique, bases d'articles ouvertes pour la recherche, vos normes et référentiels pour l'entreprise.
+
+Q: Que veut dire « connecté en direct » ?
+R: Pour le juridique et la recherche, {name} consulte les bases publiques à jour et analyse les nouvelles publications au fil de l'eau.
+
+Q: Qu'est-ce que la veille passive ?
+R: {name} compare chaque nouvelle publication à vos dossiers. Si l'une d'elles concerne un dossier (un nouvel arrêt, un nouvel article), il vous prévient avec la source et la raison. Vous décidez de l'ajouter au dossier ou de l'ignorer.
+
+Q: Et pour les normes en entreprise ?
+R: Vous ajoutez vos normes et référentiels comme des documents. {name} les cite dans ses réponses comme toute autre source.
+
+Q: Mon métier n'est pas dans la liste.
+R: Chaque version se construit sur mesure : vocabulaire, règles, modèles de documents, connecteurs, référentiels. Écrivez-nous depuis « Parler à l'équipe ».
+
+== donnees ==
+Q: Où sont hébergées mes données ?
+R: Nos traitements et nos modèles d'IA restent dans l'Union européenne : hébergement chez [HÉBERGEUR], en [PAYS D'HÉBERGEMENT] ; modèles d'IA ([MODÈLES D'IA]) en [PAYS D'HÉBERGEMENT DES MODÈLES].
+
+Les messageries et espaces de fichiers que vous connectez (Gmail, Outlook, Google Drive, Dropbox) restent régis par leurs propres conditions.
+
+Q: Mes données servent-elles à entraîner l'IA ?
+R: Non. Elles ne servent ni à entraîner ni à améliorer l'outil. Aucun accès à vos données sans votre autorisation préalable ; chaque accès est journalisé et visible dans votre journal d'audit.
+
+Q: Et si je signale une mauvaise réponse ?
+R: C'est le seul cas où un élément nous est transmis, et c'est vous qui le décidez. Seul l'élément signalé est envoyé ; il est anonymisé, utilisé pour corriger le défaut, puis supprimé. Le signalement n'est jamais activé par défaut et apparaît dans votre journal d'audit. [RÈGLE À CONFIRMER]
+
+Q: Puis-je récupérer ou supprimer mes données ?
+R: Oui. Vous exportez vos données à tout moment. La suppression du compte efface vos données et leurs index, sauvegardes comprises sous [DÉLAI DE PURGE DES SAUVEGARDES].
+
+Q: Combien de temps mes données sont-elles conservées ?
+R: [DURÉE DE CONSERVATION].
+
+Q: Qui contacter pour une question sur mes données ?
+R: Le délégué à la protection des données : [E-MAIL DPO].
+
+== tarifs ==
+Q: Combien coûte {name} pendant la phase de test ?
+R: Rien. Toutes les formules sont gratuites pendant la phase de test.
+
+Q: Que se passe-t-il à la fin de la phase de test ?
+R: Nous vous prévenons avant tout changement. Le premier mois payant reste offert, quelle que soit la formule.
+
+Q: Pourquoi serai-je contacté pendant le test ?
+R: Pour savoir ce qui vous fait gagner du temps et ce qui manque. Vous pouvez refuser.
+
+Q: Quelle formule choisir ?
+R: Personnel pour gérer sa vie et ses papiers ; Étudiant pour les étudiants, doctorants et jeunes chercheurs ; Entreprise pour les équipes qui partagent des dossiers ; Sur mesure pour un métier, des volumes ou des connecteurs spécifiques.
+
+Q: Puis-je partir avec mes données ?
+R: Oui. Vous exportez vos données à tout moment ; la suppression du compte efface vos données, sauvegardes comprises sous [DÉLAI DE PURGE DES SAUVEGARDES].
+
+== commencer ==
+Q: Quelle différence entre « Demander un accès » et « Inscription directe » ?
+R: L'inscription directe crée votre compte tout de suite (ou vous inscrit sur la liste d'attente pendant l'ouverture par vagues). La demande d'accès passe par l'équipe, qui vous accompagne au démarrage.
+
+Q: Comment se déroule la démo ?
+R: 20 minutes en visioconférence : nous vous montrons l'application sur des données d'exemple, puis nous répondons à vos questions. Le lien arrive par e-mail avec la confirmation.
+
+Q: Sous quel délai l'équipe répond-elle ?
+R: Sous 48 heures.
+
+Q: Puis-je essayer {name} sans connecter mes vraies données ?
+R: Oui. La démo de l'accueil fonctionne avec des mails et des documents entièrement fictifs : vous pouvez poser des questions, ouvrir les sources, valider des propositions.
+
+Q: Pourquoi un e-mail professionnel ?
+R: Il nous aide à préparer la démo et l'accès adaptés à votre équipe. Une adresse personnelle fonctionne aussi.
+
+== blog ==
+Q: À quel rythme paraissent les articles ?
+R: [RYTHME DE PUBLICATION].
+
+Q: Puis-je proposer un sujet ?
+R: Oui, écrivez-nous depuis « Parler à l'équipe ».

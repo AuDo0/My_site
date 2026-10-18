@@ -13,15 +13,16 @@ window.I18N.en = {
   },
 
   slugs: {
-    home: "home", action: "in-action", plugins: "plug-ins", routines: "routines",
-    fields: "fields", data: "your-data", start: "get-started", live: "see-it-live",
-    pricing: "pricing", legal: "legal", themes: "palettes"
+    home: "home", action: "in-action", plugins: "connectors", routines: "routines",
+    fields: "fields", data: "your-data", start: "get-started", live: "book-a-demo",
+    pricing: "pricing", blog: "blog", legal: "legal", themes: "palettes"
   },
 
   nav: {
-    action: "In action", plugins: "Plug-ins", routines: "Routines", fields: "Fields",
-    data: "Your data", pricing: "Pricing", live: "See it live", start: "Get started",
-    menu: "Menu", close: "Close menu", main: "Main navigation", lang: "Language"
+    action: "Demo", plugins: "Connectors", routines: "Routines", fields: "Fields",
+    data: "Your data", pricing: "Pricing", live: "Book a demo", start: "Get started",
+    menu: "Menu", close: "Close menu", main: "Main navigation", lang: "Language",
+    product: "Product", demo: "Interactive demo", blog: "Blog"
   },
 
   common: {
@@ -53,17 +54,17 @@ window.I18N.en = {
     onRequest: "On request",
     draftNote: "Internal note",
     required: "required",
-    sentMock: "Mock-up: nothing was sent. Live, this form goes to a service hosted in Europe."
+    sentMock: "Mock-up: nothing was sent."
   },
 
   home: {
     title: "Your email and documents, finally working for you",
     eyebrow: "Organisation and memory assistant",
-    h1: "Ask the question. <em>Get the answer and its source.</em>",
-    lead: "{name} reads your email and documents, answers by citing every passage it used, and turns what it reads into tasks, deadlines and tidy folders. When the information doesn't exist, it says so.",
-    demoTitle: "Try the tool right here, with sample data",
+    h1: "Ask your email and documents with AI. <em>Every answer cites its source.</em>",
+    lead: "With {name}, you ask your email and documents with AI, in plain language. Every answer cites the passage it used; when the information doesn't exist, {name} says so. It also turns what it reads into tasks, deadlines and tidy folders.",
+    demoTitle: "Try it: ask sample email and documents",
     ctaStart: "Start for free",
-    ctaLive: "See it live, 20 minutes",
+    ctaLive: "Book a 20-min demo",
     availability: "Web app · Phone install coming soon",
     demo: {
       label: "Animated demo",
@@ -93,7 +94,7 @@ window.I18N.en = {
       items: [
         { title: "Every answer can be checked", text: "Sources are cited sentence by sentence. If nothing answers the question, {name} says so instead of making something up." },
         { title: "Reading turns into doing", text: "A deadline in an email becomes a task. An attachment joins its folder. You approve, it's done." },
-        { title: "Your data stays in Europe", text: "Hosting and AI models in France or the European Union. Nothing is sold, nothing is reused." }
+        { title: "Your data stays under your control", text: "Our processing and AI models stay in the European Union. Nothing is sold; nothing is reused, unless you flag an answer yourself (anonymised, then deleted)." }
       ]
     },
     steps: {
@@ -341,10 +342,10 @@ window.I18N.en = {
   },
 
   plugins: {
-    title: "Plug-ins",
-    eyebrow: "Plug-ins",
-    h1: "It reads what you open to it, nothing more",
-    lead: "Connect your mailboxes and file spaces. You choose which folders are read; {name} keeps them indexed and touches nothing else.",
+    title: "Connectors",
+    eyebrow: "Connectors",
+    h1: "Connect Gmail, Outlook, Google Drive and Dropbox to your AI assistant",
+    lead: "Connect your mailboxes and file spaces to {name}, read-only. You choose which folders are read; {name} keeps them indexed and touches nothing else.",
     statusLabel: "Status",
     groups: { mail: "Email", files: "Files", soon: "In the works" },
     items: [
@@ -370,7 +371,7 @@ window.I18N.en = {
       pwa: "Install on your phone's home screen, without going through an app store."
     },
     request: {
-      title: "Missing a plug-in?",
+      title: "Missing a connector?",
       text: "Tell us which tool you use. We build connectors in order of demand.",
       tool: "Tool to connect",
       toolPh: "Name of the tool or software",
@@ -383,8 +384,8 @@ window.I18N.en = {
   routines: {
     title: "Routines",
     eyebrow: "Routines",
-    h1: "Your rules, applied without a second thought",
-    lead: "A routine is a sentence: when this happens, if this condition is met, then do that. With your approval each time, or fully on its own.",
+    h1: "File your email automatically, with your own rules",
+    lead: "To file your email automatically, one routine is enough: when this happens, if this condition is met, then do that. With your approval each time, or fully on its own.",
     anatomy: {
       title: "What a routine is made of",
       items: [
@@ -452,8 +453,8 @@ window.I18N.en = {
   fields: {
     title: "Fields",
     eyebrow: "Fields",
-    h1: "The same assistant, fed with your profession's references",
-    lead: "The core stays the same: your email, your documents, your cases. Each version adds the external sources your field needs, cited with the same rigour.",
+    h1: "Sourced AI for lawyers, researchers and businesses",
+    lead: "Sourced AI for your profession: the core stays the same (your email, documents and cases), and each version adds the references you need, cited with the same rigour.",
     tabsLabel: "Fields",
     tabs: { legal: "Legal", research: "Research", business: "Business" },
     adds: "What this version adds",
@@ -506,44 +507,46 @@ window.I18N.en = {
   data: {
     title: "Your data",
     eyebrow: "Your data",
-    h1: "Your data belongs to you. Here's what we do with it.",
-    lead: "Every commitment on this page comes with a way to check it.",
-    draft: "Before publishing, every sentence on this page must match a verified technical fact. Items in brackets are to be filled in; any claim that can't be proven is removed.",
+    h1: "Email and document privacy: what we do with your data",
+    lead: "Keeping your email and documents private relies on commitments you can verify. Each one comes with a way to check it.",
+    draft: "Before publishing, every sentence on this page must match a verified technical fact and the signed data processing agreement (DPA). Items in brackets are to be filled in; any claim that can't be proven is removed.",
     howCheck: "How to check",
     commitments: [
-      { title: "Hosted in Europe", text: "Your data is hosted by {host}, in {hostCountry}.", check: "A published, up-to-date list of subprocessors and their countries. Certifications: {certs}." },
-      { title: "AI hosted in Europe", text: "The AI models ({models}) run in {modelsCountry}. No data is sent to an AI service outside Europe.", check: "Every model used and where it is hosted appears in the subprocessor register." },
-      { title: "Never sold", text: "Your data is never sold, rented or transferred.", check: "Written into the terms of use." },
-      { title: "Never read, never reused", text: "Nobody looks at your data. It isn't used to train or improve the product.", check: "Your account's audit log shows every access to your data." },
-      { title: "One exception, your choice", text: "If you flag an answer to help us fix a problem, only the flagged item is sent to us. It is anonymised, used for that fix, then deleted.", check: "Flagging is an explicit action, never ticked by default. It shows in your audit log with its deletion date." },
-      { title: "A scope you set", text: "You choose which mailboxes and folders are read. Remove them at any time and their index is erased.", check: "The list of connected sources is visible in your settings." },
-      { title: "Separated data", text: "Each customer's data is strictly isolated from everyone else's.", check: "Architecture description available on request." },
+      { title: "Processing and models in the European Union", text: "Our processing and AI models stay in the European Union: hosting by {host}, in {hostCountry}; AI models ({models}) in {modelsCountry}. The email services and file spaces you connect remain governed by their own terms.", check: "A published, up-to-date list of subprocessors, their countries and the models used. Certifications: {certs}." },
+      { title: "No access without your permission", text: "Nobody accesses your data without your prior permission. Every access is logged and visible in your audit log.", check: "Open your audit log: every access is listed with its date and reason." },
+      { title: "Never sold, never reused", text: "Your data is never sold, rented or transferred. It is not used to train or improve the product.", check: "Written into the terms of use and the data processing agreement." },
+      { title: "One exception, your choice", text: "If you flag an answer to help us fix a problem, only the flagged item is sent to us. It is anonymised, used for that fix, then deleted. {feedbackRule}", check: "Flagging is an explicit action, every time; it is never on by default or at sign-up. It shows in your audit log with its deletion date." },
+      { title: "A scope you set", text: "You choose which mailboxes and folders are read, read-only. Remove them at any time and their index is erased.", check: "Connected sources and what is read are visible in your settings." },
+      { title: "Clear roles", text: "For your account (name, email, sign-in), {company} is the data controller. For the content of your email and documents, {company} acts as a processor on your behalf: you remain responsible for it.", check: "Businesses: data processing agreement (DPA) accepted at sign-up, with version and date recorded; handwritten signature on request." },
+      { title: "Separated data", text: "Each customer's data is strictly isolated from everyone else's. The website and the app share no database or account.", check: "Architecture description available on request." },
       { title: "Traceable answers", text: "Every answer cites its sources. No source, no answer. The assistant suggests, you approve.", check: "Open any cited source: you land on the original passage." }
     ],
     rgpd: {
       title: "Your rights",
       items: [
-        { k: "Access", v: "Export all your data at any time." },
-        { k: "Deletion", v: "Delete your account: your data and its indexes are erased." },
+        { k: "Access", v: "Export all your data at any time, from your settings." },
+        { k: "Deletion", v: "Delete your account from your settings: your data and its indexes are erased, backups included within {backupPurge}." },
         { k: "Retention", v: "Retention period: {retention}." },
+        { k: "Legal basis", v: "Account data: performance of the contract. Consent is only used for optional things (feedback, news by email)." },
         { k: "Register", v: "Processing register and subprocessor list available." },
-        { k: "Contact", v: "Data protection officer: {dpo}." }
+        { k: "Contact", v: "Data protection officer: {dpo}. You may also contact your data protection authority." }
       ]
     },
     stack: {
       title: "Where your data goes",
-      steps: ["Your mailboxes and files", "Indexed at {host} ({hostCountry})", "AI models in {modelsCountry}", "Sourced answer, on your screen"],
-      note: "No step leaves the European Union."
+      steps: ["Your mailboxes and files, with their provider", "Indexed at {host} ({hostCountry})", "AI models in {modelsCountry}", "Sourced answer, on your screen"],
+      note: "Our processing and models stay in the European Union. The email services and file spaces you connect remain governed by their own terms."
     }
   },
 
+
   start: {
     title: "Get started",
-    eyebrow: "See it live · Get started",
-    h1: "Choose how to start",
+    eyebrow: "Demo · Get started",
+    h1: "Try {name}: choose how to start",
     lead: "A demo with us, access approved by the team, or instant sign-up. Everything is free during the test phase.",
     tabsLabel: "Paths",
-    tabs: { demo: "See it live", request: "Request access", signup: "Sign up now", team: "Talk to the team" },
+    tabs: { demo: "Book a demo", request: "Request access", signup: "Sign up now", team: "Talk to the team" },
     demo: {
       title: "Book a 20-minute demo",
       text: "We show you the app on sample data, then answer your questions.",
@@ -565,8 +568,10 @@ window.I18N.en = {
       title: "Sign up now",
       text: "Create your account and connect your first sources in a few minutes.",
       submit: "Create my account",
-      done: "Account ready. An activation link goes to {email}.",
-      waitlist: "We're opening access in waves. You're on the waiting list; a link goes to {email} when it's your turn."
+      done: "If the address is valid, a confirmation link is on its way to it. It works once and expires after {linkExpiry}.",
+      waitlist: "If the address is valid, a link is on its way to it to confirm your place on the waiting list. It works once and expires after {linkExpiry}. We open access in waves; every email includes a one-click unsubscribe link.",
+      waitTitle: "Waiting list",
+      waitText: "We open access in waves. Same form: your account is created when it's your turn, once your address is confirmed."
     },
     team: {
       title: "Talk to the team",
@@ -576,6 +581,7 @@ window.I18N.en = {
     },
     form: {
       name: "Name",
+      fullName: "First and last name",
       email: "Email",
       emailHint: "Work address preferred",
       org: "Organisation",
@@ -583,21 +589,49 @@ window.I18N.en = {
       need: "What you need",
       needPh: "E.g. find the history of our client files, stop missing deadlines…",
       profile: "You are",
-      profiles: ["A company or team", "Researcher or PhD student", "Individual", "Other"],
+      profiles: ["A company or team", "Researcher or student", "Individual", "Other"],
       message: "Message",
-      consent: "I agree that {name} may use this information to answer my request, in line with the privacy policy.",
+      password: "Password",
+      passwordHint: "· at least 12 characters, no other rule: a passphrase works",
+      passwordErr: "Choose a password of at least 12 characters.",
+      show: "Show",
+      hide: "Hide",
+      age: "I am at least {minAge} years old.",
+      ageErr: "Sign-up is limited to people aged {minAge} or over.",
+      cgu: "I accept the terms of use (version {cguVersion}).",
+      cguErr: "Accept the terms of use to create your account.",
+      dpa: "I accept the data processing agreement (DPA), version {dpaVersion}.",
+      dpaHint: "Required for Business accounts: {company} processes the content of your email and documents on your behalf.",
+      dpaErr: "For a Business account, accept the data processing agreement.",
+      read: "Read the text",
+      optionalTitle: "Optional · saying no has no consequence",
+      feedback: "I agree to be contacted for feedback.",
+      news: "Receive product news by email.",
+      infoTitle: "Your information",
+      infoSignup: "{company} is the data controller for this information. It is used to create and secure your account (performance of the contract). Retention: {retention}. You can access, correct or delete it at any time. Contact: {dpo}.",
+      infoWaitlist: "{company} is the data controller for this information. It is used to manage your place on the waiting list, then to create and secure your account. Retention: {retention}. You can access, correct or delete it at any time. Contact: {dpo}.",
+      infoRequest: "{company} uses this information only to answer your request. Retention: {retention}. Your rights and contact {dpo}:",
+      policy: "privacy policy",
       consentErr: "Tick this box to send the form.",
       emailErr: "Enter a valid email address, for example name@company.com.",
       nameErr: "Enter your name.",
       needErr: "Describe what you need in one sentence.",
       fixErrors: "The form has errors. Fix the highlighted fields."
+    },
+    next: {
+      title: "Next steps",
+      items: [
+        "Confirm your address: the link works once and expires after {linkExpiry}. Until confirmed, the account stays inactive and is deleted after {unvalidatedPurge}.",
+        "Turn on two-factor authentication: required for Business accounts, offered by default to others, with backup codes to download.",
+        "Connect your sources on a separate screen: read-only, scope chosen folder by folder, a summary of what will and won't be read. Remove them at any time; the index is then erased."
+      ]
     }
   },
 
   pricing: {
     title: "Pricing",
     eyebrow: "Pricing",
-    h1: "Free during the test phase",
+    h1: "Pricing: free during the test phase",
     lead: "Every plan is free while the test phase lasts. We'll get in touch to hear about your experience.",
     banner: "Test phase: free access to every feature.",
     freeMonth: "First month free",
@@ -613,15 +647,7 @@ window.I18N.en = {
       { id: "student", name: "Student", for: "For students, PhD candidates and early-career researchers.", price: "{priceStudent}", unit: "perMonth", features: ["Everything in Personal", "Bibliography and reading notes", "Student proof required"] },
       { id: "business", name: "Business", for: "For teams that share cases.", price: "{priceBusiness}", unit: "perUser", featured: true, features: ["Unlimited sources", "Team-shared folders", "Advanced routines and log", "Audit log"] },
       { id: "custom", name: "Custom", for: "For a specific field, volume or connectors.", price: "On quote", unit: null, features: ["Field-specific version", "Custom connectors", "Your own vocabulary and templates", "Dedicated support"] }
-    ],
-    faq: {
-      title: "Common questions",
-      items: [
-        { q: "What happens when the test phase ends?", a: "We'll tell you before anything changes. The first paid month stays free, whatever the plan." },
-        { q: "Why would you contact me during the test?", a: "To learn what saves you time and what's missing. You can say no." },
-        { q: "Can I leave with my data?", a: "Yes. Export your data at any time; deleting your account erases everything." }
-      ]
-    }
+    ]
   },
 
   legal: {
@@ -629,11 +655,14 @@ window.I18N.en = {
     h1: "Legal information",
     sections: [
       { id: "mentions", title: "Legal notice", body: "Publisher: {company}, {address}. Registration: {registration}. Publication director: {director}. Site hosting: {host}, {hostCountry}." },
-      { id: "confidentialite", title: "Privacy policy", body: "Information entered in forms is used only to answer your request. It is hosted in Europe and kept for {retention}. It is never sold or passed to third parties. Contact: {dpo}." },
-      { id: "rgpd", title: "GDPR", body: "You have the right to access, rectify, erase, restrict, port and object. Write to {dpo}. You may also contact your country's data protection authority." },
-      { id: "cookies", title: "Cookies", body: "This site sets no advertising or audience-measurement cookies. Visit statistics are anonymous, cookie-free and hosted in the European Union. Only your language choice is remembered in your browser." }
+      { id: "confidentialite", title: "Privacy policy", body: "Two separate cases.\n\nYour account, the waiting list and requests sent from this site: {company} is the data controller. This information is used to create and secure your account or to answer your request. Legal basis: performance of the contract or pre-contractual steps; consent is only used for optional things. Retention: {retention}. It is never sold or passed to third parties.\n\nThe content of the email and documents you connect: {company} acts as a processor on your behalf, under the data processing agreement. Contact: {dpo}." },
+      { id: "rgpd", title: "GDPR", body: "You have the right to access, rectify, erase, restrict, port and object. Export and account deletion are available from your settings, without a form. For anything else, write to {dpo}. You may also contact your data protection authority." },
+      { id: "cookies", title: "Cookies", body: "This site only uses strictly necessary items (session, language choice); no third-party, advertising or social media cookies. Audience measurement: {analytics}." },
+      { id: "cgu", title: "Terms of use", body: "{cguStatus}" },
+      { id: "dpa", title: "Data processing agreement (DPA)", body: "For Business customers, the data processing agreement is accepted online at sign-up, with a dedicated checkbox; its version and date are recorded. Handwritten signature on request. {dpaStatus}" }
     ]
   },
+
 
   themes: {
     title: "Palettes",
@@ -662,14 +691,14 @@ window.I18N.en = {
     product: "Product",
     company: "{name}",
     legal: "Legal",
-    links: { mentions: "Legal notice", privacy: "Privacy", rgpd: "GDPR", cookies: "Cookies", themes: "Palettes (internal)" },
+    links: { mentions: "Legal notice", privacy: "Privacy", rgpd: "GDPR", cookies: "Cookies", cgu: "Terms of use", dpa: "Data processing agreement", themes: "Palettes (internal)" },
     rights: "Site demo · phase 1",
     langLabel: "Site language"
   }
 };
 
 /* ------------------------------------------------------------------ */
-/* APP DEMO (In action page) — all data is made up.                    */
+/* APP DEMO (home page) — all data is made up.                    */
 /* Dates as YYYY-MM-DD; "today" sets the demo's current day.           */
 /* ------------------------------------------------------------------ */
 window.I18N.en.demo.app = {
@@ -1026,4 +1055,32 @@ window.I18N.en.demo.app.assistantUi.mismatch = {
   p2: "Two possible reasons: the question may concern another folder (“{g}” looks more relevant), or the document holding the answer isn't accessible in this folder.",
   p2none: "Two possible reasons: you may have asked it in the wrong folder, or the document holding the answer isn't accessible in this folder.",
   retryIn: "Ask again in “{g}”", retryAll: "Ask again in all folders"
+};
+
+/* "Product" menu, FAQ, blog. */
+window.I18N.en.navDesc = {
+  demo: "Try the tool with sample data",
+  routines: "Your rules, applied automatically",
+  plugins: "Outlook, Gmail, Google Drive, Dropbox",
+  data: "Processing in the EU, privacy, your rights"
+};
+window.I18N.en.faq = { title: "Frequently asked questions" };
+window.I18N.en.blog = {
+  title: "Blog", eyebrow: "Blog", h1: "Guides to search and organise your email and documents",
+  lead: "Practical guides to ask your email and documents with AI, file them and never miss a deadline.",
+  readMore: "Read the article", back: "All articles", reading: "read", more: "Read next",
+  empty: "The first articles are coming soon.", notFound: "This article doesn't exist or has moved."
+};
+
+/* SEO: title tag (50-60 characters, keyword first) and meta description, per page. */
+window.I18N.en.seo = {
+  home: { title: "Ask your email and documents with AI — {name}", desc: "Ask your email and documents with AI: sourced answers, tasks, deadlines and tidy folders. Free during the test phase." },
+  plugins: { title: "Connect Gmail, Outlook, Drive and Dropbox to AI — {name}", desc: "Connect Gmail, Outlook, Google Drive and Dropbox to {name}, read-only. You choose which folders are read; nothing else is ever opened." },
+  routines: { title: "File your email automatically — {name}", desc: "File your email automatically with routines: when an email arrives, {name} files it, creates a task or summarises it, with or without your approval." },
+  fields: { title: "Sourced AI for lawyers, researchers and businesses — {name}", desc: "Sourced AI for your profession: case law and statutes for lawyers, paper databases for researchers, your own standards for businesses." },
+  data: { title: "Email and document privacy — {name}", desc: "Email and document privacy: hosting, AI models, no data sold, your GDPR rights. Every commitment can be checked." },
+  pricing: { title: "{name} pricing: free during the test phase", desc: "{name} pricing: every plan is free during the test phase, then the first month is free. Personal, Student, Business, Custom." },
+  start: { title: "Try {name} for free or book a demo", desc: "Try {name}: sign up now, request access, or book a 20-minute demo with the team." },
+  live: { title: "Book a {name} demo (20 min)", desc: "Book a 20-minute demo: we show you {name} on sample data and answer your questions." },
+  blog: { title: "Guides: search and organise your email — {name}", desc: "Practical guides to ask your email and documents with AI, file them automatically and never miss a deadline." }
 };

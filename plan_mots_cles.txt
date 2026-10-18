@@ -1,0 +1,120 @@
+PLAN DE MOTS-CLÉS ET DE RÉFÉRENCEMENT — SITE [NOM À DÉTERMINER] (test : Docapri)
+Version 1 · 18 octobre 2026
+Légende : [FAIT] vérifié · [HYPOTHÈSE] à confirmer · [DÉCISION] validée par le porteur de projet
+
+======================================================================
+1. RÈGLES D'ÉCRITURE (appliquées sur le site)
+======================================================================
+- Un seul mot-clé principal par page. Pas de répétition forcée.
+- Ordre de priorité des emplacements :
+  1. balise title (mot-clé en tête, 50 à 60 caractères) ;
+  2. titre H1 ;
+  3. adresse de la page (pour les guides du blog) ;
+  4. premier paragraphe (100 premiers mots) ;
+  5. meta description ;
+  6. au moins un intertitre H2.
+- Formule du title : [Mot-clé principal] — [Nom], ou [Mot-clé] : [bénéfice].
+- Si le mot-clé en tête sonne mal, il passe en 2e ou 3e mot : la lisibilité
+  prime.
+- Aucune affirmation non vérifiée dans les titles et descriptions
+  (hébergement, pays, modèles) : elles restent sur la page « Vos données »,
+  en emplacements à compléter.
+
+======================================================================
+2. MOT-CLÉ PAR PAGE (en place sur le site)
+======================================================================
+Page          | Mot-clé FR                                   | Mot-clé EN
+--------------|----------------------------------------------|---------------------------------------------
+Accueil       | interroger ses mails et documents avec l'IA  | ask your email and documents with AI
+              | [DÉCISION]                                   |
+Connecteurs   | connecter Gmail, Outlook, Drive, Dropbox     | connect Gmail, Outlook, Drive, Dropbox
+              | à une IA                                     | to AI
+Routines      | classer ses mails automatiquement            | file your email automatically
+Domaines      | IA sourcée pour avocats, chercheurs          | sourced AI for lawyers, researchers
+              | et entreprises                               | and businesses
+Vos données   | confidentialité des mails et documents       | email and document privacy
+Tarifs        | tarifs [nom]                                 | [name] pricing
+Commencer     | essayer [nom] gratuitement                   | try [name] for free
+Réserver      | réserver une démo [nom]                      | book a [name] demo
+Blog          | guides : interroger et organiser ses mails   | guides: search and organise your email
+
+Où les modifier : i18n/fr.js et i18n/en.js, objet « seo » (title et
+description) en fin de fichier ; H1 et introductions dans chaque page.
+
+======================================================================
+3. FAQ
+======================================================================
+- 5 à 7 questions sur chaque page clé (accueil, connecteurs, routines,
+  domaines, vos données, tarifs, commencer), 2 sur le blog.
+- La première question de la page reprend son mot-clé
+  (ex. « Comment interroger ses mails et ses documents avec l'IA ? »).
+- Fichiers : faq/fr.txt et faq/en.txt.
+- Données structurées FAQ ajoutées à chaque page (format schema.org).
+- [FAIT] Google n'affiche plus les FAQ en résultat enrichi : limitées aux
+  sites gouvernementaux et de santé depuis août 2023, puis supprimées le
+  7 mai 2026. Le gain de clics annoncé dans la note SEO n'est donc plus
+  valable. La FAQ reste utile pour les visiteurs et pour être repris par
+  les assistants IA (GEO).
+  Sources : Google Search Central, « Changes to HowTo and FAQ rich
+  results » (8 août 2023) ; Search Engine Journal, « Google drops FAQ rich
+  results » (2026).
+
+======================================================================
+4. BLOG : GUIDES PRATIQUES (BOFU)
+======================================================================
+- Pas d'articles de tendance : des guides « comment faire » qui répondent
+  à une recherche précise d'une personne prête à agir.
+- Rythme visé : 2 à 4 guides par mois [HYPOTHÈSE], seulement une fois les
+  premiers utilisateurs actifs (ne pas écrire 30 articles avant).
+- En ligne (4 guides, à relire avant publication) :
+  * Rechercher dans ses emails avec l'IA : guide pratique
+    (/blog/rechercher-dans-ses-emails-avec-ia)
+  * Interroger ses documents avec l'IA sans réponse inventée
+  * Classer ses mails automatiquement par dossier : la méthode
+  * Échéances dans ses mails : ne plus en rater une, avec l'IA
+- Pistes suivantes [HYPOTHÈSE] :
+  * Retrouver l'historique d'un dossier client dans ses mails
+  * Résumer un long fil de mails avant une réunion
+  * IA pour avocats : interroger ses pièces et la jurisprudence en citant
+    ses sources
+  * Doctorants : interroger sa bibliographie avec l'IA
+  * Organiser sa vie administrative avec ses mails (assurances, factures,
+    échéances)
+
+======================================================================
+5. PAGES COMPARATIVES
+======================================================================
+[DÉCISION] Pas de page comparative pour l'instant (aucun concurrent nommé
+sur le site). À rediscuter plus tard ; si elles sont faites : 3 à 5 pages,
+factuelles, en admettant où le concurrent gagne, sans laisser croire à un
+partenariat.
+
+======================================================================
+6. OFFRE GRATUITE (pour mémoire, non affichée)
+======================================================================
+[HYPOTHÈSE] Plan gratuit après la phase de test : 30 jours de mails +
+50 documents, questions illimitées dans ce périmètre ; proposition de
+passer au payant quand l'utilisateur veut élargir le périmètre (60 jours,
+51e document), pas après un nombre de questions.
+[DÉCISION] Pas encore affiché : la page Tarifs garde « gratuit pendant la
+phase de test ».
+
+======================================================================
+7. ORDRES DE GRANDEUR (repères, pas des objectifs)
+======================================================================
+[HYPOTHÈSE, chiffres issus de la note de recherche fournie, non revérifiés]
+- Visiteur → inscription gratuite : 13 à 16 %.
+- Gratuit → payant : 2,5 à 5 %.
+- Visiteur → payant : environ 0,35 à 0,5 %, soit 3 à 5 abonnés payants pour
+  1 000 visites.
+- Les 10 premiers clients viennent de conversations individuelles, pas du
+  référencement ; le SEO et le contenu servent ensuite.
+
+======================================================================
+8. GEO (ÊTRE CITÉ PAR LES ASSISTANTS IA)
+======================================================================
+- Les assistants IA citent surtout des sources tierces (forums,
+  LinkedIn, sites de lancement de produits, blogs) : être mentionné par
+  d'autres compte plus que l'optimisation de ses propres pages.
+- Côté site : réponses courtes et factuelles en FAQ, guides structurés
+  (intertitres, listes), une idée par paragraphe.

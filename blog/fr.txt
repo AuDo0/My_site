@@ -1,0 +1,141 @@
+# ======================================================================
+# BLOG — FRANÇAIS
+# Fichier à éditer librement. Un article par bloc, du plus récent au plus ancien.
+#
+# Format d'un article :
+#   === adresse-de-l-article        (lettres, chiffres et tirets, sans accent)
+#   Titre: ...
+#   Date: AAAA-MM-JJ
+#   Rubrique: ...
+#   Résumé: ...                     (une ou deux phrases, affichées dans la liste)
+#   Lecture: 4 min
+#   ---
+#   Texte de l'article. Une ligne vide sépare deux paragraphes.
+#   "## " au début d'une ligne : intertitre ; "### " : sous-intertitre.
+#   "- " au début d'une ligne : élément de liste.
+#   "> " au début d'une ligne : citation mise en avant.
+#   {name} est remplacé par le nom du produit.
+# Les lignes qui commencent par # (hors "## ") sont ignorées.
+# ======================================================================
+
+=== rechercher-dans-ses-emails-avec-ia
+Titre: Rechercher dans ses emails avec l'IA : guide pratique
+Date: 2026-10-16
+Rubrique: Guide
+Résumé: Comment rechercher dans ses emails avec l'IA pour obtenir une réponse précise et sourcée, au lieu d'une liste de messages à relire.
+Lecture: 5 min
+---
+Rechercher dans ses emails avec l'IA, c'est poser une question en langage courant et recevoir la réponse, avec les passages qui la prouvent. La recherche classique, elle, renvoie une liste de messages qui contiennent les bons mots, et vous laisse relire.
+
+## Pourquoi la recherche classique ne suffit plus
+
+- Il faut deviner les mots exacts employés dans le mail.
+- L'information est souvent répartie entre un mail, sa réponse et une pièce jointe.
+- La recherche ne lit pas les documents rangés ailleurs (espaces de fichiers partagés).
+
+## Comment rechercher dans ses emails avec l'IA, en 5 étapes
+
+### 1. Connecter ses sources et fixer le périmètre
+
+Connectez vos boîtes mail et vos espaces de fichiers, puis choisissez les dossiers à lire. Un périmètre clair donne des réponses plus justes et protège ce qui ne doit pas être lu.
+
+### 2. Poser une vraie question
+
+Écrivez comme à un collègue : « Quel délai de paiement avons-nous accordé à ce client ? » plutôt que « délai paiement ». Précisez la personne, le dossier ou la période si vous les connaissez.
+
+### 3. Vérifier les sources
+
+Une bonne réponse cite chaque passage utilisé. Ouvrez la citation : le document s'affiche à la bonne page, le passage surligné. Si l'outil ne cite rien, ne vous fiez pas à la réponse.
+
+### 4. Restreindre à un dossier si besoin
+
+Si la réponse mélange plusieurs affaires, posez la question dans le dossier concerné. À l'inverse, si rien n'est trouvé, l'information est peut-être dans un autre dossier.
+
+### 5. Transformer la réponse en action
+
+Une date trouvée devient une échéance, une demande devient une tâche, un mail mal rangé rejoint son dossier. Vous validez chaque proposition.
+
+## Ce qu'il faut exiger d'un outil de recherche IA
+
+- Des réponses qui citent leurs sources, phrase par phrase.
+- Un message clair quand l'information n'existe pas.
+- Le choix des boîtes et des dossiers lus.
+- Des engagements vérifiables sur l'hébergement et l'usage de vos données.
+
+> Une réponse sans source n'est pas une réponse.
+
+=== interroger-ses-documents-ia-sans-hallucination
+Titre: Interroger ses documents avec l'IA sans réponse inventée
+Date: 2026-10-14
+Rubrique: Guide
+Résumé: Pourquoi {name} cite chaque passage qu'il utilise, et pourquoi il préfère dire « je n'ai pas trouvé » plutôt que d'inventer.
+Lecture: 3 min
+---
+Pour interroger ses documents avec l'IA en toute confiance, une règle compte : chaque réponse doit montrer d'où elle vient. Quand vous demandez à un collègue le délai de paiement accordé à un client, vous attendez deux choses : le chiffre, et l'endroit où il l'a lu. Le mail du 12 mars, l'article 5 du contrat. Sans cette précision, vous allez vérifier vous-même, et vous aurez perdu le temps que la question devait vous faire gagner.
+
+## Citer, c'est permettre de vérifier
+
+{name} applique la même règle. Chaque phrase de réponse renvoie au passage d'origine : un clic, et le document s'ouvre à la bonne page, le passage surligné. Vous gardez la main sur ce qui compte : la décision.
+
+## Dire « je n'ai pas trouvé »
+
+L'inverse compte autant. Quand l'information n'est ni dans vos mails ni dans vos documents, {name} le dit, et indique où il a cherché. Une réponse inventée qui a l'air juste coûte bien plus cher qu'un « introuvable » honnête.
+
+> Sans source, pas de réponse.
+
+## Ce que ça change au quotidien
+
+- Vous lisez la réponse, puis la source seulement si besoin.
+- Vous pouvez transmettre une réponse à un collègue avec sa preuve.
+- Vous savez immédiatement quand une information manque, et à qui la demander.
+
+=== classer-ses-mails-automatiquement
+Titre: Classer ses mails automatiquement par dossier : la méthode
+Date: 2026-10-07
+Rubrique: Guide
+Résumé: Une méthode simple pour que chaque mail et chaque pièce jointe rejoigne le bon dossier, avec des routines qui font le travail répétitif.
+Lecture: 4 min
+---
+Classer ses mails automatiquement par dossier évite de reconstituer un historique à la main. Un dossier client, un projet, une affaire : l'information est éparpillée entre plusieurs boîtes mail, des pièces jointes et des espaces partagés. Le jour où il faut retrouver l'historique, on reconstitue le puzzle à la main.
+
+### 1. Un dossier par sujet, pas par expéditeur
+
+Le bon découpage suit vos sujets : un client, un chantier, un contrat, un chapitre de thèse. Un même interlocuteur peut intervenir dans plusieurs dossiers.
+
+### 2. Laisser l'assistant proposer
+
+{name} lit chaque nouveau mail et propose le dossier le plus probable, en expliquant pourquoi (une référence citée, un interlocuteur, un sujet). Vous acceptez ou corrigez d'un geste.
+
+### 3. Transformer les gestes répétés en routines
+
+Quand vous rangez trois fois la même chose au même endroit, c'est une routine qui attend d'être écrite. Par exemple :
+
+- quand une facture arrive de tel fournisseur, la ranger dans Fournisseurs / nom / année / mois ;
+- quand une offre arrive de tel contact, la ranger dans Offres, classée par mois.
+
+Vous choisissez si la routine demande votre accord à chaque fois ou agit seule. Dans les deux cas, le journal garde la trace de tout.
+
+### 4. Profiter de la mémoire du dossier
+
+Une fois le dossier alimenté, {name} en extrait la chronologie, les personnes, les faits clés et les versions des documents. L'historique se lit en une minute au lieu d'une heure.
+
+=== echeances-dans-ses-mails
+Titre: Échéances dans ses mails : ne plus en rater une, avec l'IA
+Date: 2026-09-30
+Rubrique: Guide
+Résumé: Préavis, factures, dates de remise : les échéances se cachent dans le texte des mails et des contrats. Voici comment les faire remonter, avec leur source.
+Lecture: 3 min
+---
+Les échéances cachées dans ses mails sont les plus faciles à rater : elles sont rarement dans l'agenda. Elles sont écrites au détour d'un mail (« merci de nous répondre avant le 27 ») ou dans une clause de contrat (« préavis de deux mois »).
+
+## Repérer, puis faire valider
+
+{name} repère ces dates dans vos mails et vos documents et vous les propose comme échéances, chacune avec le passage d'où elle vient. Vous validez, ignorez ou corrigez. Rien n'entre dans votre liste sans votre accord.
+
+## Calculer les dates implicites
+
+Une clause dit rarement la date exacte. « Préavis de deux mois avant l'échéance du 31 janvier » devient « dernier jour pour résilier : 30 novembre ». La réponse cite les deux passages utilisés pour le calcul.
+
+## Une vue par jour
+
+Les échéances s'affichent groupées par jour, avec leur état (à venir, en retard, faite) et le dossier concerné. Celles qui sont dépassées ressortent en rouge, sans accumulation de couleurs.

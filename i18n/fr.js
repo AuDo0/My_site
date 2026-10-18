@@ -19,15 +19,16 @@ window.I18N.fr = {
   },
 
   slugs: {
-    home: "accueil", action: "en-action", plugins: "branchements", routines: "routines",
-    fields: "domaines", data: "vos-donnees", start: "commencer", live: "voir-en-vrai",
-    pricing: "tarifs", legal: "informations-legales", themes: "palettes"
+    home: "accueil", action: "en-action", plugins: "connecteurs", routines: "routines",
+    fields: "domaines", data: "vos-donnees", start: "commencer", live: "reserver-une-demo",
+    pricing: "tarifs", blog: "blog", legal: "informations-legales", themes: "palettes"
   },
 
   nav: {
-    action: "En action", plugins: "Branchements", routines: "Routines", fields: "Domaines",
-    data: "Vos données", pricing: "Tarifs", live: "Voir en vrai", start: "Commencer",
-    menu: "Menu", close: "Fermer le menu", main: "Navigation principale", lang: "Langue"
+    action: "Démo", plugins: "Connecteurs", routines: "Routines", fields: "Domaines",
+    data: "Vos données", pricing: "Tarifs", live: "Réserver une démo", start: "Commencer",
+    menu: "Menu", close: "Fermer le menu", main: "Navigation principale", lang: "Langue",
+    product: "Produit", demo: "Démo interactive", blog: "Blog"
   },
 
   common: {
@@ -59,18 +60,18 @@ window.I18N.fr = {
     onRequest: "Sur demande",
     draftNote: "Note interne",
     required: "obligatoire",
-    sentMock: "Maquette : rien n'a été envoyé. En ligne, ce formulaire part vers un service hébergé en Europe."
+    sentMock: "Maquette : rien n'a été envoyé."
   },
 
   /* ------------------------------------------------------------------ */
   home: {
     title: "Vos mails et vos documents, enfin à votre service",
     eyebrow: "Assistant d'organisation et de mémoire",
-    h1: "Posez la question. <em>Recevez la réponse et sa source.</em>",
-    lead: "{name} lit vos mails et vos documents, répond en citant chaque passage utilisé, et transforme ce qu'il lit en tâches, en échéances et en dossiers rangés. Quand l'information n'existe pas, il le dit.",
-    demoTitle: "Essayez l'outil ici, avec des données fictives",
+    h1: "Interrogez vos mails et vos documents avec l'IA. <em>Chaque réponse cite sa source.</em>",
+    lead: "Avec {name}, vous interrogez vos mails et vos documents avec l'IA, en langage courant. Chaque réponse cite le passage utilisé ; quand l'information n'existe pas, {name} le dit. Il transforme aussi ce qu'il lit en tâches, en échéances et en dossiers rangés.",
+    demoTitle: "Essayez : interrogez des mails et des documents fictifs",
     ctaStart: "Commencer gratuitement",
-    ctaLive: "Voir en vrai, 20 minutes",
+    ctaLive: "Réserver une démo de 20 min",
     availability: "Application web · Installation sur téléphone bientôt disponible",
     demo: {
       label: "Démonstration animée",
@@ -91,7 +92,7 @@ window.I18N.fr = {
       rows: [
         ["Fouiller trois boîtes mail et deux dossiers partagés pour retrouver un chiffre.", "Une question, une réponse, le passage d'origine en un clic."],
         ["Relire un fil de 23 messages avant une réunion.", "Un résumé en cinq points, chacun relié au message concerné."],
-        ["Noter les dates d'échéance au fil des mails, et en oublier une.", "Les échéances repérées dans le courrier, à valider d'un geste."],
+        ["Noter les dates d'échéance au fil des mails, et en oublier une.", "Les échéances repérées dans vos mails, à valider d'un geste."],
         ["Glisser chaque pièce jointe dans le bon dossier, à la main.", "Des routines qui rangent pour vous, avec ou sans votre accord préalable."]
       ]
     },
@@ -100,13 +101,13 @@ window.I18N.fr = {
       items: [
         { title: "Chaque réponse se vérifie", text: "Les sources sont citées à chaque phrase. Si rien ne répond à la question, {name} l'écrit au lieu d'inventer." },
         { title: "Lire devient agir", text: "Une échéance dans un mail devient une tâche. Une pièce jointe rejoint son dossier. Vous validez, c'est fait." },
-        { title: "Vos données restent en Europe", text: "Hébergement et modèles d'IA en France ou dans l'Union européenne. Rien n'est vendu, rien n'est réutilisé." }
+        { title: "Vos données restent sous votre contrôle", text: "Nos traitements et nos modèles d'IA restent dans l'Union européenne. Rien n'est vendu ; rien n'est réutilisé, sauf si vous signalez vous-même une réponse (anonymisée puis supprimée)." }
       ]
     },
     steps: {
       title: "Trois étapes pour commencer",
       items: [
-        { title: "Branchez vos sources", text: "Choisissez les boîtes mail et les dossiers à lire. Le reste n'est jamais ouvert." },
+        { title: "Connectez vos sources", text: "Choisissez les boîtes mail et les dossiers à lire. Le reste n'est jamais ouvert." },
         { title: "Posez vos questions", text: "En langage courant, sur un dossier, une personne, une date, un montant." },
         { title: "Validez les propositions", text: "Tâches, échéances, rangements : rien ne se fait sans votre accord, sauf si vous le décidez." }
       ]
@@ -136,7 +137,7 @@ window.I18N.fr = {
     tabsLabel: "Scénarios",
     tabs: {
       ask: "Interroger",
-      sort: "Trier le courrier",
+      sort: "Trier les mails",
       dossier: "Historique d'un dossier",
       summary: "Résumer un document",
       deadlines: "Ne rater aucune échéance"
@@ -149,8 +150,8 @@ window.I18N.fr = {
       folders: "Tout ce qui concerne un dossier, extrait automatiquement des mails et des documents : chronologie, acteurs, faits clés, versions.",
       documents: "Choisissez un document ou un fil de discussion, lisez l'essentiel, transformez-le en tâches.",
       review: "Tout ce que {name} vous propose, au même endroit : rangements, échéances, routines. Validez ou ignorez.",
-      deadlines: "Les dates repérées dans votre courrier, avec leur source. À vous de valider.",
-      mails: "Le courrier du matin, déjà trié. Acceptez les rangements proposés ou ignorez-les."
+      deadlines: "Les dates repérées dans vos mails et vos documents, avec leur source. À vous de valider.",
+      mails: "Les mails du matin, déjà triés. Acceptez les rangements proposés ou ignorez-les."
     }
   },
 
@@ -158,7 +159,7 @@ window.I18N.fr = {
     nav: {
       dashboard: "Tableau de bord", assistant: "Assistant", folders: "Dossiers", documents: "Documents",
       review: "À valider", deadlines: "Échéances", mails: "Mails",
-      inbox: "Courrier", ask: "Questions", tasks: "Tâches", routines: "Routines"
+      inbox: "Mails", ask: "Questions", tasks: "Tâches", routines: "Routines"
     },
     searchPlaceholder: "Posez une question sur vos mails et vos documents",
     ask: "Demander",
@@ -350,10 +351,10 @@ window.I18N.fr = {
 
   /* ------------------------------------------------------------------ */
   plugins: {
-    title: "Branchements",
-    eyebrow: "Branchements",
-    h1: "Il lit ce que vous lui ouvrez, rien de plus",
-    lead: "Branchez vos boîtes mail et vos espaces de fichiers. Vous choisissez les dossiers lus ; {name} les indexe en continu et ne touche à rien d'autre.",
+    title: "Connecteurs",
+    eyebrow: "Connecteurs",
+    h1: "Connectez Gmail, Outlook, Google Drive et Dropbox à votre assistant IA",
+    lead: "Connectez vos boîtes mail et vos espaces de fichiers à {name}, en lecture seule. Vous choisissez les dossiers lus ; {name} les indexe en continu et ne touche à rien d'autre.",
     statusLabel: "État",
     groups: {
       mail: "Messageries",
@@ -370,7 +371,7 @@ window.I18N.fr = {
       { group: "soon", name: "Vos outils métier", desc: "Logiciel interne, base documentaire, gestion de dossiers : connecteur sur mesure.", status: "onRequest" }
     ],
     how: {
-      title: "Comment se passe un branchement",
+      title: "Comment ajouter un connecteur",
       items: [
         { title: "Vous autorisez l'accès", text: "Depuis votre compte, en lecture. Vous pouvez retirer l'autorisation à tout moment." },
         { title: "Vous choisissez le périmètre", text: "Boîtes, dossiers, libellés. Le reste n'est ni lu ni copié." },
@@ -383,9 +384,9 @@ window.I18N.fr = {
       pwa: "Installation sur l'écran d'accueil du téléphone, sans passer par un magasin d'applications."
     },
     request: {
-      title: "Il vous manque un branchement ?",
+      title: "Il vous manque un connecteur ?",
       text: "Dites-nous quel outil vous utilisez. Nous construisons les connecteurs dans l'ordre des demandes.",
-      tool: "Outil à brancher",
+      tool: "Outil à connecter",
       toolPh: "Nom de l'outil ou du logiciel",
       email: "Votre e-mail",
       submit: "Envoyer la demande",
@@ -397,8 +398,8 @@ window.I18N.fr = {
   routines: {
     title: "Routines",
     eyebrow: "Routines",
-    h1: "Vos règles, appliquées sans y penser",
-    lead: "Une routine, c'est une phrase : quand ceci arrive, si cette condition est remplie, alors faire cela. Avec votre validation à chaque fois, ou en toute autonomie.",
+    h1: "Classez vos mails automatiquement, selon vos règles",
+    lead: "Pour classer ses mails automatiquement, une routine suffit : quand ceci arrive, si cette condition est remplie, alors faire cela. Avec votre validation à chaque fois, ou en toute autonomie.",
     anatomy: {
       title: "Ce qui compose une routine",
       items: [
@@ -411,7 +412,7 @@ window.I18N.fr = {
     },
     editor: {
       title: "Composez une routine",
-      sub: "Éditeur de démonstration. Modifiez les champs, puis lancez un essai sur le courrier fictif.",
+      sub: "Éditeur de démonstration. Modifiez les champs, puis lancez un essai sur les mails fictifs.",
       when: "Quand",
       if: "si",
       contains: "contient",
@@ -427,7 +428,7 @@ window.I18N.fr = {
       folderPh: "ex. Offres/{contact}/{AAAA}/{MM}",
       tokens: "Repères disponibles : {AAAA} année, {MM} mois, {contact} expéditeur",
       preview: "Votre routine",
-      test: "Essayer sur le courrier fictif",
+      test: "Essayer sur les mails fictifs",
       logTitle: "Journal de l'essai",
       noMatch: "Aucun mail fictif ne correspond. Essayez « offre », « facture » ou « Lambert ».",
       matched: "{n} mail(s) concerné(s)",
@@ -467,8 +468,8 @@ window.I18N.fr = {
   fields: {
     title: "Domaines",
     eyebrow: "Domaines",
-    h1: "Le même assistant, nourri des références de votre métier",
-    lead: "Le socle reste identique : vos mails, vos documents, vos dossiers. Chaque version y ajoute les bases externes dont votre métier a besoin, citées avec la même rigueur.",
+    h1: "Une IA sourcée pour avocats, chercheurs et entreprises",
+    lead: "Une IA sourcée pour votre métier : le socle reste identique (vos mails, vos documents, vos dossiers), et chaque version y ajoute les références dont vous avez besoin, citées avec la même rigueur.",
     tabsLabel: "Domaines",
     tabs: { legal: "Juridique", research: "Recherche", business: "Entreprise" },
     adds: "Ce que cette version ajoute",
@@ -522,45 +523,47 @@ window.I18N.fr = {
   data: {
     title: "Vos données",
     eyebrow: "Vos données",
-    h1: "Vos données vous appartiennent. Voici ce que nous en faisons.",
-    lead: "Chaque engagement de cette page s'accompagne de la façon de le vérifier.",
-    draft: "Avant publication, chaque phrase de cette page doit correspondre à un fait technique vérifié. Les éléments entre crochets sont à compléter ; une formulation non prouvée est retirée.",
+    h1: "Confidentialité de vos mails et documents : ce que nous faisons de vos données",
+    lead: "La confidentialité de vos mails et de vos documents passe par des engagements vérifiables. Chacun s'accompagne de la façon de le contrôler.",
+    draft: "Avant publication, chaque phrase de cette page doit correspondre à un fait technique vérifié et au contrat de sous-traitance (DPA) signé. Les éléments entre crochets sont à compléter ; une formulation non prouvée est retirée.",
     howCheck: "Comment le vérifier",
     commitments: [
-      { title: "Hébergées en Europe", text: "Vos données sont hébergées chez {host}, en {hostCountry}.", check: "Liste des sous-traitants et de leurs pays, publiée et tenue à jour. Certifications : {certs}." },
-      { title: "Une IA hébergée en Europe", text: "Les modèles d'IA ({models}) tournent en {modelsCountry}. Aucune donnée n'est envoyée à un service d'IA situé hors d'Europe.", check: "Chaque modèle utilisé et son lieu d'hébergement figurent dans le registre des sous-traitants." },
-      { title: "Jamais vendues", text: "Vos données ne sont ni vendues, ni louées, ni cédées.", check: "Engagement inscrit dans les conditions d'utilisation." },
-      { title: "Jamais lues, jamais réutilisées", text: "Personne ne consulte vos données. Elles ne servent pas à entraîner ni à améliorer l'outil.", check: "Le journal d'audit de votre compte montre chaque accès à vos données." },
-      { title: "Un seul cas d'exception, choisi par vous", text: "Si vous signalez une réponse pour nous aider à corriger un défaut, seul l'élément signalé nous est transmis. Il est anonymisé, utilisé pour cette correction, puis supprimé.", check: "Le signalement est un geste explicite, jamais coché par défaut. Il apparaît dans votre journal d'audit, avec sa date de suppression." },
-      { title: "Un périmètre que vous fixez", text: "Vous choisissez les boîtes mail et les dossiers lus. Vous pouvez les retirer à tout moment ; leur index est alors effacé.", check: "La liste des sources branchées est visible dans vos réglages." },
-      { title: "Des données séparées", text: "Les données de chaque client sont strictement isolées de celles des autres.", check: "Description de l'architecture fournie sur demande." },
+      { title: "Traitements et modèles dans l'Union européenne", text: "Nos traitements et nos modèles d'IA restent dans l'Union européenne : hébergement chez {host}, en {hostCountry} ; modèles d'IA ({models}) en {modelsCountry}. Les messageries et espaces de fichiers que vous connectez restent régis par leurs propres conditions.", check: "Liste des sous-traitants, de leurs pays et des modèles utilisés, publiée et tenue à jour. Certifications : {certs}." },
+      { title: "Aucun accès sans votre autorisation", text: "Aucun accès à vos données sans votre autorisation préalable. Chaque accès est journalisé et visible dans votre journal d'audit.", check: "Ouvrez votre journal d'audit : chaque accès y figure, avec sa date et son motif." },
+      { title: "Jamais vendues, jamais réutilisées", text: "Vos données ne sont ni vendues, ni louées, ni cédées. Elles ne servent ni à entraîner ni à améliorer l'outil.", check: "Engagement inscrit dans les conditions d'utilisation et dans le contrat de sous-traitance." },
+      { title: "Un seul cas d'exception, choisi par vous", text: "Si vous signalez une réponse pour nous aider à corriger un défaut, seul l'élément signalé nous est transmis. Il est anonymisé, utilisé pour cette correction, puis supprimé. {feedbackRule}", check: "Le signalement est un geste explicite, à chaque fois ; il n'est jamais activé par défaut ni à l'inscription. Il apparaît dans votre journal d'audit, avec sa date de suppression." },
+      { title: "Un périmètre que vous fixez", text: "Vous choisissez les boîtes mail et les dossiers lus, en lecture seule. Vous pouvez les retirer à tout moment ; leur index est alors effacé.", check: "La liste des sources connectées et ce qui est lu sont visibles dans vos réglages." },
+      { title: "Des rôles clairs", text: "Pour votre compte (nom, e-mail, connexion), {company} est responsable de traitement. Pour le contenu de vos mails et documents, {company} agit comme sous-traitant pour votre compte : vous en restez responsable.", check: "Entreprises : contrat de sous-traitance (DPA) accepté à l'inscription, version et date enregistrées ; signature manuscrite sur demande." },
+      { title: "Des données séparées", text: "Les données de chaque client sont strictement isolées de celles des autres. Le site vitrine et l'application n'ont ni base ni compte commun.", check: "Description de l'architecture fournie sur demande." },
       { title: "Des réponses traçables", text: "Chaque réponse cite ses sources. Sans source, pas de réponse. L'assistant propose, vous validez.", check: "Ouvrez n'importe quelle source citée : vous arrivez au passage d'origine." }
     ],
     rgpd: {
       title: "Vos droits",
       items: [
-        { k: "Accès", v: "Exportez à tout moment l'ensemble de vos données." },
-        { k: "Suppression", v: "Supprimez votre compte : vos données et leurs index sont effacés." },
+        { k: "Accès", v: "Exportez à tout moment l'ensemble de vos données, depuis vos réglages." },
+        { k: "Suppression", v: "Supprimez votre compte depuis vos réglages : vos données et leurs index sont effacés, sauvegardes comprises sous {backupPurge}." },
         { k: "Conservation", v: "Durée de conservation : {retention}." },
+        { k: "Base légale", v: "Données de compte : exécution du contrat. Le consentement ne sert que pour ce qui est facultatif (retour d'expérience, nouveautés par e-mail)." },
         { k: "Registre", v: "Registre des traitements et liste des sous-traitants disponibles." },
-        { k: "Contact", v: "Délégué à la protection des données : {dpo}." }
+        { k: "Contact", v: "Délégué à la protection des données : {dpo}. Vous pouvez aussi saisir la CNIL." }
       ]
     },
     stack: {
       title: "Où vont vos données",
-      steps: ["Vos boîtes mail et vos fichiers", "Indexation chez {host} ({hostCountry})", "Modèles d'IA en {modelsCountry}", "Réponse sourcée, sur votre écran"],
-      note: "Aucune étape ne sort de l'Union européenne."
+      steps: ["Vos boîtes mail et vos fichiers, chez leur éditeur", "Indexation chez {host} ({hostCountry})", "Modèles d'IA en {modelsCountry}", "Réponse sourcée, sur votre écran"],
+      note: "Nos traitements et nos modèles restent dans l'Union européenne. Les messageries et espaces de fichiers que vous connectez restent régis par leurs propres conditions."
     }
   },
+
 
   /* ------------------------------------------------------------------ */
   start: {
     title: "Commencer",
-    eyebrow: "Voir en vrai · Commencer",
-    h1: "Choisissez comment commencer",
+    eyebrow: "Démonstration · Commencer",
+    h1: "Essayer {name} : choisissez comment commencer",
     lead: "Une démo avec nous, un accès validé par l'équipe ou une inscription immédiate. Pendant la phase de test, tout est gratuit.",
     tabsLabel: "Parcours",
-    tabs: { demo: "Voir en vrai", request: "Demander un accès", signup: "Inscription directe", team: "Parler à l'équipe" },
+    tabs: { demo: "Réserver une démo", request: "Demander un accès", signup: "Inscription directe", team: "Parler à l'équipe" },
     demo: {
       title: "Réservez une démo de 20 minutes",
       text: "Nous vous montrons l'application sur des données d'exemple, puis nous répondons à vos questions.",
@@ -580,10 +583,12 @@ window.I18N.fr = {
     },
     signup: {
       title: "Inscrivez-vous maintenant",
-      text: "Créez votre compte et branchez vos premières sources en quelques minutes.",
+      text: "Créez votre compte et connectez vos premières sources en quelques minutes.",
       submit: "Créer mon compte",
-      done: "Compte prêt. Un lien d'activation part à {email}.",
-      waitlist: "Nous ouvrons les accès par vagues. Vous êtes inscrit sur la liste d'attente ; un lien part à {email} dès votre tour."
+      done: "Si l'adresse est valide, un lien de confirmation part à cette adresse. Il ne sert qu'une fois et expire au bout de {linkExpiry}.",
+      waitlist: "Si l'adresse est valide, un lien part à cette adresse pour confirmer votre place sur la liste d'attente. Il ne sert qu'une fois et expire au bout de {linkExpiry}. Nous ouvrons les accès par vagues ; chaque e-mail contient un lien de désinscription en un clic.",
+      waitTitle: "Liste d'attente",
+      waitText: "Nous ouvrons les accès par vagues. Même formulaire : votre compte sera créé à votre tour, après confirmation de votre adresse."
     },
     team: {
       title: "Parlez à l'équipe",
@@ -593,6 +598,7 @@ window.I18N.fr = {
     },
     form: {
       name: "Nom",
+      fullName: "Prénom et nom",
       email: "E-mail",
       emailHint: "Professionnel de préférence",
       org: "Organisation",
@@ -600,14 +606,42 @@ window.I18N.fr = {
       need: "Votre besoin",
       needPh: "Ex. : retrouver l'historique de nos dossiers clients, ne plus rater d'échéances…",
       profile: "Vous êtes",
-      profiles: ["Une entreprise ou une équipe", "Chercheur ou doctorant", "Particulier", "Autre"],
+      profiles: ["Une entreprise ou une équipe", "Chercheur ou étudiant", "Particulier", "Autre"],
       message: "Message",
-      consent: "J'accepte que {name} utilise ces informations pour répondre à ma demande, conformément à la politique de confidentialité.",
+      password: "Mot de passe",
+      passwordHint: "· 12 caractères minimum, sans autre règle : une phrase de passe convient",
+      passwordErr: "Choisissez un mot de passe d'au moins 12 caractères.",
+      show: "Afficher",
+      hide: "Masquer",
+      age: "J'ai au moins {minAge} ans.",
+      ageErr: "L'inscription est réservée aux personnes d'au moins {minAge} ans.",
+      cgu: "J'accepte les conditions générales d'utilisation (version {cguVersion}).",
+      cguErr: "Acceptez les conditions générales d'utilisation pour créer votre compte.",
+      dpa: "J'accepte le contrat de sous-traitance (DPA), version {dpaVersion}.",
+      dpaHint: "Obligatoire pour le profil Entreprise : {company} traite le contenu de vos mails et documents pour votre compte.",
+      dpaErr: "Pour un compte Entreprise, acceptez le contrat de sous-traitance.",
+      read: "Lire le texte",
+      optionalTitle: "Facultatif · un refus est sans conséquence",
+      feedback: "J'accepte d'être contacté pour un retour d'expérience.",
+      news: "Recevoir les nouveautés par e-mail.",
+      infoTitle: "Vos informations",
+      infoSignup: "{company} est responsable de traitement de ces informations. Elles servent à créer et sécuriser votre compte (exécution du contrat). Conservation : {retention}. Vous pouvez y accéder, les rectifier ou les supprimer à tout moment. Contact : {dpo}.",
+      infoWaitlist: "{company} est responsable de traitement de ces informations. Elles servent à gérer votre place sur la liste d'attente, puis à créer et sécuriser votre compte. Conservation : {retention}. Vous pouvez y accéder, les rectifier ou les supprimer à tout moment. Contact : {dpo}.",
+      infoRequest: "{company} utilise ces informations uniquement pour répondre à votre demande. Conservation : {retention}. Vos droits et le contact {dpo} :",
+      policy: "politique de confidentialité",
       consentErr: "Cochez cette case pour envoyer le formulaire.",
       emailErr: "Saisissez une adresse e-mail valide, par exemple nom@entreprise.fr.",
       nameErr: "Indiquez votre nom.",
       needErr: "Décrivez votre besoin en une phrase.",
       fixErrors: "Le formulaire contient des erreurs. Corrigez les champs signalés."
+    },
+    next: {
+      title: "Ensuite",
+      items: [
+        "Confirmez votre adresse : le lien ne sert qu'une fois et expire au bout de {linkExpiry}. Sans confirmation, le compte reste inactif, puis il est supprimé après {unvalidatedPurge}.",
+        "Activez la double authentification : obligatoire pour un compte Entreprise, proposée par défaut aux autres, avec des codes de secours à télécharger.",
+        "Connectez vos sources sur un écran à part : lecture seule, périmètre choisi dossier par dossier, résumé de ce qui sera lu et de ce qui ne le sera pas. Retrait possible à tout moment ; l'index est alors effacé."
+      ]
     }
   },
 
@@ -615,7 +649,7 @@ window.I18N.fr = {
   pricing: {
     title: "Tarifs",
     eyebrow: "Tarifs",
-    h1: "Gratuit pendant la phase de test",
+    h1: "Tarifs : gratuit pendant la phase de test",
     lead: "Toutes les formules sont gratuites tant que dure la phase de test. Nous vous contacterons pour recueillir votre retour d'expérience.",
     banner: "Phase de test : accès gratuit à toutes les fonctions.",
     freeMonth: "Premier mois offert",
@@ -627,19 +661,11 @@ window.I18N.fr = {
     choose: "Commencer",
     contact: "Parler à l'équipe",
     plans: [
-      { id: "personal", name: "Personnel", for: "Pour gérer sa vie personnelle et administrative.", price: "{pricePersonal}", unit: "perMonth", features: ["2 sources branchées", "Questions sourcées illimitées", "Tâches et échéances", "Routines de base"] },
+      { id: "personal", name: "Personnel", for: "Pour gérer sa vie personnelle et administrative.", price: "{pricePersonal}", unit: "perMonth", features: ["2 sources connectées", "Questions sourcées illimitées", "Tâches et échéances", "Routines de base"] },
       { id: "student", name: "Étudiant", for: "Pour les étudiants, doctorants et jeunes chercheurs.", price: "{priceStudent}", unit: "perMonth", features: ["Toutes les fonctions Personnel", "Bibliographie et notes de lecture", "Justificatif étudiant demandé"] },
       { id: "business", name: "Entreprise", for: "Pour les équipes qui partagent des dossiers.", price: "{priceBusiness}", unit: "perUser", featured: true, features: ["Sources illimitées", "Dossiers partagés en équipe", "Routines avancées et journal", "Journal d'audit"] },
       { id: "custom", name: "Sur mesure", for: "Pour un métier, des volumes ou des connecteurs spécifiques.", price: "Sur devis", unit: null, features: ["Version par domaine", "Connecteurs sur mesure", "Vocabulaire et modèles propres", "Accompagnement dédié"] }
-    ],
-    faq: {
-      title: "Questions fréquentes",
-      items: [
-        { q: "Que se passe-t-il à la fin de la phase de test ?", a: "Nous vous prévenons avant tout changement. Le premier mois payant reste offert, quelle que soit la formule." },
-        { q: "Pourquoi vous contacter pendant le test ?", a: "Pour savoir ce qui vous fait gagner du temps et ce qui manque. Vous pouvez refuser." },
-        { q: "Puis-je partir avec mes données ?", a: "Oui. Vous exportez vos données à tout moment, et la suppression du compte efface tout." }
-      ]
-    }
+    ]
   },
 
   /* ------------------------------------------------------------------ */
@@ -648,11 +674,14 @@ window.I18N.fr = {
     h1: "Informations légales",
     sections: [
       { id: "mentions", title: "Mentions légales", body: "Éditeur : {company}, {address}. Immatriculation : {registration}. Directeur de la publication : {director}. Hébergement du site : {host}, {hostCountry}." },
-      { id: "confidentialite", title: "Politique de confidentialité", body: "Les informations saisies dans les formulaires servent uniquement à répondre à votre demande. Elles sont hébergées en Europe et conservées {retention}. Elles ne sont ni vendues ni transmises à des tiers. Contact : {dpo}." },
-      { id: "rgpd", title: "RGPD", body: "Vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, de portabilité et d'opposition. Écrivez à {dpo}. Vous pouvez aussi saisir l'autorité de protection des données de votre pays." },
-      { id: "cookies", title: "Cookies", body: "Ce site ne dépose aucun cookie publicitaire ni de mesure d'audience. Les statistiques de fréquentation sont anonymes, sans cookie, et hébergées dans l'Union européenne. Seul votre choix de langue est mémorisé dans votre navigateur." }
+      { id: "confidentialite", title: "Politique de confidentialité", body: "Deux cas distincts.\n\nVotre compte, la liste d'attente et les demandes envoyées depuis ce site : {company} est responsable de traitement. Ces informations servent à créer et sécuriser votre compte ou à répondre à votre demande. Base légale : exécution du contrat ou mesures préalables à sa conclusion ; le consentement ne sert que pour ce qui est facultatif. Conservation : {retention}. Elles ne sont ni vendues ni transmises à des tiers.\n\nLe contenu des mails et documents que vous connectez : {company} agit comme sous-traitant pour votre compte, selon le contrat de sous-traitance. Contact : {dpo}." },
+      { id: "rgpd", title: "RGPD", body: "Vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, de portabilité et d'opposition. L'export et la suppression du compte se font depuis vos réglages, sans formulaire. Pour le reste, écrivez à {dpo}. Vous pouvez aussi saisir la CNIL." },
+      { id: "cookies", title: "Cookies", body: "Ce site n'utilise que des éléments strictement nécessaires (session, choix de la langue) ; aucun cookie tiers, publicitaire ni de réseau social. Mesure d'audience : {analytics}." },
+      { id: "cgu", title: "Conditions générales d'utilisation", body: "{cguStatus}" },
+      { id: "dpa", title: "Contrat de sous-traitance (DPA)", body: "Pour les clients Entreprise, le contrat de sous-traitance est accepté en ligne à l'inscription, par une case dédiée ; sa version et sa date sont enregistrées. Signature manuscrite sur demande. {dpaStatus}" }
     ]
   },
+
 
   /* ------------------------------------------------------------------ */
   themes: {
@@ -682,14 +711,14 @@ window.I18N.fr = {
     product: "Produit",
     company: "{name}",
     legal: "Légal",
-    links: { mentions: "Mentions légales", privacy: "Confidentialité", rgpd: "RGPD", cookies: "Cookies", themes: "Palettes (interne)" },
+    links: { mentions: "Mentions légales", privacy: "Confidentialité", rgpd: "RGPD", cookies: "Cookies", cgu: "CGU", dpa: "Contrat de sous-traitance", themes: "Palettes (interne)" },
     rights: "Démo du site · phase 1",
     langLabel: "Langue du site"
   }
 };
 
 /* ------------------------------------------------------------------ */
-/* DÉMO DE L'APPLICATION (page En action) — données 100 % fictives.    */
+/* DÉMO DE L'APPLICATION (accueil) — données 100 % fictives.    */
 /* Dates au format AAAA-MM-JJ ; « today » fixe le jour de la démo.     */
 /* ------------------------------------------------------------------ */
 window.I18N.fr.demo.app = {
@@ -1047,4 +1076,32 @@ window.I18N.fr.demo.app.assistantUi.mismatch = {
   p2: "Deux explications possibles : la question concerne peut-être un autre dossier (« {g} » semble plus pertinent), ou le document qui contient la réponse n'est pas accessible dans ce dossier.",
   p2none: "Deux explications possibles : vous vous êtes peut-être trompé de dossier pour la poser, ou le document qui contient la réponse n'est pas accessible dans ce dossier.",
   retryIn: "Relancer dans « {g} »", retryAll: "Relancer dans tous les dossiers"
+};
+
+/* Menu « Produit », FAQ, blog. */
+window.I18N.fr.navDesc = {
+  demo: "Essayer l'outil, avec des données fictives",
+  routines: "Vos règles, appliquées automatiquement",
+  plugins: "Outlook, Gmail, Google Drive, Dropbox",
+  data: "Traitements dans l'UE, confidentialité, vos droits"
+};
+window.I18N.fr.faq = { title: "Questions fréquentes" };
+window.I18N.fr.blog = {
+  title: "Blog", eyebrow: "Blog", h1: "Guides pour interroger et organiser ses mails et documents",
+  lead: "Des guides pratiques pour interroger vos mails et documents avec l'IA, les classer et ne plus rater d'échéance.",
+  readMore: "Lire l'article", back: "Tous les articles", reading: "de lecture", more: "À lire aussi",
+  empty: "Les premiers articles arrivent bientôt.", notFound: "Cet article n'existe pas ou a été déplacé."
+};
+
+/* Référencement : balise title (50-60 caractères, mot-clé en tête) et meta description, par page. */
+window.I18N.fr.seo = {
+  home: { title: "Interroger ses mails et documents avec l'IA — {name}", desc: "Interrogez vos mails et vos documents avec l'IA : réponses sourcées, tâches, échéances et dossiers rangés. Gratuit pendant la phase de test." },
+  plugins: { title: "Connecter Gmail, Outlook, Drive, Dropbox à une IA — {name}", desc: "Connectez Gmail, Outlook, Google Drive et Dropbox à {name}, en lecture seule. Vous choisissez les dossiers lus, le reste n'est jamais ouvert." },
+  routines: { title: "Classer ses mails automatiquement — {name}", desc: "Classez vos mails automatiquement avec des routines : quand un mail arrive, {name} le range, crée une tâche ou le résume, avec ou sans votre validation." },
+  fields: { title: "IA sourcée pour avocats, chercheurs et entreprises — {name}", desc: "Une IA sourcée pour votre métier : jurisprudence et textes pour les avocats, bases d'articles pour les chercheurs, vos normes pour l'entreprise." },
+  data: { title: "Confidentialité de vos mails et documents — {name}", desc: "Confidentialité de vos mails et documents : hébergement, modèles d'IA, aucune donnée vendue, vos droits RGPD. Chaque engagement se vérifie." },
+  pricing: { title: "Tarifs {name} : gratuit pendant la phase de test", desc: "Tarifs de {name} : toutes les formules sont gratuites pendant la phase de test, puis premier mois offert. Personnel, Étudiant, Entreprise, Sur mesure." },
+  start: { title: "Essayer {name} gratuitement ou réserver une démo", desc: "Essayez {name} : inscription directe, demande d'accès ou démo de 20 minutes avec l'équipe." },
+  live: { title: "Réserver une démo de {name} (20 min)", desc: "Réservez une démo de 20 minutes : nous vous montrons {name} sur des données d'exemple et répondons à vos questions." },
+  blog: { title: "Guides : interroger et organiser ses mails — {name}", desc: "Guides pratiques pour interroger vos mails et documents avec l'IA, les classer automatiquement et ne plus rater d'échéance." }
 };

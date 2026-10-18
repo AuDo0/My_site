@@ -11,8 +11,8 @@
 
   var C = window.SITE_CONFIG;
   var I18N = window.I18N;
-  var PAGES = ["home", "action", "plugins", "routines", "fields", "data", "start", "live", "pricing", "legal", "themes"];
-  var NAV = ["plugins", "routines", "fields", "data", "pricing"];
+  var PAGES = ["home", "action", "plugins", "routines", "fields", "data", "start", "live", "pricing", "blog", "legal", "themes"];
+  
   var PALETTES = ["a", "b", "c", "d", "e"];
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -48,7 +48,7 @@
     fieldsTab: "legal",
     planSel: "business",
     watch: {},
-    startTab: "signup",
+    startTab: "signup", signupProfile: 0,
     booking: { day: null, slot: null },
     sent: {}
   };
@@ -78,6 +78,7 @@
       models: C.ai.models, modelsCountry: C.ai.country,
       retention: C.retention, hours: String(C.responseTimeHours),
       dpo: C.dpoEmail, contactEmail: C.contactEmail,
+      backupPurge: C.backupPurge, feedbackRule: C.feedbackRule, analytics: C.analytics, cguStatus: C.cguStatus, dpaStatus: C.dpaStatus, minAge: C.minAge, linkExpiry: C.linkExpiry, unvalidatedPurge: C.unvalidatedPurge, cguVersion: C.cguVersion, dpaVersion: C.dpaVersion,
       company: C.company.name, address: C.company.address, registration: C.company.registration, director: C.company.director,
       pricePersonal: C.pricing.personal, priceStudent: C.pricing.student, priceBusiness: C.pricing.business
     };
@@ -112,6 +113,8 @@
   /* ---------------------------------------------------------------- */
   function slugToPage(l, slug) {
     var slugs = I18N[l].slugs;
+    if (slug === "branchements" || slug === "plug-ins") return "plugins"; /* anciennes adresses */
+    if (slug === "voir-en-vrai" || slug === "see-it-live") return "live";
     for (var p in slugs) if (slugs[p] === slug) return p;
     return null;
   }
@@ -247,12 +250,22 @@
   function otherLang() { return C.languages.filter(function (l) { return l !== lang; })[0]; }
   function brand() { return '<a class="brand" href="' + href("home") + '">' + esc(C.productName) + '<sup aria-hidden="true">1</sup></a>'; }
 
+  /* Menu : 4 entrées visibles (usage courant), le reste dans « Produit » et en pied de page. */
+  var NAV_PRODUCT = ["demo", "routines", "plugins", "data"];
+  var NAV_TOP = ["fields", "pricing", "blog"];
+  function navHref(p) { return p === "demo" ? href("home", lang, "dashboard") : href(p); }
   function header() {
     var cur = route.page === "live" ? "start" : route.page;
-    var links = NAV.map(function (p) {
+    var inProduct = NAV_PRODUCT.indexOf(cur) > -1;
+    var drop = '<div class="nav-drop" id="nav-drop"><button type="button" class="nav-drop-btn" aria-expanded="false" aria-controls="nav-product" data-action="drop"' + (inProduct ? ' data-current="1"' : "") + ">" + t("nav.product") + ' <span aria-hidden="true">▾</span></button>' +
+      '<div class="nav-drop-panel" id="nav-product">' + NAV_PRODUCT.map(function (p) {
+        return '<a href="' + navHref(p) + '"' + (cur === p ? ' aria-current="page"' : "") + '><span class="nd-t">' + t("nav." + p) + '</span><span class="nd-d">' + t("navDesc." + p) + "</span></a>";
+      }).join("") + "</div></div>";
+    var links = drop + NAV_TOP.map(function (p) {
       return '<a href="' + href(p) + '"' + (cur === p ? ' aria-current="page"' : "") + ">" + t("nav." + p) + "</a>";
     }).join("");
     var ol = otherLang();
+    var mobileItems = NAV_PRODUCT.concat(NAV_TOP);
     return '<a class="skip" href="#main" data-skip="1">' + t("meta.skip") + "</a>" +
       '<header class="site-header"><div class="wrap"><div class="header-row">' + brand() +
       '<nav class="main-nav" aria-label="' + esc(tp("nav.main")) + '">' + links + "</nav>" +
@@ -263,7 +276,8 @@
       '<button type="button" class="btn btn-quiet menu-toggle" aria-expanded="false" aria-controls="mobile-nav" data-action="menu">' + t("nav.menu") + "</button>" +
       "</div></div>" +
       '<nav class="mobile-nav" id="mobile-nav" hidden aria-label="' + esc(tp("nav.main")) + '"><ul>' +
-      NAV.map(function (p) { return '<li><a href="' + href(p) + '"' + (cur === p ? ' aria-current="page"' : "") + ">" + t("nav." + p) + "</a></li>"; }).join("") +
+      mobileItems.map(function (p) { return '<li><a href="' + navHref(p) + '"' + (cur === p ? ' aria-current="page"' : "") + ">" + t("nav." + p) + "</a></li>"; }).join("") +
+      '<li class="mobile-lang"><a href="' + href(route.page, ol, route.sub) + '" hreflang="' + ol + '" lang="' + ol + '">' + esc(I18N[ol].meta.langName) + "</a></li>" +
       '</ul><a class="btn btn-ghost" href="' + href("live") + '">' + t("nav.live") + "</a></nav>" +
       "</div></header>";
   }
@@ -274,14 +288,16 @@
     }).join("");
     return '<footer class="site-footer"><div class="wrap"><div class="footer-grid">' +
       '<div style="display:grid;gap:12px;align-content:start">' + brand() + '<p class="small">' + t("footer.tagline") + "</p></div>" +
-      "<div><h2>" + t("footer.product") + "</h2><ul>" + ["plugins", "routines", "fields", "data", "pricing", "live", "start"].map(function (p) {
-        return '<li><a href="' + href(p) + '">' + t("nav." + p) + "</a></li>";
+      "<div><h2>" + t("footer.product") + "</h2><ul>" + ["demo", "routines", "plugins", "fields", "data", "pricing", "blog", "live", "start"].map(function (p) {
+        return '<li><a href="' + navHref(p) + '">' + t("nav." + p) + "</a></li>";
       }).join("") + "</ul></div>" +
       "<div><h2>" + t("footer.legal") + "</h2><ul>" +
       '<li><a href="' + href("legal", lang, "mentions") + '">' + t("footer.links.mentions") + "</a></li>" +
       '<li><a href="' + href("legal", lang, "confidentialite") + '">' + t("footer.links.privacy") + "</a></li>" +
       '<li><a href="' + href("legal", lang, "rgpd") + '">' + t("footer.links.rgpd") + "</a></li>" +
       '<li><a href="' + href("legal", lang, "cookies") + '">' + t("footer.links.cookies") + "</a></li>" +
+      '<li><a href="' + href("legal", lang, "cgu") + '">' + t("footer.links.cgu") + "</a></li>" +
+      '<li><a href="' + href("legal", lang, "dpa") + '">' + t("footer.links.dpa") + "</a></li>" +
       '<li><a href="' + href("themes") + '">' + t("footer.links.themes") + "</a></li>" +
       "</ul></div>" +
       "<div><h2>" + t("footer.langLabel") + '</h2><div class="lang-switch" role="group" aria-label="' + esc(tp("footer.langLabel")) + '">' + langs + "</div></div>" +
@@ -329,8 +345,7 @@
       get(I18N[lang], "home.steps.items").map(function (s) { return "<li><h4>" + fmt(s.title) + '</h4><p class="muted small">' + fmt(s.text) + "</p></li>"; }).join("") + "</ol></div>" +
       '<div><div class="section-head"><h2>' + t(h + "audiences.title") + '</h2></div><ul class="row-list">' +
       get(I18N[lang], "home.audiences.items").map(function (a) { return '<li class="row"><div><div class="r-title">' + fmt(a.title) + '</div><div class="r-sub">' + fmt(a.text) + "</div></div></li>"; }).join("") + "</ul></div>" +
-      "</div></section>" +
-      finalBand();
+      "</div></section>";
   }
 
   function finalBand() {
@@ -907,7 +922,7 @@
       '<section class="section"><div class="grid-2" style="gap:48px"><div style="display:grid;gap:16px;align-content:start"><h2>' + esc(p.platform.title) + '</h2><ul class="row-list">' +
       '<li class="row"><div><div class="r-title">' + fmt(p.platform.web) + '</div></div><span class="pill pill-success">● ' + t("common.available") + "</span></li>" +
       '<li class="row"><div><div class="r-title">' + fmt(p.platform.pwa) + '</div></div><span class="pill pill-info">' + t("common.soon") + "</span></li></ul></div>" +
-      '<div style="display:grid;gap:16px;align-content:start"><h2>' + esc(p.request.title) + '</h2><p class="muted">' + fmt(p.request.text) + "</p>" + formPlugin() + "</div></div></section></div>" + finalBand();
+      '<div style="display:grid;gap:16px;align-content:start"><h2>' + esc(p.request.title) + '</h2><p class="muted">' + fmt(p.request.text) + "</p>" + formPlugin() + "</div></div></section></div>";
   }
 
   function formPlugin() {
@@ -1000,7 +1015,7 @@
         return '<li class="row' + (st ? " is-done" : "") + '"><div><div class="r-title">' + esc(it.text) + '</div><div class="r-sub small">' + esc(it.why) + '</div></div><div class="row-actions">' + act + "</div></li>";
       }).join("") + "</ul></section>" +
       '<section class="section"><div class="section-head"><h2>' + esc(p.soon.title) + '</h2></div><ul class="row-list">' +
-      p.soon.items.map(function (s) { return '<li class="row"><div>' + esc(s) + '</div><span class="pill pill-info">' + t("common.soon") + "</span></li>"; }).join("") + "</ul></section></div>" + finalBand();
+      p.soon.items.map(function (s) { return '<li class="row"><div>' + esc(s) + '</div><span class="pill pill-info">' + t("common.soon") + "</span></li>"; }).join("") + "</ul></section></div>";
   }
 
   /* ---------------------------------------------------------------- */
@@ -1073,10 +1088,49 @@
       : '<input id="' + id + '" name="' + id + '" type="' + type + '"' + (o.req ? " required" : "") + (o.auto ? ' autocomplete="' + o.auto + '"' : "") + (o.ph ? ' placeholder="' + esc(o.ph) + '"' : "") + ' aria-describedby="' + id + '-err">';
     return '<div class="field" data-err="' + esc(o.err || "") + '"><label for="' + id + '">' + label + (o.req ? "" : opt) + hint + "</label>" + input + '<span class="error-text" id="' + id + '-err" hidden></span></div>';
   }
-  function consentField(prefix) {
-    var id = prefix + "-consent";
-    return '<div class="field" data-err="' + esc(tp("start.form.consentErr")) + '"><label class="check" for="' + id + '"><input type="checkbox" id="' + id + '" name="' + id + '" required aria-describedby="' + id + '-err"><span>' +
-      t("start.form.consent") + ' <a href="' + href("legal", lang, "confidentialite") + '">↗</a></span></label><span class="error-text" id="' + id + '-err" hidden></span></div>';
+  /* Formulaires de demande : information courte, sans case de consentement
+     (base légale : mesures préalables au contrat ; consentement réservé au facultatif). */
+  function consentField() {
+    return '<p class="form-info small">' + t("start.form.infoRequest") + ' <a href="' + href("legal", lang, "confidentialite") + '">' + t("start.form.policy") + "</a>.</p>";
+  }
+  function checkField(id, label, o) {
+    o = o || {};
+    return '<div class="field' + (o.cls ? " " + o.cls : "") + '"' + (o.err ? ' data-err="' + esc(o.err) + '"' : "") + (o.hidden ? " hidden" : "") + '><label class="check" for="' + id + '"><input type="checkbox" id="' + id + '" name="' + id + '"' + (o.req ? " required" : "") + ' aria-describedby="' + id + '-err"><span>' + label +
+      (o.link ? ' <a href="' + o.link + '">' + t("start.form.read") + " ↗</a>" : "") + (o.hint ? '<br><span class="hint">' + o.hint + "</span>" : "") + '</span></label><span class="error-text" id="' + id + '-err" hidden></span></div>';
+  }
+  function passwordField(id) {
+    return '<div class="field" data-err="' + esc(tp("start.form.passwordErr")) + '"><label for="' + id + '">' + t("start.form.password") + ' <span class="hint">' + t("start.form.passwordHint") + "</span></label>" +
+      '<div class="pw-wrap"><input id="' + id + '" name="' + id + '" type="password" required minlength="12" data-pw autocomplete="new-password" aria-describedby="' + id + '-err">' +
+      '<button type="button" class="btn btn-ghost btn-sm" data-action="pw-toggle" data-for="' + id + '" aria-pressed="false">' + t("start.form.show") + "</button></div>" +
+      '<span class="error-text" id="' + id + '-err" hidden></span></div>';
+  }
+  function signupForm() {
+    var wait = C.phase === "waitlist";
+    var biz = state.signupProfile === 0;
+    var radios = '<fieldset class="field" style="border:0;padding:0;margin:0"><legend class="label" style="font-weight:600;font-size:var(--fs-sm);margin-bottom:6px">' + t("start.form.profile") + '</legend><div class="radio-row">' +
+      get(I18N[lang], "start.form.profiles").map(function (p, i) {
+        return '<label><input type="radio" name="signup-profile" value="' + i + '" data-signup-profile' + (i === state.signupProfile ? " checked" : "") + ">" + esc(p) + "</label>";
+      }).join("") + "</div></fieldset>";
+    return (wait ? '<p class="notice notice-info" style="margin-bottom:20px"><span class="ico" aria-hidden="true">ⓘ</span><span><b>' + t("start.signup.waitTitle") + "</b> · " + t("start.signup.waitText") + "</span></p>" : "") +
+      '<form class="form" data-form="signup" novalidate>' +
+      '<div class="form-row">' + fieldInput("signup-name", "text", t("start.form.fullName"), { req: true, auto: "name", err: tp("start.form.nameErr") }) +
+      fieldInput("signup-email", "email", t("start.form.email"), { req: true, auto: "email", err: tp("start.form.emailErr") }) + "</div>" +
+      passwordField("signup-password") + radios +
+      fieldInput("signup-org", "text", t("start.form.org"), { auto: "organization" }) +
+      '<div class="check-group">' +
+      checkField("signup-age", t("start.form.age"), { req: true, err: tp("start.form.ageErr") }) +
+      checkField("signup-cgu", t("start.form.cgu"), { req: true, err: tp("start.form.cguErr"), link: href("legal", lang, "cgu") }) +
+      checkField("signup-dpa", t("start.form.dpa"), { req: biz, hidden: !biz, cls: "dpa-field", err: tp("start.form.dpaErr"), link: href("legal", lang, "dpa"), hint: t("start.form.dpaHint") }) +
+      "</div>" +
+      '<fieldset class="check-group check-optional"><legend>' + t("start.form.optionalTitle") + "</legend>" +
+      checkField("signup-feedback", t("start.form.feedback")) + checkField("signup-news", t("start.form.news")) + "</fieldset>" +
+      '<div class="form-info"><b>' + t("start.form.infoTitle") + "</b><p>" + t(wait ? "start.form.infoWaitlist" : "start.form.infoSignup") + ' <a href="' + href("legal", lang, "confidentialite") + '">' + t("start.form.policy") + " ↗</a></p></div>" +
+      '<p class="error-text" data-form-error hidden>' + t("start.form.fixErrors") + "</p>" +
+      '<div><button type="submit" class="btn btn-action">' + t("start.signup.submit") + "</button></div></form>" + nextSteps();
+  }
+  function nextSteps() {
+    var n = get(I18N[lang], "start.next");
+    return '<div class="next-steps"><h3>' + esc(n.title) + "</h3><ol>" + n.items.map(function (it) { return "<li>" + fmt(it) + "</li>"; }).join("") + "</ol></div>";
   }
   function sentBlock(msg) {
     return '<div style="display:grid;gap:12px" role="status"><p class="notice notice-success"><span class="ico" aria-hidden="true">✓</span><span>' + msg + "</span></p>" +
@@ -1155,10 +1209,10 @@
     var tab = state.startTab;
     var head = '<div style="display:grid;gap:8px;margin-bottom:24px;max-width:640px"><h2>' + t("start." + tab + ".title") + '</h2><p class="muted">' + t("start." + tab + ".text") + "</p></div>";
     if (tab === "demo") return head + bookingBlock();
-    if (state.sent[tab]) return head + sentBlock(state.sent[tab]);
+    if (state.sent[tab]) return head + sentBlock(state.sent[tab]) + (tab === "signup" ? nextSteps() : "");
     var body = "";
     if (tab === "request") body = baseFields("req") + profileField("req");
-    if (tab === "signup") body = '<div class="form-row">' + fieldInput("signup-name", "text", t("start.form.name"), { req: true, auto: "name", err: tp("start.form.nameErr") }) + fieldInput("signup-email", "email", t("start.form.email"), { req: true, auto: "email", hint: "· " + t("start.form.emailHint"), err: tp("start.form.emailErr") }) + "</div>" + fieldInput("signup-need", "textarea", t("start.form.need"), { req: true, ph: tp("start.form.needPh"), err: tp("start.form.needErr") }) + profileField("signup");
+    if (tab === "signup") return head + signupForm();
     if (tab === "team") body = baseFields("team", t("start.form.message"));
     var btn = tab === "request" ? "start.request.submit" : tab === "signup" ? "start.signup.submit" : "start.team.submit";
     return head + '<form class="form" data-form="' + tab + '" novalidate>' + body + consentField(tab) +
@@ -1190,8 +1244,7 @@
     }).join("");
     return '<div class="wrap">' + pageHead("pricing") +
       '<section class="section-tight" style="padding-top:0"><p class="notice notice-success" style="margin-bottom:24px"><span class="ico" aria-hidden="true">✓</span><span>' + esc(p.banner) + '</span></p><div class="plans">' + plans + "</div></section>" +
-      '<section class="section"><div class="section-head"><h2>' + esc(p.faq.title) + '</h2></div><div class="faq">' +
-      p.faq.items.map(function (f) { return "<details><summary>" + esc(f.q) + "</summary><p>" + esc(f.a) + "</p></details>"; }).join("") + "</div></section></div>" + finalBand();
+      "</div>";
   }
 
   /* ---------------------------------------------------------------- */
@@ -1201,7 +1254,7 @@
     var l = get(I18N[lang], "legal");
     return '<div class="wrap"><header class="page-head"><h1 tabindex="-1">' + esc(l.h1) + "</h1></header>" +
       '<section class="section-tight" style="padding-top:0"><div class="legal-sections">' +
-      l.sections.map(function (s) { return '<section id="' + s.id + '"><h2 style="font-size:var(--fs-xl)">' + esc(s.title) + "</h2><p>" + fmt(s.body) + "</p></section>"; }).join("") +
+      l.sections.map(function (s) { return '<section id="' + s.id + '"><h2 style="font-size:var(--fs-xl)">' + esc(s.title) + "</h2>" + s.body.split("\n\n").map(function (para) { return "<p>" + fmt(para) + "</p>"; }).join("") + "</section>"; }).join("") +
       "</div></section></div>";
   }
 
@@ -1257,16 +1310,145 @@
   /* ---------------------------------------------------------------- */
   /* Rendu                                                            */
   /* ---------------------------------------------------------------- */
-  var RENDER = { home: pageHome, action: pageHome, plugins: pagePlugins, routines: pageRoutines, fields: pageFields, data: pageData, start: pageStart, live: pageStart, pricing: pagePricing, legal: pageLegal, themes: pageThemes };
+  /* ---------------------------------------------------------------- */
+  /* FAQ et blog : lus depuis faq/<langue>.txt et blog/<langue>.txt     */
+  /* ---------------------------------------------------------------- */
+  var texts = {};          /* "faq-fr" → contenu analysé, null en cours, false si absent */
+  var FAQ_KEYS = { home: "accueil", plugins: "connecteurs", routines: "routines", fields: "domaines", data: "donnees", pricing: "tarifs", start: "commencer", live: "commencer", blog: "blog" };
+  function loadText(kind) {
+    var key = kind + "-" + lang;
+    if (texts[key] !== undefined) return texts[key];
+    texts[key] = null;
+    if (!window.fetch) { texts[key] = false; return false; }
+    fetch(kind + "/" + lang + ".txt", { cache: "no-cache" })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(function (txt) { texts[key] = kind === "faq" ? parseFaq(txt) : parseBlog(txt); rerender(); updateHead(); })
+      .catch(function () { texts[key] = false; rerender(); });
+    return null;
+  }
+  function stripComments(txt) {
+    return txt.replace(/\r/g, "").split("\n").filter(function (l) { return !/^#(?!#)/.test(l) || /^#{2,3} /.test(l); });
+  }
+  function parseFaq(txt) {
+    var out = {}, page = null, cur = null;
+    stripComments(txt).forEach(function (line) {
+      var m = line.match(/^==\s*([\w-]+)\s*==\s*$/);
+      if (m) { page = m[1]; out[page] = out[page] || []; cur = null; return; }
+      if (!page) return;
+      if (/^Q:/.test(line)) { cur = { q: line.slice(2).trim(), a: [] }; out[page].push(cur); return; }
+      if (/^(R|A):/.test(line)) { if (cur) cur.a.push(line.slice(2).trim()); return; }
+      if (cur && cur.a.length) cur.a.push(line.trim());
+    });
+    Object.keys(out).forEach(function (k) {
+      out[k].forEach(function (it) { it.a = it.a.join("\n").trim(); });
+    });
+    return out;
+  }
+  function parseBlog(txt) {
+    var posts = [], cur = null, inBody = false;
+    var keys = { "titre": "title", "title": "title", "date": "date", "rubrique": "cat", "category": "cat", "résumé": "summary", "resume": "summary", "summary": "summary", "lecture": "reading", "reading": "reading" };
+    stripComments(txt).forEach(function (line) {
+      var m = line.match(/^===\s*([a-z0-9-]+)\s*$/i);
+      if (m) { cur = { slug: m[1].toLowerCase(), body: [] }; posts.push(cur); inBody = false; return; }
+      if (!cur) return;
+      if (!inBody) {
+        if (/^---\s*$/.test(line)) { inBody = true; return; }
+        var km = line.match(/^([^:]+):\s*(.*)$/);
+        if (km && keys[km[1].trim().toLowerCase()]) cur[keys[km[1].trim().toLowerCase()]] = km[2].trim();
+        return;
+      }
+      cur.body.push(line);
+    });
+    posts.forEach(function (p) { p.body = p.body.join("\n").trim(); });
+    return posts;
+  }
+  /* Texte simple → HTML : paragraphes, intertitres, listes, citation. */
+  function richText(txt) {
+    return richBlocks(txt).replace(/\[([A-ZÀ-ÖØ-Ý0-9' \-]{3,})\]/g, '<span class="placeholder">[$1]</span>');
+  }
+  function richBlocks(txt) {
+    return txt.split(/\n\s*\n/).map(function (block) {
+      var lines = block.split("\n");
+      if (/^### /.test(lines[0])) {
+        var rest3 = lines.slice(1).join("\n");
+        return "<h3>" + fmt(lines[0].slice(4)) + "</h3>" + (rest3.trim() ? richBlocks(rest3) : "");
+      }
+      if (/^## /.test(lines[0])) {
+        var rest = lines.slice(1).join("\n");
+        return "<h2>" + fmt(lines[0].slice(3)) + "</h2>" + (rest.trim() ? richBlocks(rest) : "");
+      }
+      if (lines.every(function (l) { return /^- /.test(l); })) return "<ul>" + lines.map(function (l) { return "<li>" + fmt(l.slice(2)) + "</li>"; }).join("") + "</ul>";
+      if (lines.every(function (l) { return /^> /.test(l); })) return "<blockquote>" + fmt(lines.map(function (l) { return l.slice(2); }).join(" ")) + "</blockquote>";
+      return "<p>" + fmt(lines.join(" ")) + "</p>";
+    }).join("");
+  }
+  function faqSection() {
+    var key = FAQ_KEYS[route.page];
+    if (!key || (route.page === "blog" && route.sub)) return "";
+    var data = loadText("faq");
+    if (!data || !data[key] || !data[key].length) return "";
+    return '<section class="section faq-section" aria-labelledby="faq-title"><div class="wrap"><div class="section-head"><h2 id="faq-title">' + t("faq.title") + '</h2></div><div class="faq">' +
+      data[key].map(function (f, i) {
+        return '<details id="faq-' + i + '"><summary>' + fmt(f.q) + "</summary><div class=\"faq-a\">" + richText(f.a) + "</div></details>";
+      }).join("") + "</div></div></section>";
+  }
+
+  /* ---------- Blog ---------- */
+  function postDate(iso) {
+    try { return new Date(isoUTC(iso)).toLocaleDateString(locale(), { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }); } catch (e) { return iso; }
+  }
+  function postMeta(p) {
+    return '<p class="post-meta">' + (p.cat ? '<span class="pill pill-primary">' + esc(p.cat) + "</span>" : "") + (p.date ? '<span>' + esc(postDate(p.date)) + "</span>" : "") + (p.reading ? "<span>" + esc(p.reading) + " " + t("blog.reading") + "</span>" : "") + "</p>";
+  }
+  function postCard(p) {
+    return '<article class="post-card"><a class="post-link" href="' + href("blog", lang, p.slug) + '">' + postMeta(p) + "<h3>" + fmt(p.title) + '</h3><p class="muted">' + fmt(p.summary || "") + '</p><span class="post-more">' + t("blog.readMore") + " →</span></a></article>";
+  }
+  function pageBlog() {
+    var posts = loadText("blog");
+    if (posts === null) return '<div class="wrap">' + pageHead("blog") + '<p class="muted">…</p></div>';
+    posts = posts || [];
+    if (route.sub) {
+      var p = posts.filter(function (x) { return x.slug === route.sub; })[0];
+      if (!p) return '<div class="wrap">' + pageHead("blog") + '<p class="notice notice-info">' + t("blog.notFound") + '</p><p><a href="' + href("blog") + '">← ' + t("blog.back") + "</a></p></div>";
+      var others = posts.filter(function (x) { return x.slug !== p.slug; }).slice(0, 2);
+      return '<div class="wrap"><article class="post"><p><a class="post-back" href="' + href("blog") + '">← ' + t("blog.back") + "</a></p>" + postMeta(p) +
+        '<h1 tabindex="-1">' + fmt(p.title) + '</h1><p class="lead">' + fmt(p.summary || "") + '</p><div class="post-body">' + richText(p.body) + "</div></article>" +
+        (others.length ? '<section class="section"><div class="section-head"><h2>' + t("blog.more") + '</h2></div><div class="post-grid">' + others.map(postCard).join("") + "</div></section>" : "") + "</div>";
+    }
+    return '<div class="wrap">' + pageHead("blog") + '<section class="section-tight" style="padding-top:0">' +
+      (posts.length ? '<div class="post-grid">' + posts.map(postCard).join("") + "</div>" : '<p class="muted">' + t("blog.empty") + "</p>") + "</section></div>";
+  }
+
+  var BAND_PAGES = ["home", "plugins", "routines", "pricing", "blog"];
+  function mainHtml() { return RENDER[route.page]() + faqSection() + (BAND_PAGES.indexOf(route.page) > -1 ? finalBand() : ""); }
+  var RENDER = { blog: pageBlog, home: pageHome, action: pageHome, plugins: pagePlugins, routines: pageRoutines, fields: pageFields, data: pageData, start: pageStart, live: pageStart, pricing: pagePricing, legal: pageLegal, themes: pageThemes };
 
   function updateHead() {
-    var page = route.page;
-    var title = page === "home" ? tp("home.title") : tp((page === "live" ? "start" : page) + ".title");
-    document.title = title + " · " + C.productName;
+    var page = route.page === "action" ? "home" : route.page;
+    var seo = get(I18N[lang], "seo." + page);
+    var title, description;
+    if (page === "blog" && route.sub && Array.isArray(texts["blog-" + lang])) {
+      var post = texts["blog-" + lang].filter(function (x) { return x.slug === route.sub; })[0];
+      if (post) { title = fmt(post.title, null, true) + " — " + C.productName; description = fmt(post.summary || "", null, true); }
+    }
+    if (!title && seo) { title = fmt(seo.title, null, true); description = fmt(seo.desc, null, true); }
+    if (!title) { title = tp((page === "live" ? "start" : page) + ".title") + " — " + C.productName; }
+    document.title = title;
     document.documentElement.lang = I18N[lang].meta.htmlLang || lang;
     var desc = document.querySelector('meta[name="description"]');
     if (!desc) { desc = document.createElement("meta"); desc.name = "description"; document.head.appendChild(desc); }
-    desc.content = tp("meta.description");
+    desc.content = description || tp("meta.description");
+    /* Données structurées FAQ (lues par les moteurs et les assistants IA) */
+    var old = document.getElementById("ld-faq"); if (old) old.remove();
+    var fk = FAQ_KEYS[page], fd = texts["faq-" + lang];
+    if (fk && fd && fd[fk] && fd[fk].length && !(page === "blog" && route.sub)) {
+      var ld = document.createElement("script");
+      ld.type = "application/ld+json"; ld.id = "ld-faq";
+      ld.textContent = JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: fd[fk].map(function (x) {
+        return { "@type": "Question", name: fmt(x.q, null, true), acceptedAnswer: { "@type": "Answer", text: fmt(x.a, null, true).replace(/\s*\n\s*/g, " ") } };
+      }) });
+      document.head.appendChild(ld);
+    }
     document.querySelectorAll('link[data-alt]').forEach(function (l) { l.remove(); });
     C.languages.forEach(function (l) {
       var link = document.createElement("link");
@@ -1278,7 +1460,7 @@
   function render(focus) {
     registry = [];
     var root = document.getElementById("site");
-    root.innerHTML = header() + '<main id="main" tabindex="-1">' + RENDER[route.page]() + "</main>" + footer() + paletteSwitcher() +
+    root.innerHTML = header() + '<main id="main" tabindex="-1">' + mainHtml() + "</main>" + footer() + paletteSwitcher() +
       '<dialog class="source-panel" id="source-panel" aria-labelledby="sp-title"></dialog><div class="toast-zone" aria-live="polite" id="toasts"></div>';
     updateHead();
     if (route.page === "themes") fillContrast();
@@ -1305,7 +1487,7 @@
     if (!anim.active) anim.token++;
     var main = document.getElementById("main");
     registry = [];
-    main.innerHTML = RENDER[route.page]();
+    main.innerHTML = mainHtml();
     window.scrollTo(0, scrollY);
     if (route.page === "themes") fillContrast();
     if (key) {
@@ -1406,8 +1588,8 @@
     var firstBad = null;
     form.querySelectorAll(".field[data-err]").forEach(function (f) {
       var input = f.querySelector("input, textarea");
-      if (!input || !input.required) return;
-      var bad = input.type === "checkbox" ? !input.checked : input.type === "email" ? !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(input.value.trim()) : input.value.trim().length < 2;
+      if (!input || !input.required || f.hidden) return;
+      var bad = input.type === "checkbox" ? !input.checked : input.hasAttribute("data-pw") ? input.value.length < 12 : input.type === "email" ? !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(input.value.trim()) : input.value.trim().length < 2;
       var err = f.querySelector(".error-text");
       f.classList.toggle("has-error", bad);
       input.setAttribute("aria-invalid", bad ? "true" : "false");
@@ -1430,7 +1612,7 @@
     if (kind === "demo") state.sent.demo = t("start.demo.done", { slot: (new Date(state.booking.ts).toLocaleString(locale(), { weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" })), email: email });
     if (kind === "request") state.sent.request = t("start.request.done", { email: email, hours: hours });
     if (kind === "team") state.sent.team = t("start.team.done", { email: email, hours: hours });
-    if (kind === "signup") state.sent.signup = C.phase === "waitlist" ? t("start.signup.waitlist", { email: email }) : t("start.signup.done", { email: email });
+    if (kind === "signup") state.sent.signup = C.phase === "waitlist" ? t("start.signup.waitlist") : t("start.signup.done");
     rerender();
     var status = document.querySelector("main [role='status']");
     if (status) { status.setAttribute("tabindex", "-1"); status.focus(); }
@@ -1453,6 +1635,11 @@
       return;
     }
     if (el.hasAttribute("data-src")) { openSource(Number(el.getAttribute("data-src"))); return; }
+    if (el.getAttribute("data-action") === "pw-toggle") {
+      var pw = document.getElementById(el.getAttribute("data-for"));
+      if (pw) { var shown = pw.type === "password"; pw.type = shown ? "text" : "password"; el.setAttribute("aria-pressed", String(shown)); el.textContent = tp(shown ? "start.form.hide" : "start.form.show"); }
+      return;
+    }
     if (el.hasAttribute("data-tab")) {
       var name = el.getAttribute("data-tab"), id = el.getAttribute("data-id");
       if (name === "action") state.actionTab = id;
@@ -1476,6 +1663,7 @@
         break;
       }
       case "close-source": closeSource(); break;
+      case "drop": { var dd = document.getElementById("nav-drop"); var op = !dd.classList.contains("open"); dd.classList.toggle("open", op); el.setAttribute("aria-expanded", String(op)); break; }
       case "section": {
         var sec = el.getAttribute("data-s");
         if (el.hasAttribute("data-ask")) { state.askCase = Number(el.getAttribute("data-ask")); state.draftDone = false; }
@@ -1547,6 +1735,20 @@
     }
   });
 
+  /* Menu « Produit » : fermeture au clic extérieur et avec Échap */
+  document.addEventListener("click", function (e) {
+    var dd = document.getElementById("nav-drop");
+    if (dd && dd.classList.contains("open") && !dd.contains(e.target)) {
+      dd.classList.remove("open");
+      var b = dd.querySelector(".nav-drop-btn"); if (b) b.setAttribute("aria-expanded", "false");
+    }
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    var dd = document.getElementById("nav-drop");
+    if (dd && dd.classList.contains("open")) { dd.classList.remove("open"); var b = dd.querySelector(".nav-drop-btn"); if (b) { b.setAttribute("aria-expanded", "false"); b.focus(); } }
+  });
+
   /* Flèches gauche/droite dans les onglets */
   document.addEventListener("keydown", function (e) {
     var tab = e.target.closest && e.target.closest('[role="tab"]');
@@ -1614,6 +1816,11 @@
   document.addEventListener("keydown", function (e) {
   });
   document.addEventListener("change", function (e) {
+    if (e.target.hasAttribute && e.target.hasAttribute("data-signup-profile")) {
+      state.signupProfile = Number(e.target.value);
+      var dpa = document.querySelector(".dpa-field"), box = document.getElementById("signup-dpa");
+      if (dpa && box) { var on = state.signupProfile === 0; dpa.hidden = !on; box.required = on; if (!on) { box.checked = false; dpa.classList.remove("has-error"); } }
+    }
     if (e.target.id === "palette-select") { setPalette(e.target.value); if (route.page === "themes") rerender("#palette-select"); }
   });
 

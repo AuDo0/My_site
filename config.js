@@ -61,6 +61,16 @@ window.SITE_CONFIG = {
     country: "[PAYS D'HÉBERGEMENT DES MODÈLES]"
   },
   retention: "[DURÉE DE CONSERVATION]",
+  backupPurge: "[DÉLAI DE PURGE DES SAUVEGARDES]",   // consignes : 30 jours, à confirmer (DPA art. 9)
+  feedbackRule: "[RÈGLE À CONFIRMER]",                // signalement volontaire : retirer la mention une fois la règle validée
+  analytics: "[OUTIL DE MESURE D'AUDIENCE, SANS COOKIE, HÉBERGÉ DANS L'UE]",
+  cguStatus: "[CGU EN COURS DE RÉDACTION, RELECTURE JURISTE]",
+  dpaStatus: "[DPA EN COURS DE FINALISATION, RELECTURE JURISTE]",
+  minAge: "[18]",                                     // âge minimal (15 si le juriste le confirme)
+  linkExpiry: "[1 h]",                                // validité du lien de confirmation
+  unvalidatedPurge: "[7 JOURS]",                      // suppression des comptes non confirmés
+  cguVersion: "[VERSION ET DATE DES CGU]",
+  dpaVersion: "[VERSION ET DATE DU DPA]",
   dpoEmail: "[E-MAIL DPO]",
   contactEmail: "[E-MAIL CONTACT]",
 

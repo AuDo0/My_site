@@ -1,0 +1,469 @@
+CAHIER DES CHARGES - SITE WEB ET ARCHITECTURE
+Nom du produit : à déterminer. Nom de test : Docapri (modifiable en un seul endroit).
+Version 6 - 18 octobre 2026
+(V2 : thème clair, logos des connecteurs, démos fidèles à l'application.
+ V3 : intègre toutes les consignes et tous les choix faits pendant la
+ construction de la phase 1.
+ V6 : textes alignés sur les contrats (consignes_inscription_securite,
+ section 2) ; inscription conforme (section 3) ; polices auto-hébergées.
+ V4 : vocabulaire unifié, FAQ par page dans un fichier texte, blog, menu
+ allégé selon les usages, pas de page comparative.
+ V5 : référencement : un mot-clé par page, titles et descriptions, blog en
+ guides pratiques, FAQ enrichie ; voir plan_mots_cles.txt.)
+
+======================================================================
+1. OBJECTIF
+======================================================================
+Présenter un assistant d'organisation et de mémoire, souverain, qui connaît
+précisément les mails et documents de l'utilisateur. Le site doit convaincre
+un visiteur d'essayer l'outil en lui montrant concrètement le gain de temps.
+
+Actions visées sur le site :
+- réserver une démo ;
+- demander un accès ;
+- s'inscrire en libre-service ;
+- manipuler la démo interactive pour comprendre la puissance de l'outil.
+
+Principe central : la démo interactive est le coeur du site. Le visiteur voit
+l'outil d'abord, les arguments ensuite.
+
+Principes directeurs :
+- Le site ne copie ni la structure, ni les intitulés, ni le style d'aucun
+  autre site du secteur. Il se distingue sans perdre les codes.
+- Aucune mention d'autres entreprises ou produits, nulle part sur le site,
+  SAUF les connecteurs (Outlook, Gmail, Google Drive, Dropbox) : leur nom et
+  leur logo officiel apparaissent sur la page Connecteurs, pour qu'on voie
+  d'un coup d'oeil ce qui se connecte. Logos officiels uniquement, fournis
+  par chaque éditeur et utilisés selon leur charte de marque.
+- Nom du produit : une seule variable (config.js). Valeur de test : Docapri.
+- Sobre, clair, lisible en un coup d'oeil. Thème clair, peu de couleurs, les
+  informations importantes mises en valeur.
+- Charte graphique paramétrable (couleurs et polices). Charte active :
+  PROPOSITION B - Vert sarcelle et argile.
+- Termes classiques plutôt qu'originaux quand ils sont plus clairs
+  (« Réserver une démo », « Connecteurs »). Voir le vocabulaire (section 5).
+- Pas de page comparative des concurrents pour l'instant.
+
+======================================================================
+2. LE PRODUIT EN BREF (ce que le site doit faire comprendre)
+======================================================================
+Promesse dominante : organisation et tâches, avec un assistant qui connaît
+précisément vos données. C'est un RAG augmenté : on interroge ses documents
+et ses mails, et l'assistant agit aussi (tâches, échéances, rangement).
+
+Fonctions à présenter :
+- Interroger ses mails et ses documents. Réponses toujours sourcées, et
+  message clair quand l'information n'existe pas. Plusieurs cas illustrés.
+- Résumer mails et documents.
+- Créer des tâches et des échéances à partir des mails et documents.
+- Ranger les documents avec les mails (dossiers).
+- Mémoire des dossiers : historique, faits, acteurs, chronologie, versions,
+  extraits automatiquement.
+- Routines : règles définies par l'utilisateur, exécutées automatiquement,
+  avec ou sans validation (exemple : « dès que je reçois une offre de tel
+  contact, la ranger dans tel dossier, classée par mois et année »).
+- Versions par domaine : même socle, bases externes en plus selon le métier.
+  * Juridique : textes et jurisprudence publiés, connexion et scan en
+    direct, veille passive reliée aux dossiers.
+  * Recherche : bases d'articles ouvertes, connexion et scan en direct,
+    veille passive reliée aux dossiers.
+  * Entreprise : normes et référentiels AJOUTÉS PAR LE CLIENT. Pas de
+    connexion en direct ni de veille sur les normes (aucune base ouverte de
+    normes accessible) : ne rien promettre à ce sujet, pas même « à venir ».
+- Sur mesure : connecteurs, vocabulaire, règles, modèles.
+
+Connecteurs actuels : Outlook, Gmail, Google Drive, Dropbox.
+Disponibilité : application web uniquement pour le moment. Installation sur
+l'écran d'accueil du téléphone (PWA) annoncée « à venir ».
+
+======================================================================
+3. CIBLES
+======================================================================
+- Principale : entreprises et équipes qui gèrent beaucoup de mails, de
+  documents et de dossiers ; chercheurs et doctorants.
+- Secondaire : personnes très occupées qui gèrent leur vie comme une
+  entreprise.
+- Verticales (pages dédiées plus tard) : juridique, recherche, entreprise.
+- Les exemples de la démo couvrent ces quatre profils (voir section 7).
+
+======================================================================
+4. ARBORESCENCE DES PAGES
+======================================================================
+Intitulés retenus ; l'équivalent anglais est entre parenthèses.
+
+1. Accueil (Home)
+   Dans cet ordre :
+   a. Promesse courte et deux appels à l'action (« Commencer gratuitement »,
+      « Réserver une démo de 20 min »), mention « Application web ·
+      Installation sur téléphone bientôt disponible ».
+   b. Directement la démo complète de l'outil (section 7), visible dès
+      l'ouverture sur ordinateur.
+   c. Les arguments : avant/après, 3 raisons d'essayer, 3 étapes pour
+      commencer, pour qui.
+   d. Appel à l'action final.
+   La page « En action » séparée est supprimée : ses anciens liens mènent à
+   la démo de l'accueil, à la bonne section.
+
+2. Connecteurs (Connectors)
+   Logos officiels, état de disponibilité (disponible / à venir / sur
+   demande), comment ajouter un connecteur, où utiliser l'outil (web ;
+   téléphone à venir), formulaire de demande de nouveau connecteur.
+   À venir : calendrier, enregistrements audio. Sur demande : outils métier.
+
+3. Routines (Routines)
+   Ce qui compose une routine (déclencheur, condition, action, validation,
+   journal), éditeur de démonstration testé sur du courrier fictif,
+   routines proposées par l'assistant (accepter / refuser), évolutions
+   « bientôt ».
+
+4. Domaines (Fields)
+   Onglets Juridique / Recherche / Entreprise. Pour chacun : à qui il
+   s'adresse, ce que la version ajoute, une question d'exemple avec réponse
+   sourcée (sources internes et référence externe distinguées).
+   Juridique et Recherche : indicateur « Connecté en direct » et bloc
+   « Veille passive » (barre « Scan en direct » animée, nouveautés reliées à
+   un dossier, avec la raison ; boutons ouvrir la source / ignorer /
+   ajouter au dossier). Entreprise : rien sur la veille.
+   Encadré final : « Votre métier n'est pas dans la liste ? ».
+
+5. Vos données (Your data)
+   Remplace « sécurité ». 8 engagements, chacun avec « Comment le vérifier »,
+   schéma « Où vont vos données » (nos traitements et nos modèles restent
+   dans l'UE ; les messageries et espaces de fichiers connectés restent régis
+   par leurs propres conditions), vos droits, rôles (responsable de
+   traitement pour les comptes, sous-traitant pour le contenu).
+
+6. Tarifs (Pricing)
+   Personnel / Étudiant / Entreprise / Sur mesure. 0 € pendant la phase de
+   test, prix futurs en variables, « Premier mois offert » sur chaque
+   formule, questions fréquentes.
+   La formule survolée ou cliquée s'encadre en vert et son bouton passe à
+   l'orange ; une seule à la fois ; Entreprise par défaut.
+
+7. Réserver une démo / Commencer (Book a demo / Get started)
+   Remplace « contact ». Onglets : Réserver une démo (choix du jour et du
+   créneau, fuseau détecté), Demander un accès, Inscription directe, Parler
+   à l'équipe (besoins sur mesure).
+
+8. Blog (Blog)
+   Liste d'articles (rubrique, date, temps de lecture, résumé), page
+   article avec intertitres, listes et citation mise en avant, « À lire
+   aussi ». Articles écrits dans blog/fr.txt et blog/en.txt (mode d'emploi
+   en tête de fichier). Le blog publie des guides pratiques (« comment
+   faire ») avec le mot-clé dans le titre et l'adresse, pas des articles de
+   tendance. 4 guides de départ, à relire avant publication.
+
+FAQ : 5 à 7 questions par page clé, la première reprenant le mot-clé de
+la page. Chaque page se termine par ses questions fréquentes (accueil,
+connecteurs, routines, domaines, vos données, tarifs, commencer, blog).
+Elles sont écrites dans faq/fr.txt et faq/en.txt, une section par page,
+« Q: » pour la question et « R: » (ou « A: ») pour la réponse. Les valeurs
+entre crochets y sont signalées comme sur le reste du site.
+
+Navigation (usage courant des sites de logiciels : peu d'entrées, le
+détail dans un sous-menu et en pied de page) :
+- 4 entrées visibles : Produit ▾ (Démo interactive, Routines, Connecteurs,
+  Vos données, chacun avec une ligne d'explication), Domaines, Tarifs, Blog ;
+- deux boutons : « Réserver une démo » et « Commencer » ;
+- pied de page : toutes les pages, pages légales, page interne Palettes,
+  sélecteur de langue ;
+- sur téléphone : menu repliable à plat, langue dans le menu sur les très
+  petits écrans.
+
+======================================================================
+5. VOCABULAIRE (à respecter partout, site et démo)
+======================================================================
+Le site emploie les mots de l'application.
+- Mails (pas « courrier »), Dossiers, Documents, Échéances, À valider,
+  Tableau de bord, Assistant, Routines.
+- Connecteurs / Connectors (pas « branchements », « plug-ins » ni
+  « intégrations »). On « connecte » une source (pas « brancher »).
+- Réserver une démo / Book a demo (pas « voir en vrai »).
+- Démo interactive (pas « en action »).
+- Vos données (pas « sécurité »).
+- Valider / Refuser / Ignorer pour les propositions ; « {name} propose,
+  vous validez ».
+- Réponse « sourcée », « passage cité », « information absente des
+  sources ».
+- Domaines : Juridique, Recherche, Entreprise ; profil Vie perso.
+
+======================================================================
+6. EXIGENCES FONCTIONNELLES
+======================================================================
+F1. Démo interactive (accueil) : voir section 7.
+
+F2. Réserver une démo
+    - Agenda en ligne, fuseau horaire détecté, confirmation par e-mail.
+    - Créneaux définis à l'heure de Paris, affichés dans le fuseau du
+      visiteur.
+
+F3. Demander un accès / s'inscrire (« Commencer »)
+    - Deux parcours : demande avec validation par l'équipe, et inscription
+      directe (liste d'attente tant que la phase « waitlist » est active).
+    - Inscription : prénom et nom, e-mail, mot de passe (12 caractères
+      minimum, bouton Afficher), profil, organisation (facultatif). Rien
+      d'autre.
+    - Cases toutes décochées, une idée par case : âge minimal [18]
+      (obligatoire), CGU avec version (obligatoire), DPA (obligatoire et
+      affiché seulement pour le profil Entreprise), retour d'expérience et
+      nouveautés (facultatifs, regroupés sous « Facultatif »).
+    - Encadré d'information (art. 13) au-dessus du bouton ; message neutre
+      « Si l'adresse est valide, un lien part à cette adresse » (lien à usage
+      unique, [1 h]) ; bloc « Ensuite » : confirmation, double authentification
+      (obligatoire Entreprise), connexion des sources en lecture seule.
+    - Formulaires de demande, démo, équipe : pas de case de consentement
+      (base légale : mesures préalables au contrat), une ligne d'information
+      avec lien vers la politique de confidentialité.
+    - Détail : claude/consignes_inscription_securite.txt.
+    - Messages d'erreur précis, champ fautif mis en évidence.
+
+F4. Contact et sur mesure (« Parler à l'équipe »)
+    - Formulaire, réponse sous un délai annoncé (variable, 48 h par défaut).
+
+F5. Bilingue français / anglais
+    - FAQ et blog : un fichier texte par langue, modifiables sans code.
+    - Même contenu, deux langues, URL distinctes, balises de langue.
+    - Tous les textes dans un seul fichier de traduction par langue,
+      démos comprises.
+    - Ajout d'une langue sans toucher à la mise en page.
+    - Langue par défaut d'un visiteur inconnu : pays francophone (adresse
+      IP) → français, sinon anglais ; repli sur la langue du navigateur.
+    - Anciennes adresses (« branchements », « plug-ins », « voir-en-vrai »,
+      « en-action ») redirigées vers les nouvelles pages.
+
+F6. Responsive : lisible et utilisable sur téléphone, tablette, ordinateur.
+    Aucun débordement horizontal de 320 px à grand écran. Les emplacements
+    à remplir (blocs jaunes) passent à la ligne.
+
+F7. Accessibilité : contrastes 4,5:1 minimum, navigation clavier (y compris
+    onglets au clavier), libellés, texte alternatif, respect de « réduire les
+    animations » (tout s'affiche directement, sans défilement animé).
+
+F8. Performance : pages légères, animations en CSS, pas de lecteur vidéo,
+    pas de ressource externe qui envoie des données hors d'Europe.
+
+======================================================================
+7. DÉMO DE L'APPLICATION (coeur du site)
+======================================================================
+Principes
+- Reproduit fidèlement l'interface de l'application réelle : fond gris
+  clair, cartes blanches, menu latéral gris, tableaux, filtres, échéances
+  groupées par jour, police de l'application. Les neutres de l'application
+  sont fixes ; l'accent suit la palette active.
+- Données 100 % fictives. On reprend la mise en page des captures d'écran,
+  jamais leur contenu (noms, références, banques, adresses). Noms et numéros
+  explicites, visiblement différents des vrais dossiers.
+- Tout est cliquable et cohérent : une action faite dans une section se
+  retrouve dans les autres.
+
+Menu latéral (mêmes sections que l'application, cliquables)
+Tableau de bord · Assistant · Dossiers (compteur) · Documents · À valider
+(badge du nombre en attente) · Échéances · Mails.
+Sur la page Routines, ce menu renvoie à la section choisie de la démo de
+l'accueil.
+
+Tableau de bord : dossiers récents, échéances groupées par jour, À valider
+(ou état vide), note personnelle modifiable.
+
+Assistant
+- Aucune saisie libre : le visiteur choisit une question préparée (chaque
+  question a ses données et sa réponse).
+- Liste « Mes conversations » avec réponses déjà faites, recherche par
+  titre, « Nouvelle conversation ».
+- Au clic sur une question :
+  1. la question s'écrit dans la zone de saisie (effet machine à écrire) et
+     part seule ;
+  2. la page remonte jusqu'à la question envoyée ;
+  3. les étapes s'affichent une par une avec durée et détail (« Analyse de
+     la question », « Liste des sources : fils de mails … : 7 »,
+     « Recherche dans les sources … : 8 extraits », « Rédaction de la
+     réponse »…), puis se replient en « N étapes en X s » ;
+  4. la réponse s'écrit en machine à écrire, avec citations en italique,
+     bouton document et lien souligné vers la source ; la page suit la
+     réponse.
+- Cas « information absente » : « Information absente des sources », la
+  réponse cite ce qui existe, sans rien inventer.
+- Filtre de dossier réellement pris en compte : une question posée dans un
+  dossier qui ne contient pas la réponse donne « aucune réponse dans ce
+  dossier ; peut-être un autre dossier, ou document non accessible », avec
+  « Relancer dans « bon dossier » » et « Relancer dans tous les dossiers ».
+- Questions préparées : délai de paiement, résiliation d'assurance, résumé
+  des échanges avec un contact, validation d'un plan, une question par
+  domaine (non-concurrence en juridique, échantillonnage en recherche,
+  ISO 9001 en entreprise), SIRET introuvable.
+
+Visionneuse de source (au clic sur une citation, partout dans la démo)
+- Document : version, nom de fichier, « Page n sur N » avec page précédente
+  et suivante, zoom, « Télécharger le fichier d'origine », encadré
+  « Passage retrouvé page n » avec « Afficher toute la citation », page
+  rendue avec le passage surligné.
+- Mail : en-tête (de, à, date, objet) et corps avec passage surligné.
+
+Dossiers : 9 dossiers couvrant les quatre profils, chacun avec étiquette de
+domaine (Entreprise, Juridique, Recherche, Vie perso), filtre par état, par
+domaine et recherche, création de dossier. Un dossier détaillé (mémoire
+complète : chronologie, acteurs, faits clés, versions) ; les autres
+affichent leurs échéances et documents liés.
+
+Documents : tableau (titre, catégorie, version, source, indexation, déposé,
+actions), ouverture dans la visionneuse, résumé transformable en tâches,
+documents par dossier en accordéon.
+
+À valider : propositions de rangement, d'échéance, de tâche, de mise à jour
+de la mémoire du dossier, de routine ; filtres par dossier et par nature ;
+valider / refuser / annuler. Valider une échéance l'ajoute dans Échéances ;
+valider un fait met à jour le dossier.
+
+Échéances : groupées par jour, statut (à venir / en retard / faite),
+« Marquer comme faite », source, filtre, ajout d'une échéance.
+
+Mails : recherche, filtres (fils, période), mail dépliable avec résumé et
+proposition de rangement, mention « Envoi automatique ».
+
+======================================================================
+8. CHARTE GRAPHIQUE MODULABLE ET TESTS DE COULEURS
+======================================================================
+Exigence : changer la charte (couleurs, typographie, nom) sans retoucher les
+pages, et tester le même site avec plusieurs jeux de couleurs.
+
+Moyen technique (en place) :
+- Toutes les couleurs sont des variables CSS dans un seul fichier
+  (themes.css). Aucune couleur écrite en dur dans les pages.
+- Typographie, arrondis, espacements : mêmes variables.
+- Nom du produit : variable unique (config.js).
+- 5 palettes côte à côte (A Bleu confiance, B Vert sarcelle et argile,
+  C Ardoise et corail, D Pétrole et argile, E Automne doux). Palette active :
+  * par l'adresse (?theme=b ou ?theme=2) ;
+  * par le sélecteur de test (désactivable) ;
+  * par le réglage par défaut dans config.js (B).
+- Page interne « Palettes » : le même écran dans les 5 palettes, contrastes
+  calculés automatiquement (texte courant 4,5:1 minimum ; toutes conformes).
+
+Direction visuelle : fond clair, 1 couleur principale (vert sarcelle),
+1 couleur d'action (argile, boutons « Commencer »), 1 couleur d'alerte, le
+reste en neutres. Les informations importantes (échéances, actions
+requises, sources) ressortent par contraste, pas par accumulation de
+couleurs.
+
+======================================================================
+9. SOUVERAINETÉ ET DONNÉES (contenu de la page « Vos données »)
+======================================================================
+Affirmations retenues : tout en France ou dans l'Union européenne.
+- Hébergement des données en France ou en UE.
+- Modèles d'IA hébergés en France ou en UE ; aucune donnée envoyée à un
+  service d'IA hors Europe.
+- Aucune donnée vendue.
+- Données jamais consultées ni utilisées pour améliorer l'outil. Seule
+  exception : l'utilisateur signale volontairement une réponse ; seul
+  l'élément signalé est transmis, anonymisé, utilisé pour la correction,
+  puis supprimé. Le signalement n'est jamais coché par défaut et apparaît
+  dans le journal d'audit.
+- Conformité RGPD : registre, sous-traitants listés, droit d'accès et de
+  suppression, durée de conservation.
+- Périmètre choisi par l'utilisateur : boîtes mail et dossiers lus.
+- Données de chaque client strictement séparées.
+- Chaque réponse est sourcée ; l'assistant propose, l'utilisateur valide.
+
+Valeurs encore inconnues, laissées en variables entre crochets dans
+config.js : [HÉBERGEUR], [PAYS D'HÉBERGEMENT], [CERTIFICATIONS],
+[MODÈLES D'IA], [PAYS D'HÉBERGEMENT DES MODÈLES], [DURÉE DE CONSERVATION],
+[E-MAIL DPO], [E-MAIL CONTACT], [PRIX], [RAISON SOCIALE], [ADRESSE],
+[IMMATRICULATION], [DIRECTEUR DE LA PUBLICATION], [DOMAINE].
+
+À faire avant publication : chaque phrase de cette page, et la promesse de
+connexion en direct (Juridique, Recherche), doit correspondre à un fait
+technique vérifié. Les formulations non prouvées sont retirées.
+
+Pages légales (mentions, confidentialité, RGPD, cookies, CGU) : rédaction
+possible à partir des informations réelles ci-dessus, puis relecture
+obligatoire par un juriste avant mise en ligne.
+
+======================================================================
+10. ARCHITECTURE TECHNIQUE
+======================================================================
+Site (vitrine)
+- Site statique ; hébergeur et CDN : [À CONFIRMER, UE visé].
+- Pages générées à l'avance, deux langues, contenu dans des fichiers texte.
+- Formulaires : service hébergé en UE ou petit point d'accès propre,
+  anti-spam sans service américain. En phase 1 : maquette, rien n'est envoyé.
+- Agenda de démos : outil européen ou auto-hébergé, relié à la messagerie.
+- Statistiques : outil sans cookies, hébergé en UE. Pas de bandeau si
+  possible.
+- Polices hébergées sur le site, dossier fonts/ (licence SIL OFL) : aucun
+  appel à un service tiers. Fait le 18/10.
+- Sauvegarde du code dans un dépôt versionné ; mise en ligne automatique.
+
+Fichiers de la phase 1
+- config.js : nom, palette par défaut, phase (liste d'attente / ouvert),
+  logos des connecteurs, délai de réponse, variables [À COMPLÉTER].
+- faq/fr.txt, faq/en.txt : questions fréquentes de chaque page.
+- blog/fr.txt, blog/en.txt : articles du blog.
+- themes.css : toutes les couleurs, polices, arrondis, espacements,
+  5 palettes, neutres de l'application.
+- i18n/fr.js, i18n/en.js : tous les textes, données de démo comprises.
+- app.css : mise en page et composants (site et application).
+- app.js : navigation, pages, démo de l'application.
+- logos/ : logos officiels des connecteurs.
+
+Lien avec l'application
+- Les démos du site sont autonomes (aucun appel à l'application réelle).
+- Piste pour la suite : partager avec l'application une bibliothèque commune
+  (couleurs, polices, composants) et brancher la démo sur un faux serveur
+  local avec des données fictives. Démo identique à l'outil, sans code
+  serveur, clés ni adresses de l'API réelle.
+- « Commencer » redirige vers l'application ou vers une liste d'attente
+  selon la phase.
+- Domaine séparé : site (www) et application (app).
+
+Application (rappel, pour cohérence du discours)
+- Connecteurs : lecture des mails et fichiers, indexation continue.
+- RAG hybride (recherche par sens + par mots), citations obligatoires, refus
+  de répondre sans source.
+- Mémoire de dossier : faits, acteurs, chronologie, versions des documents.
+- Tâches et échéances, avec validation.
+- Routines : déclencheur, condition, action, validation facultative,
+  journal de ce qui a été fait.
+- Séparation stricte des données entre clients.
+- Journal d'audit accessible à l'utilisateur.
+
+======================================================================
+11. ÉVOLUTIONS À PRÉVOIR (le site doit pouvoir les accueillir)
+======================================================================
+- Routines plus personnalisables et espace de définition.
+- Workflows planifiés (exemple : résumé des mails non lus chaque soir).
+- Calendrier (Outlook, Google).
+- Fichiers audio : compte rendu de réunion.
+- Installation sur téléphone (PWA).
+- Versions par domaine avec bases externes ; pages dédiées par domaine.
+- Autres langues.
+- Page comparative des concurrents : pas prévue pour l'instant.
+
+======================================================================
+12. RÉFÉRENCEMENT (SEO et visibilité dans les assistants IA)
+======================================================================
+Détail complet : plan_mots_cles.txt.
+- Un mot-clé principal par page, placé dans la balise title (en tête, 50 à
+  60 caractères), le H1, le premier paragraphe, la meta description et un
+  intertitre. Mot-clé de l'accueil [DÉCISION] : « interroger ses mails et
+  documents avec l'IA » (EN : « ask your email and documents with AI »).
+- Titles et descriptions par page : objet « seo » des fichiers i18n.
+- Aucune affirmation non vérifiée dans les titles et descriptions.
+- Données structurées FAQ sur chaque page. [FAIT] Google n'affiche plus
+  les FAQ en résultat enrichi depuis mai 2026 ; la FAQ sert les visiteurs
+  et les assistants IA.
+- Pas de page comparative pour l'instant [DÉCISION].
+- Offre gratuite « 30 jours de mails + 50 documents, questions illimitées »
+  : [HYPOTHÈSE], non affichée tant qu'elle n'est pas décidée.
+
+======================================================================
+13. FEUILLE DE ROUTE
+======================================================================
+Phase 1 (faite) : structure, démo interactive fidèle à l'application,
+  textes FR/EN, palettes de couleurs, logos des connecteurs, FAQ par page,
+  blog, menu allégé.
+Phase 2 : choix du nom, domaine, messagerie, dépôt de marque, hébergement.
+Phase 3 : site complet en ligne, formulaires et agenda réels, polices
+  hébergées, page « Vos données » et pages légales validées par les faits
+  techniques et un juriste.
+Phase 4 : mise en ligne, mesure (inscriptions, démos réservées), ajustements.
+Phase 5 : pages par domaine, nouvelles fonctions.
