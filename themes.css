@@ -1,0 +1,153 @@
+/* ==========================================================================
+   CHARTE GRAPHIQUE — toutes les couleurs, polices, arrondis et espacements.
+   Aucune couleur n'est écrite ailleurs dans le site.
+   Palette active : attribut data-palette sur <html> (a, b, c, d, e).
+   Sans attribut, la palette B (Vert sarcelle et argile) s'applique.
+   Les démos réutilisent exactement ces variables.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* ---- Typographie ---- */
+  --font-display: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-body: "Instrument Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --fs-xs: 0.78rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.15rem;
+  --fs-xl: clamp(1.35rem, 1.1rem + 0.9vw, 1.7rem);
+  --fs-2xl: clamp(1.75rem, 1.3rem + 1.8vw, 2.5rem);
+  --fs-3xl: clamp(2.2rem, 1.5rem + 3vw, 3.6rem);
+
+  /* ---- Formes et espacements ---- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --content-width: 1160px;
+  --shadow-raised: 0 1px 2px rgb(var(--shadow-rgb) / 0.06), 0 8px 24px rgb(var(--shadow-rgb) / 0.08);
+
+  /* ---- Couleurs d'état : identiques dans toutes les palettes ---- */
+  --success: #2F6B44;
+  --success-bg: #E2EEE5;
+  --warning: #855600;
+  --warning-bg: #F7EAD0;
+  --error: #A3352B;
+  --error-bg: #F6E0DC;
+  --info: #2D5A7E;
+  --info-bg: #E0E8F0;
+
+  /* ---- Application (démos) : neutres propres à l'application.
+     L'accent (--primary) suit la palette active. ---- */
+  --font-app: "Source Sans 3", "Source Sans Pro", "Segoe UI", system-ui, sans-serif;
+  --font-app-mono: "Source Code Pro", ui-monospace, Menlo, monospace;
+  --app-bg: #F4F5F7;
+  --app-surface: #FFFFFF;
+  --app-side: #EEF0F2;
+  --app-head: #EEF0F2;
+  --app-border: #DFE2E6;
+  --app-line: #E8EAED;
+  --app-text: #1E2226;
+  --app-text-2: #5A6068;
+  --app-late: #A8321F;
+  --app-wait: #A27628;
+  --app-ok: #3E8F5A;
+
+  /* ---- Palette B par défaut ---- */
+  --bg: #E8E3DB;
+  --surface: #F5F2EC;
+  --surface-2: #EFEBE4;
+  --border: #D2CBBE;
+  --text: #2B2A28;
+  --text-2: #5E5A53;
+  --primary: #3A7568;
+  --primary-hover: #33645B;
+  --primary-text: #33645B;
+  --primary-50: #F1F5F4;
+  --primary-100: #DFE9E7;
+  --primary-200: #C4D6D2;
+  --on-primary: #FFFFFF;
+  --accent: #A84A33;
+  --accent-hover: #8D412F;
+  --accent-text: #8D412F;
+  --accent-50: #F9F2F1;
+  --accent-100: #F1E2DE;
+  --on-accent: #FFFFFF;
+  --band: #254240;
+  --band-2: #2C544E;
+  --on-band: #F1F5F4;
+  --on-band-2: #C4D6D2;
+  --shadow-rgb: 43 42 40;
+  --focus: #33645B;
+}
+
+/* A — Bleu confiance */
+[data-palette="a"] {
+  --bg: #F2EEE7; --surface: #FAF8F4; --surface-2: #F5F1EB; --border: #DDD6CA;
+  --text: #252A33; --text-2: #5A6170;
+  --primary: #24557F; --primary-hover: #214A6E; --primary-text: #214A6E;
+  --primary-50: #F0F3F6; --primary-100: #DCE4EB; --primary-200: #BDCCD9; --on-primary: #FFFFFF;
+  --accent: #B04F2A; --accent-hover: #944528; --accent-text: #944528;
+  --accent-50: #F9F3F0; --accent-100: #F2E3DD; --on-accent: #FFFFFF;
+  --band: #1B334A; --band-2: #1E3F5C; --on-band: #F0F3F6; --on-band-2: #BDCCD9;
+  --shadow-rgb: 37 42 51; --focus: #214A6E;
+}
+
+/* B — Vert sarcelle et argile (valeurs explicites, identiques au défaut) */
+[data-palette="b"] {
+  --bg: #E8E3DB; --surface: #F5F2EC; --surface-2: #EFEBE4; --border: #D2CBBE;
+  --text: #2B2A28; --text-2: #5E5A53;
+  --primary: #3A7568; --primary-hover: #33645B; --primary-text: #33645B;
+  --primary-50: #F1F5F4; --primary-100: #DFE9E7; --primary-200: #C4D6D2; --on-primary: #FFFFFF;
+  --accent: #A84A33; --accent-hover: #8D412F; --accent-text: #8D412F;
+  --accent-50: #F9F2F1; --accent-100: #F1E2DE; --on-accent: #FFFFFF;
+  --band: #254240; --band-2: #2C544E; --on-band: #F1F5F4; --on-band-2: #C4D6D2;
+  --shadow-rgb: 43 42 40; --focus: #33645B;
+}
+
+/* C — Ardoise et corail */
+[data-palette="c"] {
+  --bg: #F0EEEB; --surface: #FAF9F7; --surface-2: #F4F2EF; --border: #DAD6D0;
+  --text: #2A2D36; --text-2: #5B5F6B;
+  --primary: #3F4D73; --primary-hover: #374364; --primary-text: #3F4D73;
+  --primary-50: #F2F3F5; --primary-100: #E0E3E9; --primary-200: #C5CAD5; --on-primary: #FFFFFF;
+  --accent: #BE4F36; --accent-hover: #9F4532; --accent-text: #9F4532;
+  --accent-50: #FAF3F1; --accent-100: #F5E3DF; --on-accent: #FFFFFF;
+  --band: #273045; --band-2: #303A55; --on-band: #F2F3F5; --on-band-2: #C5CAD5;
+  --shadow-rgb: 42 45 54; --focus: #3F4D73;
+}
+
+/* D — Pétrole et argile */
+[data-palette="d"] {
+  --bg: #E8E3DB; --surface: #F5F2EC; --surface-2: #EFEBE4; --border: #D2CBBE;
+  --text: #2B2A28; --text-2: #5E5A53;
+  --primary: #1E5C68; --primary-hover: #1C505B; --primary-text: #1C505B;
+  --primary-50: #EFF4F4; --primary-100: #DBE5E7; --primary-200: #BCCED2; --on-primary: #FFFFFF;
+  --accent: #A84A33; --accent-hover: #8D412F; --accent-text: #8D412F;
+  --accent-50: #F9F2F1; --accent-100: #F1E2DE; --on-accent: #FFFFFF;
+  --band: #183740; --band-2: #1A444E; --on-band: #EFF4F4; --on-band-2: #BCCED2;
+  --shadow-rgb: 43 42 40; --focus: #1C505B;
+}
+
+/* E — Automne doux (texte foncé sur les boutons jaunes) */
+[data-palette="e"] {
+  --bg: #EFEBE2; --surface: #FAF8F3; --surface-2: #F4F1EA; --border: #DBD5C6;
+  --text: #28291F; --text-2: #5B5D4C;
+  --primary: #4B6A3A; --primary-hover: #415B35; --primary-text: #415B35;
+  --primary-50: #F2F5F1; --primary-100: #E2E7DF; --primary-200: #C9D2C4; --on-primary: #FFFFFF;
+  --accent: #E5A11E; --accent-hover: #EDBD62; --accent-text: #7A4F00;
+  --accent-50: #FDF8EF; --accent-100: #FBF0DB; --on-accent: #28291F;
+  --band: #2D3D2B; --band-2: #374C30; --on-band: #F2F5F1; --on-band-2: #C9D2C4;
+  --shadow-rgb: 40 41 31; --focus: #415B35;
+}
