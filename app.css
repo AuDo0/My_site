@@ -444,7 +444,15 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px
 /* ---------- Tarifs ---------- */
 .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: var(--space-4); align-items: stretch; }
 .plan { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-5); display: grid; gap: var(--space-4); grid-template-rows: auto auto auto 1fr auto; }
-.plan.featured { border: 2px solid var(--primary); }
+.plan { cursor: pointer; transition: border-color .15s ease, box-shadow .15s ease; box-shadow: inset 0 0 0 1px transparent; }
+.plan-cta { background: var(--primary); color: var(--on-primary); }
+.plan-cta:hover { color: var(--on-primary); }
+/* Carte mise en avant : celle survolée ou cliquée (Entreprise par défaut) ; une seule à la fois */
+.plan.is-selected, .plan:hover, .plan:focus-within { border-color: var(--primary); box-shadow: inset 0 0 0 1px var(--primary); }
+.plan.is-selected .plan-cta, .plan:hover .plan-cta, .plan:focus-within .plan-cta { background: var(--accent); color: var(--on-accent); }
+.plan.is-selected .plan-cta:hover, .plan:hover .plan-cta:hover { background: var(--accent-hover); }
+.plans:hover .plan.is-selected:not(:hover), .plans:focus-within .plan.is-selected:not(:focus-within) { border-color: var(--border); box-shadow: inset 0 0 0 1px transparent; }
+.plans:hover .plan.is-selected:not(:hover) .plan-cta, .plans:focus-within .plan.is-selected:not(:focus-within) .plan-cta { background: var(--primary); color: var(--on-primary); }
 .plan h3 { font-family: var(--font-display); }
 .plan .price-now { font-family: var(--font-display); font-size: 2.2rem; line-height: 1; color: var(--primary-text); }
 .plan .price-later { font-size: var(--fs-xs); color: var(--text-2); }
@@ -582,7 +590,7 @@ button.ax-row { cursor: pointer; }
 button.ax-row:hover { background: var(--app-bg); }
 .ax-cell-main { display: grid; gap: 2px; min-width: 0; }
 .ax-row-dash { grid-template-columns: minmax(0, 1fr) auto auto auto; column-gap: 22px; }
-.ax-row-folders { grid-template-columns: minmax(0, 2.4fr) minmax(90px, .9fr) minmax(170px, 1.4fr) minmax(90px, .9fr) minmax(150px, 1.2fr); }
+.ax-row-folders { grid-template-columns: minmax(0, 2.2fr) max-content minmax(150px, 1.2fr) max-content minmax(max-content, 1fr); column-gap: 24px; }
 .ax-row-docs { grid-template-columns: minmax(0, 2.6fr) minmax(90px, 1fr) minmax(90px, 1fr) minmax(70px, .8fr) minmax(90px, .9fr) minmax(70px, .7fr) minmax(90px, .8fr); }
 .ax-row-acc { grid-template-columns: auto minmax(0, 1fr) auto; }
 .ax-row-mail { grid-template-columns: minmax(0, 1fr) auto auto; }
@@ -770,3 +778,27 @@ dialog.source-panel.vw { width: min(900px, calc(100vw - 32px)); max-height: calc
 .demo-head h2 { font-size: var(--fs-xl); }
 @media (max-width: 900px) { .hero-row { grid-template-columns: 1fr; align-items: start; } }
 #demo { scroll-margin-top: 84px; }
+.ax-summary { padding-bottom: 6px; }
+.ax-summary .ax-card-head { padding-bottom: 4px; }
+.ax-summary-body { padding: 0 20px 18px; display: grid; gap: 12px; min-width: 0; }
+.ax-summary-body h4 { font-size: 1.05rem; font-weight: 600; margin-top: 8px; }
+.ax-summary-body .row { padding-block: 10px; }
+.ax-summary-body .row .btn.mono { font-family: var(--font-app-mono); font-weight: 500; }
+.ax-summary-body .row > .btn, .ax-summary-body .row-actions .btn { justify-self: start; width: auto; }
+.ax-chip-domain { font-family: var(--font-app); font-size: .78rem; margin-left: 6px; background: var(--primary-50); color: var(--primary-text); border: 1px solid var(--primary-200); padding: 0 7px; vertical-align: 1px; }
+.live-status { display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-sm); color: var(--success); font-weight: 600; background: var(--success-bg); border-radius: var(--radius-pill); padding: 4px 12px; justify-self: start; }
+.live-status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--success); box-shadow: 0 0 0 3px var(--success-bg); }
+@media (prefers-reduced-motion: no-preference) { .live-status::before { animation: livepulse 2s ease-in-out infinite; } }
+@keyframes livepulse { 50% { opacity: .35; } }
+.watch-block { margin-top: var(--space-7); display: grid; gap: 4px; }
+.scan-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; background: var(--app-surface); border: 1px solid var(--app-border); border-radius: 8px; padding: 10px 16px; }
+.scan-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--app-ok); box-shadow: 0 0 0 4px var(--success-bg); }
+.scan-track { flex: 1 1 120px; height: 4px; background: var(--app-side); border-radius: 4px; overflow: hidden; position: relative; min-width: 80px; }
+.scan-track i { position: absolute; inset: 0 auto 0 0; width: 30%; background: var(--primary); border-radius: 4px; }
+@media (prefers-reduced-motion: no-preference) {
+  .scan-dot { animation: livepulse 1.6s ease-in-out infinite; }
+  .scan-track i { animation: scanmove 2.2s ease-in-out infinite; }
+}
+@keyframes scanmove { 0% { left: -30%; } 100% { left: 100%; } }
+.live-status.is-soon { color: var(--info); background: var(--info-bg); }
+.live-status.is-soon::before { background: var(--info); box-shadow: none; animation: none; }

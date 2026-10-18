@@ -28,7 +28,7 @@
     app: {
       decisions: {}, done: {}, extraDeadlines: [], extraFolders: [], userConvs: [],
       conv: "b0", convQuery: "", stepsOpen: {}, scope: "", note: "", adding: null,
-      folderQuery: "", folderFilter: "all", folderOpen: null,
+      folderQuery: "", folderFilter: "all", folderDomain: "all", folderOpen: null,
       docFilter: "active", docsOpen: {}, docSummary: null,
       reviewFolder: "all", reviewNature: "all", dlFilter: "active",
       mailQuery: "", mailFilter: "all", mailPeriod: "all", mailOpen: null
@@ -46,6 +46,8 @@
     routineApproved: {},
     proposals: {},
     fieldsTab: "legal",
+    planSel: "business",
+    watch: {},
     startTab: "signup",
     booking: { day: null, slot: null },
     sent: {}
@@ -358,7 +360,9 @@
     if (d === 0) return { text: r.today, late: false };
     if (d === 1) return { text: r.tomorrow, late: false };
     if (d > 1) return { text: r.inDays.replace("{n}", d), late: false };
-    return { text: r.overdue.replace("{n}", -d), late: true };
+    var od = r.overdue.replace("{n}", -d);
+    od = -d === 1 ? od.replace("jour(s)", "jour").replace("day(s)", "day") : od.replace("jour(s)", "jours").replace("day(s)", "days");
+    return { text: od, late: true };
   }
   function relAgo(iso) {
     var d = -dayDiff(iso), r = A().rel;
@@ -673,6 +677,11 @@
       '<section class="ax-card"><div class="ax-card-head"><h4>' + esc(fa.linkedDocs) + ' <span class="ax-count">' + (docs.length + (f.extra || 0)) + '</span></h4></div><ul class="ax-doclist">' +
       docs.map(function (n) { return '<li class="ax-ref">' + esc(n) + "</li>"; }).join("") + (f.extra ? '<li class="ax-meta">' + esc(a.documents.andMore.replace("{n}", f.extra)) + "</li>" : "") + "</ul></section></div>";
   }
+  function domainOptions() {
+    var o = { all: A().ui.allDomains };
+    Object.keys(A().domains).forEach(function (k) { o[k] = A().domains[k]; });
+    return o;
+  }
   function scFolders() {
     var a = A(), fa = a.folders, ui = a.ui;
     if (state.app.folderOpen) {
@@ -681,16 +690,17 @@
     }
     var q = state.app.folderQuery.trim().toLowerCase();
     var list = state.app.folderFilter === "closed" ? [] : allFolders().filter(function (f) {
+      if (state.app.folderDomain !== "all" && f.domain !== state.app.folderDomain) return false;
       return !q || (f.name + " " + f.ref + " " + (f.contact || "")).toLowerCase().indexOf(q) > -1;
     });
     var form = state.app.adding === "folder" ? '<form class="ax-card ax-form" data-axform="folder"><div class="form-row"><div class="field"><label for="ax-fname">' + esc(fa.newName) + '</label><input type="text" id="ax-fname" required></div><div class="field"><label for="ax-fref">' + esc(fa.newRef) + ' <span class="hint">(' + t("start.form.optional") + ')</span></label><input type="text" id="ax-fref"></div></div><div class="ax-actions">' + axBtn("btn-quiet", "ax-add", esc(ui.cancel), ' data-k=""') + '<button type="submit" class="btn btn-primary">' + esc(ui.create) + "</button></div></form>" : "";
     var rows = list.map(function (f) {
       return '<button type="button" class="ax-row ax-row-folders" data-action="ax-folder" data-id="' + esc(f.id) + '">' +
-        '<span class="ax-cell-main"><span class="ax-name">' + esc(f.name) + "</span>" + (f.ref ? '<span class="ax-ref">' + esc(f.ref) + (f.contact ? ' <span class="ax-sub">· ' + esc(f.contact) + "</span>" : "") + "</span>" : "") + "</span>" +
+        '<span class="ax-cell-main"><span class="ax-name">' + esc(f.name) + "</span>" + '<span class="ax-ref">' + esc(f.ref || "") + (f.contact ? ' <span class="ax-sub">· ' + esc(f.contact) + "</span>" : "") + (f.domain ? ' <span class="ax-chip ax-chip-domain">' + esc(A().domains[f.domain]) + "</span>" : "") + "</span></span>" +
         '<span class="ax-status hide-sm">' + esc(ui.open) + '</span><span class="ax-owner hide-sm">' + avatar() + esc(a.user.name) + '</span><span class="ax-date hide-sm">' + esc(relAgo(f.activity)) + "</span>" + dueCell(f.due) + "</button>";
     }).join("");
     return '<div class="ax-page">' + axHead(fa.title, allFolders().length, axBtn("btn-primary", "ax-add", ICO.plus + esc(fa.create), ' data-k="folder"')) +
-      '<div class="ax-filters">' + axSelect("ax-ff", "folderFilter", fa.filter, fa.filter.all) + axSearch("ax-fq", "folderQuery", fa.search) + "</div>" + form +
+      '<div class="ax-filters">' + axSelect("ax-ff", "folderFilter", fa.filter, fa.filter.all) + axSelect("ax-fd", "folderDomain", domainOptions(), ui.allDomains) + axSearch("ax-fq", "folderQuery", fa.search) + "</div>" + form +
       (rows ? '<div class="ax-card ax-table">' + rows + "</div>" : '<div class="ax-card ax-empty"><p class="ax-muted">—</p></div>') + "</div>";
   }
 
@@ -732,7 +742,7 @@
     }).join("");
     return '<div class="ax-page">' + axHead(dc.title, null, axBtn("btn-primary", "ax-demo", ICO.upload + esc(dc.upload))) +
       '<div class="ax-filters">' + axSelect("ax-df", "docFilter", dc.filter, dc.filter.active) + "</div>" +
-      '<h4 class="ax-sub-title">' + esc(dc.general) + ' <span class="ax-count">' + (archived ? 0 : 141) + "</span></h4>" +
+      '<h4 class="ax-sub-title">' + esc(dc.general) + ' <span class="ax-count">' + (archived ? 0 : 96) + "</span></h4>" +
       (rows ? '<div class="ax-card ax-table">' + head + rows + "</div>" + pager : '<div class="ax-card ax-empty"><p class="ax-muted">—</p></div>') +
       (state.app.docSummary !== null && !archived ? summaryPanel(state.app.docSummary) : "") +
       '<h4 class="ax-sub-title">' + esc(dc.byFolder) + ' <span class="ax-count">' + allFolders().length + '</span></h4><div class="ax-card ax-table">' + folders + "</div></div>";
@@ -948,6 +958,27 @@
   /* ---------------------------------------------------------------- */
   /* Domaines                                                         */
   /* ---------------------------------------------------------------- */
+  var scanCount = 1284;
+  setInterval(function () {
+    var el = document.getElementById("scan-count");
+    if (!el || reduceMotion) return;
+    scanCount += 1 + Math.floor(Math.random() * 3);
+    el.textContent = get(I18N[lang], "fields.live.scanned").replace("{n}", scanCount.toLocaleString(locale()));
+  }, 1400);
+  function watchBlock(tab, f, d) {
+    var L = f.live;
+    if (d.noLive) return "";
+    var items = (d.watch || []).map(function (w, i) {
+      var k = tab + i, st = state.watch[k];
+      var actions = st
+        ? '<span class="pill ' + (st === "ok" ? "pill-success" : "pill-neutral") + '">' + esc(st === "ok" ? "✓ " + L.added : L.ignored) + '</span><button type="button" class="btn btn-quiet btn-sm" data-action="watch" data-k="' + k + '" data-v="">' + t("common.undo") + "</button>"
+        : '<button type="button" class="btn btn-quiet btn-sm" data-src="' + reg(w.src) + '">' + t("common.openSource") + '</button><button type="button" class="btn btn-quiet btn-sm" data-action="watch" data-k="' + k + '" data-v="no">' + esc(L.ignore) + '</button><button type="button" class="btn btn-primary btn-sm" data-action="watch" data-k="' + k + '" data-v="ok">' + esc(L.add) + "</button>";
+      return '<div class="ax-card ax-prop' + (st ? " is-done" : "") + '"><div class="ax-prop-main"><div class="ax-meta"><span class="ax-chip ax-chip-accent">' + esc(L.news) + "</span> " + esc(w.date) + '</div><p class="ax-name">' + esc(w.title) + '</p><p class="ax-meta"><b>' + esc(L.concerns) + ' :</b> <span class="ax-chip ax-chip-folder">' + esc(w.folder) + '</span></p><p class="ax-meta">' + esc(L.why) + " : " + esc(w.why) + '</p></div><div class="ax-actions">' + actions + "</div></div>";
+    }).join("");
+    return '<div class="watch-block"><div class="section-head" style="margin-bottom:12px"><h3>' + esc(L.title) + '</h3><p class="muted">' + fmt(L.sub) + "</p></div>" +
+      appFrame(esc(L.title), '<div class="scan-bar"><span class="scan-dot" aria-hidden="true"></span><b>' + esc(L.scan) + '</b><span class="ax-meta"><span id="scan-count">' + esc(L.scanned.replace("{n}", scanCount.toLocaleString(locale()))) + "</span> · " + esc(L.matched.replace("{n}", (d.watch || []).length)) + '</span><span class="scan-track" aria-hidden="true"><i></i></span></div>' +
+        '<div class="ax-stack" aria-live="polite">' + items + '</div><p class="small ax-muted">' + esc(L.note) + "</p>") + "</div>";
+  }
   function pageFields() {
     var tab = state.fieldsTab, f = get(I18N[lang], "fields"), d = f[tab];
     var c = { q: d.q, a: d.a, sources: d.sources };
@@ -957,11 +988,12 @@
       (d.note ? '<p class="small muted">' + esc(d.note) + "</p>" : "");
     var panel = '<div class="field-grid"><div style="display:grid;gap:20px">' +
       '<div style="display:grid;gap:6px"><span class="eyebrow">' + esc(f.who) + "</span><p>" + esc(d.who) + "</p></div>" +
-      '<div style="display:grid;gap:10px"><span class="eyebrow">' + esc(f.adds) + '</span><ul class="adds">' + d.adds.map(function (a) { return "<li>" + esc(a) + "</li>"; }).join("") + "</ul></div></div>" +
+      '<div style="display:grid;gap:10px"><span class="eyebrow">' + esc(f.adds) + '</span><ul class="adds">' + d.adds.map(function (a) { return "<li>" + esc(a) + "</li>"; }).join("") + "</ul></div>" +
+      (d.noLive ? "" : '<p class="live-status">' + esc(f.live.status) + "</p>") + "</div>" +
       '<div style="display:grid;gap:8px;min-width:0"><span class="eyebrow">' + esc(f.tryIt) + "</span>" + appFrame(esc(f.tabs[tab]), inner) + "</div></div>";
     return '<div class="wrap">' + pageHead("fields") + '<section class="section-tight" style="padding-top:0">' +
       tabs("fields", ["legal", "research", "business"], "fields.tabs", tab, tp("fields.tabsLabel")) +
-      '<div id="panel-fields" role="tabpanel" aria-labelledby="tab-fields-' + tab + '">' + panel + "</div></section>" +
+      '<div id="panel-fields" role="tabpanel" aria-labelledby="tab-fields-' + tab + '">' + panel + watchBlock(tab, f, d) + "</div></section>" +
       '<section class="section"><div class="card" style="padding:32px;gap:12px;justify-items:start"><h2>' + esc(f.custom.title) + '</h2><p class="muted">' + esc(f.custom.text) + '</p><a class="btn btn-primary" href="' + href("start", lang, "team") + '">' + esc(f.custom.cta) + "</a></div></section></div>";
   }
 
@@ -1102,8 +1134,8 @@
     var p = get(I18N[lang], "pricing");
     var plans = p.plans.map(function (pl) {
       var later = pl.unit ? t("pricing.later") + " : " + fmt(pl.price) + " " + esc(p[pl.unit]) : t("pricing.later") + " : " + fmt(pl.price);
-      var cta = pl.id === "custom" ? '<a class="btn btn-ghost" href="' + href("start", lang, "team") + '">' + esc(p.contact) + "</a>" : '<a class="btn ' + (pl.featured ? "btn-action" : "btn-primary") + '" href="' + href("start", lang, "signup") + '">' + esc(p.choose) + "</a>";
-      return '<article class="plan' + (pl.featured ? " featured" : "") + '"><div style="display:grid;gap:6px"><h3>' + esc(pl.name) + '</h3><p class="small muted">' + esc(pl.for) + "</p></div>" +
+      var cta = '<a class="btn plan-cta" href="' + href("start", lang, pl.id === "custom" ? "team" : "signup") + '">' + esc(pl.id === "custom" ? p.contact : p.choose) + "</a>";
+      return '<article class="plan' + (state.planSel === pl.id ? " is-selected" : "") + '" data-action="plan-sel" data-id="' + pl.id + '"><div style="display:grid;gap:6px"><h3>' + esc(pl.name) + '</h3><p class="small muted">' + esc(pl.for) + "</p></div>" +
         '<div style="display:grid;gap:6px"><span class="price-now">' + esc(p.priceNow) + '</span><span class="small muted">' + esc(p.duringTest) + '</span><span class="price-later">' + later + "</span></div>" +
         '<span class="pill pill-accent" style="justify-self:start">' + esc(p.freeMonth) + "</span>" +
         "<ul>" + pl.features.map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("") + "</ul>" + cta + "</article>";
@@ -1417,6 +1449,8 @@
       case "ax-done": { var dk = el.getAttribute("data-k"); state.app.done[dk] = !state.app.done[dk]; rerender('[data-action="ax-done"][data-k="' + dk + '"]'); break; }
       case "ax-add": state.app.adding = el.getAttribute("data-k") || null; rerender(state.app.adding === "folder" ? "#ax-fname" : state.app.adding === "deadline" ? "#ax-dt" : null); break;
       case "ax-demo": toast(A().ui.demoOnly); break;
+      case "plan-sel": state.planSel = el.getAttribute("data-id"); document.querySelectorAll(".plan").forEach(function (c) { c.classList.toggle("is-selected", c.getAttribute("data-id") === state.planSel); }); break;
+      case "watch": { var wk = el.getAttribute("data-k"); state.watch[wk] = v || null; rerender('[data-action="watch"][data-k="' + wk + '"]'); break; }
       case "ax-acc": { var ai = el.getAttribute("data-id"); state.app.docsOpen[ai] = !state.app.docsOpen[ai]; rerender('[data-action="ax-acc"][data-id="' + ai + '"]'); break; }
       case "ax-sum": {
         var si = el.getAttribute("data-i");

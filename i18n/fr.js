@@ -502,7 +502,7 @@ window.I18N.fr = {
     },
     business: {
       who: "Qualité, achats, conformité, direction des opérations.",
-      adds: ["Normes et référentiels (qualité, sécurité de l'information…)", "Vos procédures et votre documentation interne", "Contrats fournisseurs et clients", "Référentiels sur mesure, propres à votre secteur"],
+      adds: ["Les normes et référentiels que vous ajoutez (qualité, sécurité de l'information…)", "Vos procédures et votre documentation interne", "Contrats fournisseurs et clients", "Référentiels sur mesure, propres à votre secteur"],
       q: "Notre procédure achats couvre-t-elle l'évaluation des fournisseurs demandée par la norme ISO 9001 ?",
       a: "En partie. La norme demande de définir des critères d'évaluation, de sélection et de suivi des prestataires externes[[1]]. Votre procédure définit bien la sélection[[2]], mais je n'y trouve aucun critère de suivi de la performance. Le dernier compte rendu d'audit interne relevait déjà ce manque[[3]].",
       sources: [
@@ -699,7 +699,7 @@ window.I18N.fr.demo.app = {
   ui: {
     seeAll: "Tout voir", open: "Ouvert", closed: "Clos", upcoming: "À venir", late: "En retard", done: "Faite",
     markDone: "Marquer comme faite", markUndone: "Rouvrir", more: "Plus d'actions", back: "Dossiers",
-    noFolder: "Sans dossier", allFolders: "Tous les dossiers", allNatures: "Toutes les natures",
+    noFolder: "Sans dossier", allFolders: "Tous les dossiers", allNatures: "Toutes les natures", allDomains: "Tous les domaines",
     validate: "Valider", refuse: "Refuser", validated: "Validé", refused: "Refusé", undo: "Annuler",
     demoOnly: "Démo : cette action est désactivée ici. Dans l'application, elle fonctionne.",
     cancel: "Annuler", add: "Ajouter", create: "Créer",
@@ -738,15 +738,17 @@ window.I18N.fr.demo.app = {
     detailNote: "Dans cette démo, la mémoire complète (chronologie, acteurs, faits, versions) est détaillée pour « Entrepôt Delaunay ». Ici, voici ce que {name} a déjà relié à ce dossier.",
     linkedDeadlines: "Échéances liées", linkedDocs: "Documents", factUpdated: "mis à jour"
   },
+  domains: { business: "Entreprise", legal: "Juridique", research: "Recherche", personal: "Vie perso" },
   folderList: [
-    { id: "delaunay", name: "Entrepôt Delaunay", ref: "26114", contact: "Claire Morel", activity: "2026-10-18", due: "2026-10-23", docs: ["Contrat-cadre_Delaunay.pdf", "Plan_entrepot_v3.pdf", "Planning_travaux_v2.xlsx", "Facture_2026-041.pdf", "Devis_menuiserie_v2.pdf", "CR_reunion_02-10.docx"] },
-    { id: "bertin", name: "BERTIN-ATELIER", ref: "26009.204", contact: "Julien Faure", activity: "2026-10-14", due: "2027-01-05", docs: ["Offre_rayonnages.pdf", "Offre_mezzanine.pdf", "Offre_honoraires.pdf", "Fiche_fournisseur.pdf"] },
-    { id: "lyonsud", name: "26131-LYONSUD", ref: "26131", activity: "2026-10-09", due: "2026-10-16", docs: ["Rapport_phase1_brouillon.docx", "Releves_site.xlsx", "Photos_visite.zip", "Cahier_des_charges.pdf", "Planning.pdf", "Notes_reunion.docx"] },
-    { id: "these", name: "these_chapitre3", ref: "perso", activity: "2026-10-09", docs: ["Arnaud_Chen_2023.pdf", "Lindqvist_2021.pdf", "Okafor_2024.pdf", "Notes_lecture.md", "Plan_chapitre3.docx", "Retours_Delmas.pdf", "Bibliographie.bib"] },
-    { id: "villeurb", name: "VILLEURB12", ref: "25088", activity: "2026-10-09", due: "2026-10-12", docs: ["Esquisse_v1.pdf", "Programme.pdf", "Etude_sol.pdf", "Devis_geometre.pdf", "Courrier_mairie.pdf"] },
-    { id: "offres", name: "Offres", ref: "", activity: "2026-10-07", docs: ["Offre_2026-031.pdf", "Offre_2026-032.pdf", "Modele_offre.docx"], extra: 17 },
-    { id: "etude", name: "Rapport d'étude", ref: "", activity: "2026-10-07", docs: ["Rapport_etude_2025.pdf", "Annexes.pdf", "Synthese.docx"], extra: 11 },
-    { id: "assurances", name: "Assurances", ref: "ASS-2026", activity: "2026-10-07", docs: ["Attestation_assurance_2026.pdf", "Conditions_generales_MRP.pdf", "Avenant_2026.pdf"] }
+    { id: "delaunay", domain: "business", name: "Rénovation entrepôt Delaunay", ref: "D-2611-07", contact: "Claire Morel", activity: "2026-10-18", due: "2026-10-23", docs: ["Contrat-cadre_Delaunay.pdf", "Plan_entrepot_v3.pdf", "Planning_travaux_v2.xlsx", "Facture_2026-041.pdf", "Devis_menuiserie_v2.pdf", "CR_reunion_02-10.docx"], extra: 17 },
+    { id: "lyonsud", domain: "legal", name: "Litige prud'homal Morel c/ Arvel", ref: "RG 26/01842", contact: "Me Sophie Kahn", activity: "2026-10-16", due: "2026-10-14", docs: ["Contrat_travail_Morel.pdf", "Avenants_1_et_2.pdf", "Conclusions_adverses.pdf", "Bordereau_pieces.docx", "Jurisprudence_non-concurrence.pdf"], extra: 11 },
+    { id: "these", domain: "research", name: "Thèse — chapitre 3 : échantillonnage", ref: "THS-C3", contact: "Pr. Delmas", activity: "2026-10-15", docs: ["Arnaud_Chen_2023.pdf", "Lindqvist_2021.pdf", "Okafor_2024.pdf", "Notes_lecture.md", "Plan_chapitre3.docx", "Retours_Delmas.pdf"], extra: 13 },
+    { id: "offres", domain: "business", name: "Certification ISO 9001 — audit interne 2026", ref: "QUA-ISO-26", contact: "Service qualité", activity: "2026-10-13", due: "2026-11-20", docs: ["PRO-ACH-02_Procedure_achats.docx", "Audit_interne_2026.pdf", "Plan_actions_qualite.xlsx", "Manuel_qualite_v5.pdf"], extra: 8 },
+    { id: "bertin", domain: "business", name: "Fournisseur Atelier Bertin — agencement", ref: "FRN-4381", contact: "Julien Faure", activity: "2026-10-15", due: "2027-02-17", docs: ["Offre_rayonnages.pdf", "Offre_mezzanine.pdf", "Garantie_fournisseur.pdf", "Fiche_fournisseur.pdf"], extra: 5 },
+    { id: "etude", domain: "legal", name: "Bail commercial — local rue des Tanneurs", ref: "BAIL-TAN-12", contact: "SCI Les Tanneurs", activity: "2026-10-09", due: "2026-10-27", docs: ["Bail_commercial_2018.pdf", "Proposition_renouvellement.pdf", "Indices_ILC_2026.xlsx"], extra: 3 },
+    { id: "villeurb", domain: "research", name: "Article « Sondages stratifiés » — soumission revue", ref: "ART-2026-04", contact: "Co-auteurs", activity: "2026-10-06", due: "2026-11-06", docs: ["Manuscrit_v4.docx", "Figures.zip", "Lettre_editeur.docx", "Retours_relecteurs.pdf"], extra: 2 },
+    { id: "assurances", domain: "personal", name: "Vie perso — assurances et contrats", ref: "PERSO-ASSU", activity: "2026-09-24", docs: ["Attestation_assurance_2026.pdf", "Conditions_generales_MRP.pdf", "Avenant_2026.pdf", "Mutuelle_tableau_garanties.pdf"] },
+    { id: "tilleuls", domain: "personal", name: "Vie perso — achat appartement Lyon 7e", ref: "PERSO-APPT", contact: "Notaire Me Rivière", activity: "2026-09-19", due: "2026-12-04", docs: ["Compromis_de_vente.pdf", "Offre_de_pret.pdf", "Diagnostics_DPE.pdf"], extra: 6 }
   ],
   documents: {
     title: "Documents", upload: "Déposer des documents", filter: { active: "Documents actifs", archived: "Documents archivés" },
@@ -769,7 +771,7 @@ window.I18N.fr.demo.app = {
     acceptedDeadline: "Échéance ajoutée dans Échéances.", acceptedFact: "Mémoire du dossier mise à jour.", acceptedFiling: "Mail rangé.", acceptedTask: "Tâche créée.", acceptedRoutine: "Routine activée."
   },
   proposals: [
-    { nature: "filing", folder: "delaunay", text: "Ranger « Devis menuiserie — version corrigée » dans Entrepôt Delaunay / Devis", why: "Mail de Julien Faure · le devis cite la référence 26114.", mail: 0, target: "Entrepôt Delaunay / Devis", src: { type: "mail", title: "Devis menuiserie — version corrigée", meta: "Julien Faure · 19 octobre 2026", excerpt: "Réf. 26114 — voici le devis mis à jour avec la remise de 5 % sur les huisseries." } },
+    { nature: "filing", folder: "delaunay", text: "Ranger « Devis menuiserie — version corrigée » dans Entrepôt Delaunay / Devis", why: "Mail de Julien Faure · le devis cite la référence D-2611-07.", mail: 0, target: "Entrepôt Delaunay / Devis", src: { type: "mail", title: "Devis menuiserie — version corrigée", meta: "Julien Faure · 19 octobre 2026", excerpt: "Réf. D-2611-07 — voici le devis mis à jour avec la remise de 5 % sur les huisseries." } },
     { nature: "filing", folder: "bertin", text: "Ranger « Nouvelle offre — mezzanine » dans Offres / Bertin / 2026 / 10", why: "Vous rangez les offres d'Atelier Bertin ainsi depuis juin.", mail: 4, target: "Offres / Bertin / 2026 / 10", src: { type: "mail", title: "Nouvelle offre — mezzanine", meta: "Atelier Bertin · 14 octobre 2026", excerpt: "Veuillez trouver ci-jointe notre offre pour la mezzanine métallique." } },
     { nature: "deadline", folder: "delaunay", text: "Ajouter l'échéance « Envoyer l'attestation décennale » au 2 novembre", why: "Contrat-cadre, article 14 : à remettre avant le démarrage des travaux.", add: { date: "2026-11-02", title: "Envoyer l'attestation décennale à Claire Morel", folder: "delaunay" }, src: { type: "doc", title: "Contrat-cadre_Delaunay.pdf", meta: "Page 8 · article 14", excerpt: "L'attestation est remise au maître d'ouvrage avant tout démarrage." } },
     { nature: "task", folder: "bertin", text: "Créer la tâche « Comparer l'offre mezzanine et l'offre rayonnages »", why: "Deux offres du même fournisseur reçues à onze jours d'écart.", src: { type: "mail", title: "Nouvelle offre — mezzanine", meta: "Atelier Bertin · 14 octobre 2026", excerpt: "Cette offre peut se combiner avec celle du 3 octobre." } },
@@ -782,13 +784,16 @@ window.I18N.fr.demo.app = {
     newTitle: "Intitulé", newDate: "Date", newFolder: "Dossier", empty: "Aucune échéance dans cette vue.", added: "Échéance ajoutée"
   },
   deadlineList: [
-    { date: "2026-10-12", title: "Julien Faure doit livrer les plans", folder: "villeurb", src: { type: "mail", title: "Plans pour le 12", meta: "Julien Faure · 28 septembre 2026", excerpt: "Je vous envoie les plans au plus tard le 12 octobre." } },
-    { date: "2026-10-16", title: "Rapport à remettre", folder: "lyonsud", src: { type: "doc", title: "Cahier_des_charges.pdf", meta: "Page 4", excerpt: "Remise du rapport de phase 1 : 16 octobre 2026." } },
-    { date: "2026-10-21", title: "Relancer Atelier Bertin pour réponse à l'offre", folder: "bertin", src: { type: "mail", title: "Re: Offre rayonnages", meta: "Vous · 7 octobre 2026", excerpt: "Je reviens vers vous d'ici le 21 si je n'ai pas de nouvelles." } },
+    { date: "2026-10-14", title: "Déposer les conclusions au conseil de prud'hommes", folder: "lyonsud", src: { type: "mail", title: "Calendrier de procédure", meta: "Greffe · 2 octobre 2026", excerpt: "Les conclusions du défendeur sont attendues au plus tard le 14 octobre 2026." } },
+    { date: "2026-10-16", title: "Envoyer le bordereau de pièces à Me Kahn", folder: "lyonsud", src: { type: "mail", title: "Pièces à communiquer", meta: "Me Sophie Kahn · 9 octobre 2026", excerpt: "Merci de m'adresser le bordereau complet avant vendredi." } },
+    { date: "2026-10-22", title: "Envoyer le chapitre 3 révisé au Pr. Delmas", folder: "these", src: { type: "mail", title: "Lectures pour le chapitre 3", meta: "Pr. Delmas · 9 octobre 2026", excerpt: "Envoyez-moi la version révisée avant notre point du 22." } },
     { date: "2026-10-23", title: "Réunion de chantier, 9 h", folder: "delaunay", src: { type: "mail", title: "Réunion de chantier vendredi", meta: "Claire Morel · 16 octobre 2026", excerpt: "Pouvez-vous confirmer votre présence vendredi 23 à 9 h ?" } },
+    { date: "2026-10-27", title: "Répondre à la proposition de renouvellement du bail", folder: "etude", src: { type: "doc", title: "Proposition_renouvellement.pdf", meta: "Page 1", excerpt: "Nous vous remercions de nous faire connaître votre réponse avant le 27 octobre 2026." } },
     { date: "2026-10-30", title: "Payer la facture Lambert n° 2026-311", folder: "delaunay", src: { type: "doc", title: "Facture_2026-311.pdf", meta: "Comptabilité Lambert", excerpt: "Date limite de paiement : 30/10/2026" } },
+    { date: "2026-11-06", title: "Soumettre l'article à la revue", folder: "villeurb", src: { type: "mail", title: "Numéro spécial — appel à articles", meta: "Comité éditorial · 15 septembre 2026", excerpt: "Les manuscrits sont reçus jusqu'au 6 novembre 2026." } },
+    { date: "2026-11-20", title: "Clore les écarts de l'audit interne ISO 9001", folder: "offres", src: { type: "doc", title: "Audit_interne_2026.pdf", meta: "Page 4 · écart n° 3", excerpt: "Action corrective attendue avant le 20 novembre 2026." } },
     { date: "2026-11-30", title: "Dernier jour pour résilier l'assurance du local", folder: "assurances", src: { type: "doc", title: "Conditions_generales_MRP.pdf", meta: "Page 11 · article 18", excerpt: "préavis de deux mois" } },
-    { date: "2027-01-05", title: "Fin de validité de l'offre d'honoraires", folder: "bertin", src: { type: "doc", title: "Offre_honoraires.pdf", meta: "Page 2", excerpt: "Offre valable jusqu'au 5 janvier 2027." } }
+    { date: "2026-12-04", title: "Signer l'acte de vente chez le notaire", folder: "tilleuls", src: { type: "mail", title: "Date de signature", meta: "Me Rivière · 25 septembre 2026", excerpt: "La signature de l'acte authentique est fixée au 4 décembre à 10 h." } }
   ],
   mails: {
     title: "Mails", addBox: "Ajouter une boîte mail", manage: "Gérer les mails", search: "Sujet, correspondant ou texte",
@@ -796,7 +801,7 @@ window.I18N.fr.demo.app = {
     auto: "Envoi automatique", proposal: "Proposition : ranger dans", filedIn: "Rangé dans", empty: "Aucun mail ne correspond.", summary: "En bref"
   },
   mailList: [
-    { subject: "Devis menuiserie — version corrigée", from: "Julien Faure", snippet: "Bonjour Camille, voici le devis mis à jour avec la remise de 5 % sur les huisseries, réf. 26114. Les délais restent inchangés.", date: "2026-10-19", proposal: 0, brief: "Devis corrigé, remise de 5 %, délais inchangés." },
+    { subject: "Devis menuiserie — version corrigée", from: "Julien Faure", snippet: "Bonjour Camille, voici le devis mis à jour avec la remise de 5 % sur les huisseries, réf. D-2611-07. Les délais restent inchangés.", date: "2026-10-19", proposal: 0, brief: "Devis corrigé, remise de 5 %, délais inchangés." },
     { subject: "Facture octobre 2026", from: "Comptabilité Lambert", snippet: "Veuillez trouver ci-joint notre facture n° 2026-311, payable au 30 octobre 2026. Ce message est envoyé automatiquement.", date: "2026-10-19", auto: true, filed: "delaunay", brief: "Facture à payer avant le 30 octobre (échéance déjà créée)." },
     { subject: "Planning — décalage", from: "Claire Morel", snippet: "Bonjour, l'entreprise de gros œuvre nous annonce deux semaines de retard. La réception est décalée au 29 mars.", date: "2026-10-17", filed: "delaunay", brief: "Réception décalée au 29 mars 2027 (proposition de mise à jour du dossier)." },
     { subject: "Votre relevé mensuel est disponible", from: "Mutuelle Horizon", snippet: "Votre relevé de remboursements d'octobre est disponible dans votre espace adhérent. Ce message est envoyé automatiquement.", date: "2026-10-18", auto: true, brief: "Notification sans action." },
@@ -933,3 +938,100 @@ window.I18N.fr.demo.app.qa = [
     ]
   }
 ];
+
+/* Exemples par domaine pour l'Assistant (juridique, recherche, entreprise). */
+window.I18N.fr.demo.app.qa.splice(4, 0,
+  {
+    q: "Dans le litige Morel, la clause de non-concurrence est-elle valable ?", folder: "lyonsud", ago: 1,
+    steps: [
+      { t: "Analyse de la question", d: "réflexion approfondie", s: 2.4 },
+      { t: "Vue d'ensemble du périmètre", d: "dossier Litige prud'homal Morel c/ Arvel", s: 2.2 },
+      { t: "Liste des sources", d: "documents du dossier : 16", s: 0.71 },
+      { t: "Recherche dans les sources", d: "« clause de non-concurrence contrepartie » : 8 extraits", s: 7.6 },
+      { t: "Recherche dans la base juridique", d: "« validité clause non-concurrence » : 5 décisions", s: 4.9 },
+      { t: "Éléments réunis", d: "13 extraits, 2 documents et 1 décision", s: 1.2 },
+      { t: "Rédaction de la réponse", d: "premier mot après 4,4 s", s: 12.7 }
+    ],
+    blocks: [
+      { p: "Probablement pas en l'état. La clause est bien limitée dans le temps et dans l'espace :" },
+      { quote: "Le salarié s'interdit, pendant 24 mois, toute activité concurrente en région Auvergne-Rhône-Alpes.", s: 0 },
+      { p: "En revanche, je ne trouve aucune contrepartie financière, ni dans le contrat ni dans ses deux avenants. Or la jurisprudence en fait une condition de validité :" },
+      { quote: "Une clause de non-concurrence n'est licite que si elle est indispensable à la protection des intérêts légitimes de l'entreprise, limitée dans le temps et dans l'espace, qu'elle tient compte des spécificités de l'emploi du salarié et comporte l'obligation pour l'employeur de verser au salarié une contrepartie financière.", s: 1 },
+      { p: "Point à vérifier avec Me Kahn avant le dépôt des conclusions, en retard depuis le 14 octobre." }
+    ],
+    sources: [
+      { type: "doc", title: "Contrat de travail Morel", file: "Contrat_travail_Morel.pdf", version: "v1", page: 6, pages: 9, heading: "Article 9 — Non-concurrence", before: ["9.1 Compte tenu des fonctions de directeur commercial confiées au salarié :"], after: ["9.2 L'employeur peut renoncer à la présente clause dans les quinze jours suivant la rupture du contrat."] },
+      { type: "doc", title: "Cass. soc., 10 juillet 2002, n° 00-45.135", file: "Cass_soc_10-07-2002_00-45135.pdf", version: "base juridique", page: 2, pages: 3, heading: "Motifs", before: ["Vu le principe fondamental de libre exercice d'une activité professionnelle et l'article L. 120-2 du Code du travail ;", "Attendu que :"], after: ["Qu'en statuant comme elle l'a fait, la cour d'appel a violé le principe et le texte susvisés."] }
+    ]
+  },
+  {
+    q: "Quels articles de ma bibliographie utilisent un échantillonnage stratifié ?", folder: "these", ago: 2,
+    steps: [
+      { t: "Analyse de la question", d: "réflexion rapide", s: 1.3 },
+      { t: "Vue d'ensemble du périmètre", d: "dossier Thèse — chapitre 3", s: 1.8 },
+      { t: "Liste des sources", d: "articles de la bibliographie : 19", s: 0.52 },
+      { t: "Recherche dans les sources", d: "« stratified sampling » : 8 extraits", s: 5.4 },
+      { t: "Recherche dans les bases scientifiques", d: "« proportional stratified sampling districts » : 3 résumés", s: 3.9 },
+      { t: "Lecture d'un fil de mails", d: "« Lectures pour le chapitre 3 » : 2 messages", s: 0.61 },
+      { t: "Éléments réunis", d: "11 extraits, 3 articles et 1 mail", s: 1.0 },
+      { t: "Rédaction de la réponse", d: "premier mot après 3,0 s", s: 9.2 }
+    ],
+    blocks: [
+      { p: "Trois articles de votre bibliographie utilisent un échantillonnage stratifié. Arnaud et Chen (2023) tirent un échantillon de ménages :" },
+      { quote: "A stratified random sample of 1,240 households was drawn from the regional register.", s: 0 },
+      { p: "Lindqvist (2021) stratifie par région et par revenu, et Okafor et al. (2024) appliquent une stratification proportionnelle sur 14 districts. Votre directeur de thèse vous avait signalé ce dernier :" },
+      { quote: "Regardez Okafor et al., leur plan de sondage est proche du vôtre.", s: 1 },
+      { p: "Aucun des trois ne travaille sur la même population que votre chapitre 3. Références fictives, pour la démonstration." }
+    ],
+    sources: [
+      { type: "doc", title: "Arnaud & Chen 2023", file: "Arnaud_Chen_2023.pdf", version: "v1", page: 7, pages: 24, heading: "2.3 Sampling design", before: ["The survey covers twelve municipalities with contrasting income profiles."], after: ["Strata were defined by municipality size and median income."] },
+      { type: "mail", title: "Lectures pour le chapitre 3", from: "Pr. Delmas", to: "Camille Martin", date: "9 octobre 2026", before: ["Bonjour Camille,", "J'ai relu votre plan, c'est solide."], after: ["On en parle jeudi ?", "M. Delmas"] }
+    ]
+  },
+  {
+    q: "Notre procédure achats répond-elle à l'ISO 9001 sur l'évaluation des fournisseurs ?", folder: "offres", ago: 3,
+    steps: [
+      { t: "Analyse de la question", d: "réflexion approfondie", s: 2.1 },
+      { t: "Vue d'ensemble du périmètre", d: "dossier Certification ISO 9001", s: 2.0 },
+      { t: "Liste des sources", d: "procédures qualité : 12", s: 0.66 },
+      { t: "Recherche dans le référentiel", d: "« ISO 9001 § 8.4.1 prestataires externes » : 2 extraits", s: 3.1 },
+      { t: "Recherche dans les sources", d: "« évaluation fournisseurs suivi performance » : 8 extraits", s: 6.0 },
+      { t: "Éléments réunis", d: "10 extraits et 3 documents", s: 1.1 },
+      { t: "Rédaction de la réponse", d: "premier mot après 3,6 s", s: 10.5 }
+    ],
+    blocks: [
+      { p: "En partie seulement. La norme demande des critères pour sélectionner, mais aussi pour suivre les fournisseurs :" },
+      { quote: "L'organisme doit déterminer et appliquer des critères pour l'évaluation, la sélection, la surveillance des performances et la réévaluation des prestataires externes.", s: 0 },
+      { p: "Votre procédure couvre bien la sélection, mais rien sur le suivi de la performance. L'audit interne de cette année relevait déjà ce manque :" },
+      { quote: "Absence de suivi formalisé de la performance des fournisseurs.", s: 1 },
+      { p: "L'action corrective est attendue avant le 20 novembre ; l'échéance figure dans le dossier." }
+    ],
+    sources: [
+      { type: "doc", title: "ISO 9001:2015", file: "ISO_9001-2015_referentiel.pdf", version: "référentiel", page: 18, pages: 44, heading: "8.4.1 Maîtrise des processus, produits et services fournis par des prestataires externes — Généralités", before: ["L'organisme doit s'assurer que les processus, produits et services fournis par des prestataires externes sont conformes aux exigences."], after: ["L'organisme doit conserver des informations documentées sur ces activités et sur toutes les actions nécessaires résultant des évaluations."] },
+      { type: "doc", title: "Audit interne 2026", file: "Audit_interne_2026.pdf", version: "v2", page: 4, pages: 11, heading: "Écart n° 3 — Achats", before: ["Processus audité : achats et sous-traitance. Interlocuteur : responsable achats."], after: ["Gravité : mineure. Action corrective attendue avant le 20 novembre 2026."] }
+    ]
+  }
+);
+
+/* Domaines : bases publiques connectées en direct et veille passive. */
+(function (f) {
+  f.legal.adds.unshift("Connexion et scan en direct des textes et à la jurisprudence publiés, mis à jour en continu");
+  f.research.adds.unshift("Connexion et scan en direct des bases d'articles ouvertes : chaque nouvelle publication est comparée à vos dossiers");
+  f.business.noLive = true;
+  f.live = {
+    status: "Connecté en direct · dernière mise à jour aujourd'hui, 7 h 12",
+    title: "Veille passive",
+    scan: "Scan en direct", scanned: "{n} nouvelles publications analysées aujourd'hui", matched: "{n} concernent vos dossiers",
+    sub: "{name} croise chaque nouveauté publiée avec vos dossiers. Quand une publication concerne l'un d'eux, il vous prévient, avec la source et la raison.",
+    concerns: "Concerne", why: "Pourquoi", add: "Ajouter au dossier", added: "Ajouté au dossier", ignore: "Ignorer", ignored: "Ignorée", news: "Nouveauté",
+    note: "Exemples fictifs, pour la démonstration."
+  };
+  f.legal.watch = [
+    { date: "16 oct. 2026", title: "Cass. soc., 14 octobre 2026 — clause de non-concurrence sans contrepartie", folder: "Litige prud'homal Morel c/ Arvel", why: "Votre dossier conteste une clause de 24 mois sans contrepartie financière. Cet arrêt confirme la nullité dans un cas proche.", src: { type: "external", title: "Cass. soc., 14 octobre 2026 (exemple fictif)", meta: "Jurisprudence · publié le 16 octobre 2026", excerpt: "La clause de non-concurrence dépourvue de contrepartie financière est nulle ; le salarié qui l'a respectée peut prétendre à réparation." } },
+    { date: "11 oct. 2026", title: "Nouvel indice des loyers commerciaux publié", folder: "Bail commercial — local rue des Tanneurs", why: "La proposition de renouvellement du bail repose sur l'indice précédent. Le nouvel indice change le montant plafonné.", src: { type: "external", title: "Indice des loyers commerciaux (exemple fictif)", meta: "Publication officielle · 11 octobre 2026", excerpt: "L'indice du deuxième trimestre 2026 s'établit en hausse de 2,1 % sur un an." } }
+  ];
+  f.research.watch = [
+    { date: "15 oct. 2026", title: "Diallo et al. (2026) — stratification et non-réponse dans les enquêtes ménages", folder: "Thèse — chapitre 3 : échantillonnage", why: "L'article traite la même question que votre section 3.2 et cite Arnaud et Chen (2023), déjà dans votre bibliographie.", src: { type: "external", title: "Diallo et al., 2026 (exemple fictif)", meta: "Base d'articles ouverte · résumé · 15 octobre 2026", excerpt: "We compare post-stratification weights under differential non-response across 1,800 households." } },
+    { date: "9 oct. 2026", title: "Appel à articles : numéro spécial « Méthodes d'enquête »", folder: "Article « Sondages stratifiés » — soumission revue", why: "Le thème correspond à votre manuscrit v4. Date limite : 6 novembre.", src: { type: "external", title: "Appel à articles (exemple fictif)", meta: "Revue de méthodologie · 9 octobre 2026", excerpt: "Manuscripts on sampling design and survey weighting are welcome until 6 November 2026." } }
+  ];
+})(window.I18N.fr.fields);

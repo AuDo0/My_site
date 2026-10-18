@@ -487,7 +487,7 @@ window.I18N.en = {
     },
     business: {
       who: "Quality, purchasing, compliance, operations.",
-      adds: ["Standards and frameworks (quality, information security…)", "Your procedures and internal documentation", "Supplier and client contracts", "Custom frameworks specific to your sector"],
+      adds: ["The standards and frameworks you add (quality, information security…)", "Your procedures and internal documentation", "Supplier and client contracts", "Custom frameworks specific to your sector"],
       q: "Does our purchasing procedure cover the supplier evaluation required by ISO 9001?",
       a: "Partly. The standard requires criteria for evaluating, selecting and monitoring external providers[[1]]. Your procedure does define selection[[2]], but I find no criteria for monitoring performance. The last internal audit report already flagged this gap[[3]].",
       sources: [
@@ -679,7 +679,7 @@ window.I18N.en.demo.app = {
   ui: {
     seeAll: "See all", open: "Open", closed: "Closed", upcoming: "Upcoming", late: "Overdue", done: "Done",
     markDone: "Mark as done", markUndone: "Reopen", more: "More actions", back: "Folders",
-    noFolder: "No folder", allFolders: "All folders", allNatures: "All types",
+    noFolder: "No folder", allFolders: "All folders", allNatures: "All types", allDomains: "All fields",
     validate: "Approve", refuse: "Decline", validated: "Approved", refused: "Declined", undo: "Undo",
     demoOnly: "Demo: this action is disabled here. It works in the app.",
     cancel: "Cancel", add: "Add", create: "Create",
@@ -718,15 +718,17 @@ window.I18N.en.demo.app = {
     detailNote: "In this demo, the full memory (timeline, people, facts, versions) is detailed for “Delaunay warehouse”. Here is what {name} has already linked to this folder.",
     linkedDeadlines: "Linked deadlines", linkedDocs: "Documents", factUpdated: "updated"
   },
+  domains: { business: "Business", legal: "Legal", research: "Research", personal: "Personal" },
   folderList: [
-    { id: "delaunay", name: "Delaunay warehouse", ref: "26114", contact: "Claire Morel", activity: "2026-10-18", due: "2026-10-23", docs: ["Delaunay_framework_contract.pdf", "Warehouse_plan_v3.pdf", "Works_schedule_v2.xlsx", "Invoice_2026-041.pdf", "Joinery_quote_v2.pdf", "Meeting_minutes_02-10.docx"] },
-    { id: "bertin", name: "BERTIN-WORKSHOP", ref: "26009.204", contact: "Julien Faure", activity: "2026-10-14", due: "2027-01-05", docs: ["Offer_shelving.pdf", "Offer_mezzanine.pdf", "Fee_proposal.pdf", "Supplier_sheet.pdf"] },
-    { id: "lyonsud", name: "26131-LYONSUD", ref: "26131", activity: "2026-10-09", due: "2026-10-16", docs: ["Phase1_report_draft.docx", "Site_survey.xlsx", "Visit_photos.zip", "Specifications.pdf", "Schedule.pdf", "Meeting_notes.docx"] },
-    { id: "these", name: "thesis_chapter3", ref: "personal", activity: "2026-10-09", docs: ["Arnaud_Chen_2023.pdf", "Lindqvist_2021.pdf", "Okafor_2024.pdf", "Reading_notes.md", "Chapter3_outline.docx", "Delmas_feedback.pdf", "Bibliography.bib"] },
-    { id: "villeurb", name: "VILLEURB12", ref: "25088", activity: "2026-10-09", due: "2026-10-12", docs: ["Sketch_v1.pdf", "Brief.pdf", "Soil_survey.pdf", "Surveyor_quote.pdf", "Town_hall_letter.pdf"] },
-    { id: "offres", name: "Offers", ref: "", activity: "2026-10-07", docs: ["Offer_2026-031.pdf", "Offer_2026-032.pdf", "Offer_template.docx"], extra: 17 },
-    { id: "etude", name: "Study report", ref: "", activity: "2026-10-07", docs: ["Study_report_2025.pdf", "Appendices.pdf", "Summary.docx"], extra: 11 },
-    { id: "assurances", name: "Insurance", ref: "INS-2026", activity: "2026-10-07", docs: ["Insurance_certificate_2026.pdf", "General_terms.pdf", "Amendment_2026.pdf"] }
+    { id: "delaunay", domain: "business", name: "Delaunay warehouse renovation", ref: "D-2611-07", contact: "Claire Morel", activity: "2026-10-18", due: "2026-10-23", docs: ["Delaunay_framework_contract.pdf", "Warehouse_plan_v3.pdf", "Works_schedule_v2.xlsx", "Invoice_2026-041.pdf", "Joinery_quote_v2.pdf", "Meeting_minutes_02-10.docx"], extra: 17 },
+    { id: "lyonsud", domain: "legal", name: "Employment dispute Morel v. Arvel", ref: "RG 26/01842", contact: "Sophie Kahn, counsel", activity: "2026-10-16", due: "2026-10-14", docs: ["Morel_employment_contract.pdf", "Amendments_1_and_2.pdf", "Opposing_submissions.pdf", "Exhibit_list.docx", "Non-compete_case_law.pdf"], extra: 11 },
+    { id: "these", domain: "research", name: "Thesis — chapter 3: sampling", ref: "THS-C3", contact: "Prof. Delmas", activity: "2026-10-15", docs: ["Arnaud_Chen_2023.pdf", "Lindqvist_2021.pdf", "Okafor_2024.pdf", "Reading_notes.md", "Chapter3_outline.docx", "Delmas_feedback.pdf"], extra: 13 },
+    { id: "offres", domain: "business", name: "ISO 9001 certification — 2026 internal audit", ref: "QUA-ISO-26", contact: "Quality team", activity: "2026-10-13", due: "2026-11-20", docs: ["PRO-PUR-02_Purchasing_procedure.docx", "Internal_audit_2026.pdf", "Quality_action_plan.xlsx", "Quality_manual_v5.pdf"], extra: 8 },
+    { id: "bertin", domain: "business", name: "Supplier Bertin workshop — fit-out", ref: "SUP-4381", contact: "Julien Faure", activity: "2026-10-15", due: "2027-02-17", docs: ["Offer_shelving.pdf", "Offer_mezzanine.pdf", "Supplier_warranty.pdf", "Supplier_sheet.pdf"], extra: 5 },
+    { id: "etude", domain: "legal", name: "Commercial lease — rue des Tanneurs premises", ref: "LEASE-TAN-12", contact: "Les Tanneurs property co.", activity: "2026-10-09", due: "2026-10-27", docs: ["Commercial_lease_2018.pdf", "Renewal_proposal.pdf", "Rent_index_2026.xlsx"], extra: 3 },
+    { id: "villeurb", domain: "research", name: "Paper “Stratified surveys” — journal submission", ref: "ART-2026-04", contact: "Co-authors", activity: "2026-10-06", due: "2026-11-06", docs: ["Manuscript_v4.docx", "Figures.zip", "Cover_letter.docx", "Reviewer_comments.pdf"], extra: 2 },
+    { id: "assurances", domain: "personal", name: "Personal — insurance and contracts", ref: "PERSO-INS", activity: "2026-09-24", docs: ["Insurance_certificate_2026.pdf", "General_terms.pdf", "Amendment_2026.pdf", "Health_cover_table.pdf"] },
+    { id: "tilleuls", domain: "personal", name: "Personal — buying a flat in Lyon 7th", ref: "PERSO-FLAT", contact: "Rivière, notary", activity: "2026-09-19", due: "2026-12-04", docs: ["Sale_agreement.pdf", "Mortgage_offer.pdf", "Energy_certificate.pdf"], extra: 6 }
   ],
   documents: {
     title: "Documents", upload: "Upload documents", filter: { active: "Active documents", archived: "Archived documents" },
@@ -749,7 +751,7 @@ window.I18N.en.demo.app = {
     acceptedDeadline: "Deadline added to Deadlines.", acceptedFact: "Folder memory updated.", acceptedFiling: "Email filed.", acceptedTask: "Task created.", acceptedRoutine: "Routine on."
   },
   proposals: [
-    { nature: "filing", folder: "delaunay", text: "File “Joinery quote — corrected version” in Delaunay warehouse / Quotes", why: "Email from Julien Faure · the quote cites reference 26114.", mail: 0, target: "Delaunay warehouse / Quotes", src: { type: "mail", title: "Joinery quote — corrected version", meta: "Julien Faure · 19 October 2026", excerpt: "Ref. 26114 — here is the updated quote with the 5% discount on frames." } },
+    { nature: "filing", folder: "delaunay", text: "File “Joinery quote — corrected version” in Delaunay warehouse / Quotes", why: "Email from Julien Faure · the quote cites reference D-2611-07.", mail: 0, target: "Delaunay warehouse / Quotes", src: { type: "mail", title: "Joinery quote — corrected version", meta: "Julien Faure · 19 October 2026", excerpt: "Ref. D-2611-07 — here is the updated quote with the 5% discount on frames." } },
     { nature: "filing", folder: "bertin", text: "File “New offer — mezzanine” in Offers / Bertin / 2026 / 10", why: "You've filed Bertin workshop offers this way since June.", mail: 4, target: "Offers / Bertin / 2026 / 10", src: { type: "mail", title: "New offer — mezzanine", meta: "Bertin workshop · 14 October 2026", excerpt: "Please find attached our offer for the steel mezzanine." } },
     { nature: "deadline", folder: "delaunay", text: "Add the deadline “Send the liability insurance certificate” on 2 November", why: "Framework contract, clause 14: due before work starts.", add: { date: "2026-11-02", title: "Send the liability insurance certificate to Claire Morel", folder: "delaunay" }, src: { type: "doc", title: "Delaunay_framework_contract.pdf", meta: "Page 8 · clause 14", excerpt: "The certificate is given to the client before any work starts." } },
     { nature: "task", folder: "bertin", text: "Create the task “Compare the mezzanine and shelving offers”", why: "Two offers from the same supplier, eleven days apart.", src: { type: "mail", title: "New offer — mezzanine", meta: "Bertin workshop · 14 October 2026", excerpt: "This offer can be combined with the one from 3 October." } },
@@ -762,13 +764,16 @@ window.I18N.en.demo.app = {
     newTitle: "Title", newDate: "Date", newFolder: "Folder", empty: "No deadlines in this view.", added: "Deadline added"
   },
   deadlineList: [
-    { date: "2026-10-12", title: "Julien Faure to deliver the plans", folder: "villeurb", src: { type: "mail", title: "Plans by the 12th", meta: "Julien Faure · 28 September 2026", excerpt: "I'll send you the plans by 12 October at the latest." } },
-    { date: "2026-10-16", title: "Report due", folder: "lyonsud", src: { type: "doc", title: "Specifications.pdf", meta: "Page 4", excerpt: "Phase 1 report due: 16 October 2026." } },
-    { date: "2026-10-21", title: "Chase Bertin workshop for an answer on the offer", folder: "bertin", src: { type: "mail", title: "Re: Shelving offer", meta: "You · 7 October 2026", excerpt: "I'll get back to you by the 21st if I haven't heard." } },
+    { date: "2026-10-14", title: "File submissions with the employment tribunal", folder: "lyonsud", src: { type: "mail", title: "Procedural timetable", meta: "Court registry · 2 October 2026", excerpt: "The respondent's submissions are due by 14 October 2026 at the latest." } },
+    { date: "2026-10-16", title: "Send the exhibit list to Sophie Kahn", folder: "lyonsud", src: { type: "mail", title: "Exhibits to disclose", meta: "Sophie Kahn · 9 October 2026", excerpt: "Please send me the full exhibit list before Friday." } },
+    { date: "2026-10-22", title: "Send the revised chapter 3 to Prof. Delmas", folder: "these", src: { type: "mail", title: "Reading for chapter 3", meta: "Prof. Delmas · 9 October 2026", excerpt: "Send me the revised version before our meeting on the 22nd." } },
     { date: "2026-10-23", title: "Site meeting, 9am", folder: "delaunay", src: { type: "mail", title: "Site meeting on Friday", meta: "Claire Morel · 16 October 2026", excerpt: "Could you confirm you'll be there Friday 23rd at 9am?" } },
+    { date: "2026-10-27", title: "Reply to the lease renewal proposal", folder: "etude", src: { type: "doc", title: "Renewal_proposal.pdf", meta: "Page 1", excerpt: "Please let us have your answer before 27 October 2026." } },
     { date: "2026-10-30", title: "Pay Lambert invoice 2026-311", folder: "delaunay", src: { type: "doc", title: "Invoice_2026-311.pdf", meta: "Lambert Accounting", excerpt: "Payment due by: 30/10/2026" } },
+    { date: "2026-11-06", title: "Submit the paper to the journal", folder: "villeurb", src: { type: "mail", title: "Special issue — call for papers", meta: "Editorial board · 15 September 2026", excerpt: "Manuscripts are accepted until 6 November 2026." } },
+    { date: "2026-11-20", title: "Close the ISO 9001 internal audit findings", folder: "offres", src: { type: "doc", title: "Internal_audit_2026.pdf", meta: "Page 4 · finding 3", excerpt: "Corrective action expected before 20 November 2026." } },
     { date: "2026-11-30", title: "Last day to cancel the premises insurance", folder: "assurances", src: { type: "doc", title: "General_terms.pdf", meta: "Page 11 · clause 18", excerpt: "two months' notice" } },
-    { date: "2027-01-05", title: "Fee proposal expires", folder: "bertin", src: { type: "doc", title: "Fee_proposal.pdf", meta: "Page 2", excerpt: "Offer valid until 5 January 2027." } }
+    { date: "2026-12-04", title: "Sign the sale deed at the notary's", folder: "tilleuls", src: { type: "mail", title: "Signing date", meta: "Rivière, notary · 25 September 2026", excerpt: "Signing of the deed is set for 4 December at 10am." } }
   ],
   mails: {
     title: "Mail", addBox: "Add a mailbox", manage: "Manage mail", search: "Subject, sender or text",
@@ -776,7 +781,7 @@ window.I18N.en.demo.app = {
     auto: "Automated", proposal: "Suggestion: file in", filedIn: "Filed in", empty: "No email matches.", summary: "In short"
   },
   mailList: [
-    { subject: "Joinery quote — corrected version", from: "Julien Faure", snippet: "Hi Camille, here is the updated quote with the 5% discount on frames, ref. 26114. Lead times are unchanged.", date: "2026-10-19", proposal: 0, brief: "Corrected quote, 5% discount, same lead times." },
+    { subject: "Joinery quote — corrected version", from: "Julien Faure", snippet: "Hi Camille, here is the updated quote with the 5% discount on frames, ref. D-2611-07. Lead times are unchanged.", date: "2026-10-19", proposal: 0, brief: "Corrected quote, 5% discount, same lead times." },
     { subject: "October 2026 invoice", from: "Lambert Accounting", snippet: "Please find attached our invoice no. 2026-311, payable by 30 October 2026. This message was sent automatically.", date: "2026-10-19", auto: true, filed: "delaunay", brief: "Invoice due by 30 October (deadline already created)." },
     { subject: "Schedule — delay", from: "Claire Morel", snippet: "Hello, the structural contractor reports a two-week delay. Handover moves to 29 March.", date: "2026-10-17", filed: "delaunay", brief: "Handover moved to 29 March 2027 (folder update suggested)." },
     { subject: "Your monthly statement is ready", from: "Horizon Health", snippet: "Your October reimbursement statement is available in your member area. This message was sent automatically.", date: "2026-10-18", auto: true, brief: "Notification, no action." },
@@ -912,3 +917,100 @@ window.I18N.en.demo.app.qa = [
     ]
   }
 ];
+
+/* Field-specific examples for the Assistant (legal, research, business). */
+window.I18N.en.demo.app.qa.splice(4, 0,
+  {
+    q: "In the Morel dispute, is the non-compete clause valid?", folder: "lyonsud", ago: 1,
+    steps: [
+      { t: "Analysing the question", d: "deep reasoning", s: 2.4 },
+      { t: "Scope overview", d: "Employment dispute Morel v. Arvel folder", s: 2.2 },
+      { t: "Listing sources", d: "folder documents: 16", s: 0.71 },
+      { t: "Searching sources", d: "“non-compete clause compensation”: 8 excerpts", s: 7.6 },
+      { t: "Searching the legal database", d: "“non-compete clause validity”: 5 rulings", s: 4.9 },
+      { t: "Evidence gathered", d: "13 excerpts, 2 documents and 1 ruling", s: 1.2 },
+      { t: "Writing the answer", d: "first word after 4.4 s", s: 12.7 }
+    ],
+    blocks: [
+      { p: "Probably not as it stands. The clause is limited in time and place:" },
+      { quote: "For 24 months, the employee shall not engage in any competing activity in the Auvergne-Rhône-Alpes region.", s: 0 },
+      { p: "However, I find no financial compensation, either in the contract or in its two amendments. French case law makes it a condition of validity:" },
+      { quote: "A non-compete clause is lawful only if it is essential to protect the company's legitimate interests, limited in time and place, takes the specifics of the job into account, and requires the employer to pay the employee financial compensation.", s: 1 },
+      { p: "Worth checking with Sophie Kahn before filing the submissions, overdue since 14 October." }
+    ],
+    sources: [
+      { type: "doc", title: "Morel employment contract", file: "Morel_employment_contract.pdf", version: "v1", page: 6, pages: 9, heading: "Clause 9 — Non-compete", before: ["9.1 Given the sales director duties entrusted to the employee:"], after: ["9.2 The employer may waive this clause within fifteen days of the end of the contract."] },
+      { type: "doc", title: "Cass. soc., 10 July 2002, no. 00-45.135", file: "Cass_soc_10-07-2002_00-45135.pdf", version: "legal database", page: 2, pages: 3, heading: "Grounds (unofficial translation)", before: ["Having regard to the fundamental principle of freedom to work and article L. 120-2 of the Labour Code;", "Whereas:"], after: ["By ruling as it did, the court of appeal breached the above principle and text."] }
+    ]
+  },
+  {
+    q: "Which papers in my bibliography use stratified sampling?", folder: "these", ago: 2,
+    steps: [
+      { t: "Analysing the question", d: "quick reasoning", s: 1.3 },
+      { t: "Scope overview", d: "Thesis — chapter 3 folder", s: 1.8 },
+      { t: "Listing sources", d: "bibliography papers: 19", s: 0.52 },
+      { t: "Searching sources", d: "“stratified sampling”: 8 excerpts", s: 5.4 },
+      { t: "Searching scientific databases", d: "“proportional stratified sampling districts”: 3 abstracts", s: 3.9 },
+      { t: "Reading an email thread", d: "“Reading for chapter 3”: 2 messages", s: 0.61 },
+      { t: "Evidence gathered", d: "11 excerpts, 3 papers and 1 email", s: 1.0 },
+      { t: "Writing the answer", d: "first word after 3.0 s", s: 9.2 }
+    ],
+    blocks: [
+      { p: "Three papers in your bibliography use stratified sampling. Arnaud and Chen (2023) draw a household sample:" },
+      { quote: "A stratified random sample of 1,240 households was drawn from the regional register.", s: 0 },
+      { p: "Lindqvist (2021) stratifies by region and income, and Okafor et al. (2024) use proportional stratification across 14 districts. Your supervisor pointed you to the last one:" },
+      { quote: "Look at Okafor et al., their sampling design is close to yours.", s: 1 },
+      { p: "None of the three works on the same population as your chapter 3. Made-up references, for the demo." }
+    ],
+    sources: [
+      { type: "doc", title: "Arnaud & Chen 2023", file: "Arnaud_Chen_2023.pdf", version: "v1", page: 7, pages: 24, heading: "2.3 Sampling design", before: ["The survey covers twelve municipalities with contrasting income profiles."], after: ["Strata were defined by municipality size and median income."] },
+      { type: "mail", title: "Reading for chapter 3", from: "Prof. Delmas", to: "Camille Martin", date: "9 October 2026", before: ["Hi Camille,", "I've read your outline, it's solid."], after: ["Shall we talk Thursday?", "M. Delmas"] }
+    ]
+  },
+  {
+    q: "Does our purchasing procedure meet ISO 9001 on supplier evaluation?", folder: "offres", ago: 3,
+    steps: [
+      { t: "Analysing the question", d: "deep reasoning", s: 2.1 },
+      { t: "Scope overview", d: "ISO 9001 certification folder", s: 2.0 },
+      { t: "Listing sources", d: "quality procedures: 12", s: 0.66 },
+      { t: "Searching the standard", d: "“ISO 9001 § 8.4.1 external providers”: 2 excerpts", s: 3.1 },
+      { t: "Searching sources", d: "“supplier evaluation performance monitoring”: 8 excerpts", s: 6.0 },
+      { t: "Evidence gathered", d: "10 excerpts and 3 documents", s: 1.1 },
+      { t: "Writing the answer", d: "first word after 3.6 s", s: 10.5 }
+    ],
+    blocks: [
+      { p: "Only partly. The standard asks for criteria to select suppliers, but also to monitor them:" },
+      { quote: "The organization shall determine and apply criteria for the evaluation, selection, monitoring of performance, and re-evaluation of external providers.", s: 0 },
+      { p: "Your procedure covers selection, but nothing on performance monitoring. This year's internal audit already flagged the gap:" },
+      { quote: "No formal monitoring of supplier performance.", s: 1 },
+      { p: "Corrective action is due before 20 November; the deadline is in the folder." }
+    ],
+    sources: [
+      { type: "doc", title: "ISO 9001:2015", file: "ISO_9001-2015_standard.pdf", version: "standard", page: 18, pages: 44, heading: "8.4.1 Control of externally provided processes, products and services — General", before: ["The organization shall ensure that externally provided processes, products and services conform to requirements."], after: ["The organization shall retain documented information of these activities and any necessary actions arising from the evaluations."] },
+      { type: "doc", title: "Internal audit 2026", file: "Internal_audit_2026.pdf", version: "v2", page: 4, pages: 11, heading: "Finding 3 — Purchasing", before: ["Process audited: purchasing and subcontracting. Contact: purchasing manager."], after: ["Severity: minor. Corrective action expected before 20 November 2026."] }
+    ]
+  }
+);
+
+/* Fields: public databases connected live, and passive monitoring. */
+(function (f) {
+  f.legal.adds.unshift("Live connection and scanning of published statutes and case law, updated continuously");
+  f.research.adds.unshift("Live connection and scanning of open paper databases: every new publication is checked against your folders");
+  f.business.noLive = true;
+  f.live = {
+    status: "Connected live · last update today, 7:12am",
+    title: "Passive monitoring",
+    scan: "Live scan", scanned: "{n} new publications analysed today", matched: "{n} concern your folders",
+    sub: "{name} matches every new publication against your folders. When one concerns a folder, it tells you, with the source and the reason.",
+    concerns: "Concerns", why: "Why", add: "Add to folder", added: "Added to folder", ignore: "Dismiss", ignored: "Dismissed", news: "New",
+    note: "Made-up examples, for the demo."
+  };
+  f.legal.watch = [
+    { date: "16 Oct 2026", title: "Cass. soc., 14 October 2026 — non-compete clause without compensation", folder: "Employment dispute Morel v. Arvel", why: "Your folder challenges a 24-month clause with no financial compensation. This ruling confirms nullity in a similar case.", src: { type: "external", title: "Cass. soc., 14 October 2026 (made-up example)", meta: "Case law · published 16 October 2026", excerpt: "A non-compete clause without financial compensation is void; an employee who complied with it may claim damages." } },
+    { date: "11 Oct 2026", title: "New commercial rent index published", folder: "Commercial lease — rue des Tanneurs premises", why: "The lease renewal proposal relies on the previous index. The new one changes the capped amount.", src: { type: "external", title: "Commercial rent index (made-up example)", meta: "Official publication · 11 October 2026", excerpt: "The Q2 2026 index is up 2.1% year on year." } }
+  ];
+  f.research.watch = [
+    { date: "15 Oct 2026", title: "Diallo et al. (2026) — stratification and non-response in household surveys", folder: "Thesis — chapter 3: sampling", why: "The paper tackles the same question as your section 3.2 and cites Arnaud and Chen (2023), already in your bibliography.", src: { type: "external", title: "Diallo et al., 2026 (made-up example)", meta: "Open paper database · abstract · 15 October 2026", excerpt: "We compare post-stratification weights under differential non-response across 1,800 households." } },
+    { date: "9 Oct 2026", title: "Call for papers: special issue on survey methods", folder: "Paper “Stratified surveys” — journal submission", why: "The theme matches your manuscript v4. Deadline: 6 November.", src: { type: "external", title: "Call for papers (made-up example)", meta: "Methodology journal · 9 October 2026", excerpt: "Manuscripts on sampling design and survey weighting are welcome until 6 November 2026." } }
+  ];
+})(window.I18N.en.fields);
