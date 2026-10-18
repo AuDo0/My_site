@@ -542,7 +542,7 @@ window.I18N.en = {
 
   start: {
     title: "Get started",
-    eyebrow: "Demo · Get started",
+    eyebrow: "Get started",
     h1: "Try {name}: choose how to start",
     lead: "A demo with us, access approved by the team, or instant sign-up. Everything is free during the test phase.",
     tabsLabel: "Paths",
@@ -1080,7 +1080,95 @@ window.I18N.en.seo = {
   fields: { title: "Sourced AI for lawyers, researchers and businesses — {name}", desc: "Sourced AI for your profession: case law and statutes for lawyers, paper databases for researchers, your own standards for businesses." },
   data: { title: "Email and document privacy — {name}", desc: "Email and document privacy: hosting, AI models, no data sold, your GDPR rights. Every commitment can be checked." },
   pricing: { title: "{name} pricing: free during the test phase", desc: "{name} pricing: every plan is free during the test phase, then the first month is free. Personal, Student, Business, Custom." },
-  start: { title: "Try {name} for free or book a demo", desc: "Try {name}: sign up now, request access, or book a 20-minute demo with the team." },
+  start: { title: "Try {name} for free", desc: "Try {name} for free: sign up in minutes, request guided access, or watch a demo video." },
   live: { title: "Book a {name} demo (20 min)", desc: "Book a 20-minute demo: we show you {name} on sample data and answer your questions." },
   blog: { title: "Guides: search and organise your email — {name}", desc: "Practical guides to ask your email and documents with AI, file them automatically and never miss a deadline." }
 };
+
+/* V7: cleaner home, "Try" highlighted, demo as video, research monitoring coming soon. */
+(function (T) {
+  T.home.h1 = "An assistant connected to your email and documents.";
+  T.home.tagline = "Organise, ask, plan.";
+  T.home.promise = "Every answer cites its source. No hallucinations.";
+  T.home.lead2 = "Ask questions in plain language: {name} answers from your email and documents, then turns them into tasks, deadlines and tidy folders.";
+  T.home.ctaStart = "Try it free";
+  T.home.ctaNote = "Free during the test phase";
+  T.home.ctaDemo = "See the demo";
+  T.home.demoKicker = "Interactive walkthrough";
+  T.home.demoTitle = "See {name} in action";
+  T.home.demoHint = "Explore the app as if you were using it: click its menu. All data is made up.";
+  T.home.final.cta = "Try it free";
+  T.nav.start = "Try it free";
+  T.nav.startShort = "Try it";
+  T.nav.live = "Watch a demo";
+  T.start.lead = "Sign up in a few minutes, or request guided access. Everything is free during the test phase.";
+  T.start.tabs = { signup: "Sign up", request: "Request access", team: "Talk to the team", demo: "Watch a demo" };
+  T.start.demo.title = "Watch a demo";
+  T.start.demo.text = "A short video shows the tool on made-up data. Prefer to talk? Book 20 minutes with the team.";
+  T.start.demo.video = "Demo video · 2 min";
+  T.start.demo.videoSoon = "[VIDEO TO BE PRODUCED]";
+  T.start.demo.live = "Or book a live demo (20 min)";
+  T.fields.research.adds[0] = "Live connection and scanning of open paper databases";
+  T.fields.research.adds.splice(1, 0, "Coming soon: passive monitoring, every new publication checked against your folders");
+  T.fields.research.soon = true;
+  T.fields.live.soonTag = "Coming soon";
+  T.fields.live.soonSub = "For research, passive monitoring is coming soon: every new publication will be checked against your folders. Here is a preview of what you will receive.";
+  T.fields.live.soonBar = "Preview";
+  T.fields.live.soonMeta = "made-up examples of what monitoring will flag";
+})(window.I18N.en);
+
+/* V8: folder memory at the core; routines "coming soon". */
+(function (T) {
+  var H = T.home;
+  H.tagline = "Remember, ask, plan.";
+  H.promise = "Your documents, the single source of truth.";
+  H.lead2 = "Ask questions in plain language: {name} answers from your email and documents, keeps the memory of every folder and turns it into your tasks and deadlines.";
+  H.lead = "With {name}, you ask your email and documents questions in plain language. Every answer cites the passage it used; when the information doesn't exist, {name} says so. It keeps the memory of every folder and turns it into your tasks and deadlines.";
+  H.final.title = "The memory of your folders. Every answer comes from your documents.";
+  H.final.text = "Who said what, when, in which document: {name} keeps the memory of your folders and turns it into your tasks and deadlines.";
+  H.benefits.items[0] = { title: "Every answer cites its source. No hallucinations", text: "Sources are cited for every sentence. If nothing answers the question, {name} says so instead of making something up." };
+  H.benefits.items[1] = { title: "The memory of every folder", text: "Timeline, people, key facts, versions: every folder keeps its history. Dates it spots become deadlines and tasks, which you approve." };
+  H.beforeAfter.rows[3] = ["Finding what was decided in a folder six months ago.", "One question, the answer and its source."];
+  H.steps.items[2] = { title: "Approve the suggestions", text: "Tasks, deadlines, folder updates: nothing happens without your approval." };
+
+  T.action.intro.review = "Everything {name} suggests, in one place: deadlines, tasks, folder updates. Approve or dismiss.";
+  T.action.intro.mails = "This morning's email, with the gist in one line. {name} suggests linking each one to its folder: you approve.";
+  T.app.folderLabel = "Folder";
+  T.demo.dashboard.tiles.mails = "emails without a folder";
+  T.demo.review.filing = "Suggested links";
+
+  var A = T.demo.app;
+  A.review.natures = { filing: "Link to folder", deadline: "Deadline", task: "Task", fact: "Folder memory" };
+  A.review.acceptedFiling = "Email linked to the folder.";
+  A.proposals = A.proposals.filter(function (p) { return p.nature !== "routine"; });
+  A.proposals[0].text = "Link “Joinery quote — corrected version” to the Delaunay warehouse folder";
+  A.proposals[0].target = "Delaunay warehouse";
+  A.proposals[1].text = "Link “New offer — mezzanine” to the Atelier Bertin folder";
+  A.proposals[1].why = "Same supplier as the shelving offer of 3 October, already in this folder.";
+  A.proposals[1].target = "Atelier Bertin";
+  A.mails.filter = { all: "All threads", toFile: "No folder", filed: "Linked" };
+  A.mails.proposal = "Suggestion: link to folder";
+  A.mails.filedIn = "Folder:";
+
+  var R = T.routines;
+  R.soon = R.soon || {};
+  R.eyebrow = "Routines · coming soon";
+  R.h1 = "Coming soon: file your email automatically, with your own rules";
+  R.lead = "Routines are coming to {name} soon. The idea: when this happens, if this condition is met, then do that, with your approval each time or fully on its own. Here is a preview.";
+  R.notice = "Routines are not available yet. This page shows how they will work, with made-up data.";
+  R.soonTag = "Soon";
+  R.anatomy.title = "What a routine will be made of";
+  R.editor.title = "Preview: build a routine";
+  R.editor.sub = "Demo editor, as a preview. Change the fields, then run a test on the made-up emails.";
+  R.proposals.title = "Later: routines suggested by {name}";
+  R.proposals.sub = "It will notice your habits and suggest rules. Nothing will switch on without your approval.";
+  R.soon.title = "After that";
+
+  T.navDesc.routines = "Your rules, applied automatically";
+  T.pricing.plans[0].features[3] = "Basic routines (coming soon)";
+  T.pricing.plans[2].features[2] = "Advanced routines and log (coming soon)";
+  T.seo.home.desc = "Ask your email and documents questions with AI: sourced answers, the memory of your folders, tasks and deadlines. Free during the test phase.";
+  T.seo.routines = { title: "File your email automatically (coming soon) — {name}", desc: "Coming soon to {name}: routines to file your email automatically, create a task or summarise, with or without your approval." };
+  T.seo.blog.desc = "Practical guides to ask your email and documents with AI, keep the memory of your folders and never miss a deadline.";
+  T.blog.lead = "Practical guides to ask your email and documents with AI, keep the memory of your folders and never miss a deadline.";
+})(window.I18N.en);

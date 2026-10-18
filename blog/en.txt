@@ -53,7 +53,7 @@ If the answer mixes several cases, ask within the relevant folder. Conversely, i
 
 ### 5. Turn the answer into action
 
-A date becomes a deadline, a request becomes a task, a misfiled email joins its folder. You approve each suggestion.
+A date becomes a deadline, a request becomes a task, an email joins its folder's memory. You approve each suggestion.
 
 ## What to expect from an AI search tool
 
@@ -93,7 +93,7 @@ The reverse matters just as much. When the information is in neither your email 
 Title: File your email automatically by folder: the method
 Date: 2026-10-07
 Category: Guide
-Summary: A simple method so every email and attachment lands in the right folder, with routines doing the repetitive work.
+Summary: A simple method so every email and attachment lands in the right folder and feeds its memory. Routines to automate repeated actions are coming soon.
 Reading: 4 min
 ---
 Filing your email automatically by folder saves you rebuilding a history by hand. A client, a project, a case: the information is scattered across several mailboxes, attachments and shared drives. The day you need the history, you rebuild the puzzle by hand.
@@ -104,20 +104,20 @@ The right split follows your subjects: a client, a site, a contract, a thesis ch
 
 ### 2. Let the assistant suggest
 
-{name} reads each new email and suggests the most likely folder, saying why (a reference, a person, a subject). You accept or correct it in one click.
+{name} reads each new email and suggests linking it to the most likely folder, saying why (a reference, a person, a subject). You accept or correct it in one click.
 
-### 3. Turn repeated actions into routines
+### 3. Coming soon: turn repeated actions into routines
 
-When you file the same thing in the same place three times, there is a routine waiting to be written. For example:
+Routines are coming to {name} soon. When you file the same thing in the same place three times, there is a routine waiting to be written. For example:
 
 - when an invoice arrives from this supplier, file it in Suppliers / name / year / month;
 - when an offer arrives from this contact, file it in Offers, sorted by month.
 
-You choose whether the routine asks for your approval each time or acts on its own. Either way, the log keeps track of everything.
+You will choose whether the routine asks for your approval each time or acts on its own. Either way, the log will keep track of everything.
 
-### 4. Use the folder's memory
+### 4. The real goal: the folder's memory
 
-Once the folder fills up, {name} extracts its timeline, people, key facts and document versions. The history takes a minute to read instead of an hour.
+Filing is not an end in itself. Once the folder fills up, {name} extracts its timeline, people, key facts and document versions. The history takes a minute to read instead of an hour, and every answer comes from your documents.
 
 === deadlines-in-your-email
 Title: Deadlines in your email: never miss one again, with AI

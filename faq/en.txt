@@ -19,7 +19,7 @@ Q: How do I ask my email and documents with AI?
 A: Connect your mailboxes and file spaces, choose which folders to read, then ask your question in plain language. {name} searches your email and documents, writes the answer and cites every passage it used. Clicking a citation opens the document on the right page.
 
 Q: What is {name}, in one sentence?
-A: An assistant that reads your email and documents, answers your questions by citing its sources, and turns what it reads into tasks, deadlines and tidy folders.
+A: An assistant connected to your email and documents: it answers your questions by citing its sources, keeps the memory of every folder and turns it into your tasks and deadlines. Your documents remain the single source of truth.
 
 Q: How is it different from searching my mailbox?
 A: A search gives you a list of emails to reread. {name} reads those emails and your documents for you, writes the answer and cites every passage it used. It also keeps each folder's memory: timeline, people, key facts, versions.
@@ -28,7 +28,7 @@ Q: What if the information doesn't exist?
 A: {name} says so. It never fills an answer with made-up information: no source, no answer.
 
 Q: Does {name} act without asking me?
-A: Not unless you decide so. By default it suggests (filing, a deadline, a task) and you approve. You can create routines that run on their own, with a log of everything done.
+A: No. It suggests (a deadline, a task, a folder update) and you approve. Routines, which will be able to act on their own with a log of everything done, are coming soon.
 
 Q: Do I need to install anything?
 A: No. {name} is a web app: a browser is enough, on computer, tablet or phone. Installing it on your phone's home screen is coming soon.
@@ -47,29 +47,32 @@ Q: Can I remove a connector?
 A: Yes, at any time. Access is cut off and that source's index is erased.
 
 Q: Can {name} send emails or change my files?
-A: Access is read-only. {name} prepares drafts or filing suggestions, which you approve.
+A: Access is read-only. {name} prepares drafts or suggestions (a deadline, a task, an email to link to its folder), which you approve.
 
 Q: My tool isn't listed. What can I do?
 A: Request it with the form on this page. We build connectors in order of demand, and custom connectors are possible for business tools.
 
 == routines ==
+Q: Are routines available?
+A: Not yet: they are coming soon. This page shows how they will work, with made-up data.
+
 Q: How do I file my email automatically?
-A: With a routine. You write it once ("when an invoice arrives from this supplier, file it in Suppliers / name / year / month"), then {name} applies it to every new email. You choose whether it asks for your approval each time.
+A: With a routine, coming soon. You will write it once ("when an invoice arrives from this supplier, file it in Suppliers / name / year / month"), then {name} will apply it to every new email. You will choose whether it asks for your approval each time. Meanwhile, {name} already suggests linking each email to its folder.
 
 Q: What is a routine?
 A: A rule you write once: when this happens, if this condition is met, then do that. For example: "when I receive an offer from this supplier, file it in Offers / supplier / year / month".
 
 Q: Does a routine act without my approval?
-A: You choose, routine by routine: either {name} asks for your approval each time, or it acts on its own and records everything in the log.
+A: You will choose, routine by routine: either {name} asks for your approval each time, or it acts on its own and records everything in the log.
 
 Q: Can I undo what a routine did?
-A: Yes. The log shows each action, its date and its reason, and lets you roll it back.
+A: Yes. The log will show each action, its date and its reason, and let you roll it back.
 
 Q: Who creates routines?
-A: You, with the editor. {name} can also suggest some when it notices you repeat the same action; nothing switches on without your consent.
+A: You, with the editor. {name} will also be able to suggest some when it notices you repeat the same action; nothing will switch on without your consent.
 
 Q: Can I schedule a routine, for example every evening?
-A: Scheduled routines (such as a summary of unread email every evening) are coming soon.
+A: Later: scheduled routines (such as a summary of unread email every evening) will follow the first routines.
 
 == domaines ==
 Q: Is {name} suited to lawyers and researchers?
@@ -82,7 +85,7 @@ Q: What does "connected live" mean?
 A: For legal and research, {name} queries up-to-date public databases and analyses new publications as they come out.
 
 Q: What is passive monitoring?
-A: {name} checks every new publication against your folders. When one concerns a folder (a new ruling, a new paper), it tells you, with the source and the reason. You decide whether to add it to the folder or dismiss it.
+A: {name} checks every new publication against your folders. When one concerns a folder (a new ruling, a new paper), it tells you, with the source and the reason. You decide whether to add it to the folder or dismiss it. Available for legal work; for research, passive monitoring is coming soon.
 
 Q: What about standards for businesses?
 A: You add your standards and frameworks as documents. {name} cites them in its answers like any other source.
@@ -132,7 +135,7 @@ Q: What's the difference between "Request access" and "Sign up now"?
 A: Signing up creates your account right away (or puts you on the waiting list while access opens in waves). An access request goes through the team, who help you get started.
 
 Q: How does the demo work?
-A: 20 minutes by video call: we show you the app on sample data, then answer your questions. The link comes by email with the confirmation.
+A: A short video shows the app on made-up data (the "Watch a demo" tab on the Get started page). If you'd rather talk, you can also book 20 minutes by video call with the team.
 
 Q: How quickly does the team reply?
 A: Within 48 hours.

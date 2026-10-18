@@ -53,7 +53,7 @@ Si la réponse mélange plusieurs affaires, posez la question dans le dossier co
 
 ### 5. Transformer la réponse en action
 
-Une date trouvée devient une échéance, une demande devient une tâche, un mail mal rangé rejoint son dossier. Vous validez chaque proposition.
+Une date trouvée devient une échéance, une demande devient une tâche, un mail rejoint la mémoire de son dossier. Vous validez chaque proposition.
 
 ## Ce qu'il faut exiger d'un outil de recherche IA
 
@@ -93,7 +93,7 @@ L'inverse compte autant. Quand l'information n'est ni dans vos mails ni dans vos
 Titre: Classer ses mails automatiquement par dossier : la méthode
 Date: 2026-10-07
 Rubrique: Guide
-Résumé: Une méthode simple pour que chaque mail et chaque pièce jointe rejoigne le bon dossier, avec des routines qui font le travail répétitif.
+Résumé: Une méthode simple pour que chaque mail et chaque pièce jointe rejoigne le bon dossier et nourrisse sa mémoire. Les routines qui automatiseront les gestes répétés arrivent bientôt.
 Lecture: 4 min
 ---
 Classer ses mails automatiquement par dossier évite de reconstituer un historique à la main. Un dossier client, un projet, une affaire : l'information est éparpillée entre plusieurs boîtes mail, des pièces jointes et des espaces partagés. Le jour où il faut retrouver l'historique, on reconstitue le puzzle à la main.
@@ -104,20 +104,20 @@ Le bon découpage suit vos sujets : un client, un chantier, un contrat, un chapi
 
 ### 2. Laisser l'assistant proposer
 
-{name} lit chaque nouveau mail et propose le dossier le plus probable, en expliquant pourquoi (une référence citée, un interlocuteur, un sujet). Vous acceptez ou corrigez d'un geste.
+{name} lit chaque nouveau mail et propose de le rattacher au dossier le plus probable, en expliquant pourquoi (une référence citée, un interlocuteur, un sujet). Vous acceptez ou corrigez d'un geste.
 
-### 3. Transformer les gestes répétés en routines
+### 3. Bientôt : transformer les gestes répétés en routines
 
-Quand vous rangez trois fois la même chose au même endroit, c'est une routine qui attend d'être écrite. Par exemple :
+Les routines arrivent bientôt dans {name}. Quand vous rangez trois fois la même chose au même endroit, c'est une routine qui attend d'être écrite. Par exemple :
 
 - quand une facture arrive de tel fournisseur, la ranger dans Fournisseurs / nom / année / mois ;
 - quand une offre arrive de tel contact, la ranger dans Offres, classée par mois.
 
-Vous choisissez si la routine demande votre accord à chaque fois ou agit seule. Dans les deux cas, le journal garde la trace de tout.
+Vous choisirez si la routine demande votre accord à chaque fois ou agit seule. Dans les deux cas, le journal gardera la trace de tout.
 
-### 4. Profiter de la mémoire du dossier
+### 4. Le vrai but : la mémoire du dossier
 
-Une fois le dossier alimenté, {name} en extrait la chronologie, les personnes, les faits clés et les versions des documents. L'historique se lit en une minute au lieu d'une heure.
+Ranger n'est pas une fin en soi. Une fois le dossier alimenté, {name} en extrait la chronologie, les personnes, les faits clés et les versions des documents. L'historique se lit en une minute au lieu d'une heure, et chaque réponse vient de vos documents.
 
 === echeances-dans-ses-mails
 Titre: Échéances dans ses mails : ne plus en rater une, avec l'IA

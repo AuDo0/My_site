@@ -559,7 +559,7 @@ window.I18N.fr = {
   /* ------------------------------------------------------------------ */
   start: {
     title: "Commencer",
-    eyebrow: "Démonstration · Commencer",
+    eyebrow: "Commencer",
     h1: "Essayer {name} : choisissez comment commencer",
     lead: "Une démo avec nous, un accès validé par l'équipe ou une inscription immédiate. Pendant la phase de test, tout est gratuit.",
     tabsLabel: "Parcours",
@@ -1101,7 +1101,95 @@ window.I18N.fr.seo = {
   fields: { title: "IA sourcée pour avocats, chercheurs et entreprises — {name}", desc: "Une IA sourcée pour votre métier : jurisprudence et textes pour les avocats, bases d'articles pour les chercheurs, vos normes pour l'entreprise." },
   data: { title: "Confidentialité de vos mails et documents — {name}", desc: "Confidentialité de vos mails et documents : hébergement, modèles d'IA, aucune donnée vendue, vos droits RGPD. Chaque engagement se vérifie." },
   pricing: { title: "Tarifs {name} : gratuit pendant la phase de test", desc: "Tarifs de {name} : toutes les formules sont gratuites pendant la phase de test, puis premier mois offert. Personnel, Étudiant, Entreprise, Sur mesure." },
-  start: { title: "Essayer {name} gratuitement ou réserver une démo", desc: "Essayez {name} : inscription directe, demande d'accès ou démo de 20 minutes avec l'équipe." },
+  start: { title: "Essayer {name} gratuitement", desc: "Essayez {name} gratuitement : inscription en quelques minutes, accès accompagné, ou démo en vidéo." },
   live: { title: "Réserver une démo de {name} (20 min)", desc: "Réservez une démo de 20 minutes : nous vous montrons {name} sur des données d'exemple et répondons à vos questions." },
   blog: { title: "Guides : interroger et organiser ses mails — {name}", desc: "Guides pratiques pour interroger vos mails et documents avec l'IA, les classer automatiquement et ne plus rater d'échéance." }
 };
+
+/* V7 : accueil épuré, « Essayer » mis en avant, démo en vidéo, veille recherche à venir. */
+(function (T) {
+  T.home.h1 = "Un assistant connecté à vos mails et documents.";
+  T.home.tagline = "Organiser, interroger, planifier.";
+  T.home.promise = "Chaque réponse cite sa source, sans hallucination.";
+  T.home.lead2 = "Posez vos questions en langage courant : {name} répond à partir de vos mails et de vos documents, puis en tire des tâches, des échéances et des dossiers rangés.";
+  T.home.ctaStart = "Essayer gratuitement";
+  T.home.ctaNote = "Gratuit pendant la phase de test";
+  T.home.ctaDemo = "Voir la démo";
+  T.home.demoKicker = "Présentation interactive";
+  T.home.demoTitle = "Découvrez {name} en action";
+  T.home.demoHint = "Parcourez l'application comme si vous l'utilisiez : cliquez dans son menu. Toutes les données sont fictives.";
+  T.home.final.cta = "Essayer gratuitement";
+  T.nav.start = "Essayer gratuitement";
+  T.nav.startShort = "Essayer";
+  T.nav.live = "Voir une démo";
+  T.start.lead = "Inscrivez-vous en quelques minutes, ou demandez un accès accompagné. Pendant la phase de test, tout est gratuit.";
+  T.start.tabs = { signup: "Inscription", request: "Demander un accès", team: "Parler à l'équipe", demo: "Voir une démo" };
+  T.start.demo.title = "Voir une démo";
+  T.start.demo.text = "Une courte vidéo montre l'outil sur des données fictives. Vous préférez échanger ? Réservez 20 minutes avec l'équipe.";
+  T.start.demo.video = "Vidéo de démonstration · 2 min";
+  T.start.demo.videoSoon = "[VIDÉO À PRODUIRE]";
+  T.start.demo.live = "Ou réservez une démo en direct (20 min)";
+  T.fields.research.adds[0] = "Connexion et scan en direct des bases d'articles ouvertes";
+  T.fields.research.adds.splice(1, 0, "Bientôt : veille passive, chaque nouvelle publication comparée à vos dossiers");
+  T.fields.research.soon = true;
+  T.fields.live.soonTag = "Bientôt disponible";
+  T.fields.live.soonSub = "Pour la recherche, la veille passive arrive prochainement : chaque nouvelle publication sera comparée à vos dossiers. Voici un aperçu de ce que vous recevrez.";
+  T.fields.live.soonBar = "Aperçu";
+  T.fields.live.soonMeta = "exemples fictifs de ce que la veille vous signalera";
+})(window.I18N.fr);
+
+/* V8 : la mémoire des dossiers au cœur ; routines « bientôt ». */
+(function (T) {
+  var H = T.home;
+  H.tagline = "Se souvenir, interroger, planifier.";
+  H.promise = "Vos documents, unique source de vérité.";
+  H.lead2 = "Posez vos questions en langage courant : {name} répond à partir de vos mails et documents, garde la mémoire de chaque dossier et en tire vos tâches et vos échéances.";
+  H.lead = "Avec {name}, vous interrogez vos mails et vos documents en langage courant. Chaque réponse cite le passage utilisé ; quand l'information n'existe pas, {name} le dit. Il garde la mémoire de chaque dossier et en tire vos tâches et vos échéances.";
+  H.final.title = "La mémoire de vos dossiers. Chaque réponse vient de vos documents.";
+  H.final.text = "Qui a dit quoi, quand, dans quel document : {name} garde la mémoire de vos dossiers et en tire vos tâches et vos échéances.";
+  H.benefits.items[0] = { title: "Chaque réponse cite sa source, sans hallucination", text: "Les sources sont citées à chaque phrase. Si rien ne répond à la question, {name} l'écrit au lieu d'inventer." };
+  H.benefits.items[1] = { title: "La mémoire de chaque dossier", text: "Chronologie, acteurs, faits clés, versions : chaque dossier garde son historique. Les dates repérées deviennent des échéances et des tâches, que vous validez." };
+  H.beforeAfter.rows[3] = ["Retrouver ce qui a été décidé dans un dossier il y a six mois.", "Une question, la réponse et sa source."];
+  H.steps.items[2] = { title: "Validez les propositions", text: "Tâches, échéances, mises à jour d'un dossier : rien ne se fait sans votre accord." };
+
+  T.action.intro.review = "Tout ce que {name} vous propose, au même endroit : échéances, tâches, mises à jour des dossiers. Validez ou ignorez.";
+  T.action.intro.mails = "Les mails du matin, avec l'essentiel en une ligne. {name} propose de rattacher chacun à son dossier : vous validez.";
+  T.app.folderLabel = "Dossier";
+  T.demo.dashboard.tiles.mails = "mails sans dossier";
+  T.demo.review.filing = "Rattachements proposés";
+
+  var A = T.demo.app;
+  A.review.natures = { filing: "Rattachement", deadline: "Échéance", task: "Tâche", fact: "Mémoire du dossier" };
+  A.review.acceptedFiling = "Mail rattaché au dossier.";
+  A.proposals = A.proposals.filter(function (p) { return p.nature !== "routine"; });
+  A.proposals[0].text = "Rattacher « Devis menuiserie — version corrigée » au dossier Entrepôt Delaunay";
+  A.proposals[0].target = "Entrepôt Delaunay";
+  A.proposals[1].text = "Rattacher « Nouvelle offre — mezzanine » au dossier Atelier Bertin";
+  A.proposals[1].why = "Même fournisseur que l'offre rayonnages du 3 octobre, déjà dans ce dossier.";
+  A.proposals[1].target = "Atelier Bertin";
+  A.mails.filter = { all: "Tous les fils", toFile: "Sans dossier", filed: "Rattachés" };
+  A.mails.proposal = "Proposition : rattacher au dossier";
+  A.mails.filedIn = "Dossier :";
+
+  var R = T.routines;
+  R.soon = R.soon || {};
+  R.eyebrow = "Routines · bientôt disponible";
+  R.h1 = "Bientôt : classer vos mails automatiquement, selon vos règles";
+  R.lead = "Les routines arrivent prochainement dans {name}. Le principe : quand ceci arrive, si cette condition est remplie, alors faire cela, avec votre validation à chaque fois ou en toute autonomie. Voici un aperçu.";
+  R.notice = "Les routines ne sont pas encore disponibles. Cette page en présente le principe, avec des données fictives.";
+  R.soonTag = "Bientôt";
+  R.anatomy.title = "Ce qui composera une routine";
+  R.editor.title = "Aperçu : composez une routine";
+  R.editor.sub = "Éditeur de démonstration, en avant-première. Modifiez les champs, puis lancez un essai sur les mails fictifs.";
+  R.proposals.title = "Plus tard : des routines proposées par {name}";
+  R.proposals.sub = "Il observera vos habitudes et vous suggérera des règles. Rien ne s'activera sans votre accord.";
+  R.soon.title = "Ensuite";
+
+  T.navDesc.routines = "Vos règles, appliquées automatiquement";
+  T.pricing.plans[0].features[3] = "Routines de base (bientôt)";
+  T.pricing.plans[2].features[2] = "Routines avancées et journal (bientôt)";
+  T.seo.home.desc = "Interrogez vos mails et vos documents avec l'IA : réponses sourcées, mémoire de vos dossiers, tâches et échéances. Gratuit pendant la phase de test.";
+  T.seo.routines = { title: "Classer ses mails automatiquement (bientôt) — {name}", desc: "Bientôt dans {name} : des routines pour classer vos mails automatiquement, créer une tâche ou résumer, avec ou sans votre validation." };
+  T.seo.blog.desc = "Guides pratiques pour interroger vos mails et documents avec l'IA, garder la mémoire de vos dossiers et ne plus rater d'échéance.";
+  T.blog.lead = "Des guides pratiques pour interroger vos mails et documents avec l'IA, garder la mémoire de vos dossiers et ne plus rater d'échéance.";
+})(window.I18N.fr);

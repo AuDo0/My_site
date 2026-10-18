@@ -259,7 +259,7 @@
     var inProduct = NAV_PRODUCT.indexOf(cur) > -1;
     var drop = '<div class="nav-drop" id="nav-drop"><button type="button" class="nav-drop-btn" aria-expanded="false" aria-controls="nav-product" data-action="drop"' + (inProduct ? ' data-current="1"' : "") + ">" + t("nav.product") + ' <span aria-hidden="true">▾</span></button>' +
       '<div class="nav-drop-panel" id="nav-product">' + NAV_PRODUCT.map(function (p) {
-        return '<a href="' + navHref(p) + '"' + (cur === p ? ' aria-current="page"' : "") + '><span class="nd-t">' + t("nav." + p) + '</span><span class="nd-d">' + t("navDesc." + p) + "</span></a>";
+        return '<a href="' + navHref(p) + '"' + (cur === p ? ' aria-current="page"' : "") + '><span class="nd-t">' + t("nav." + p) + (p === "routines" ? ' <span class="pill pill-accent nd-soon">' + t("routines.soonTag") + "</span>" : "") + '</span><span class="nd-d">' + t("navDesc." + p) + "</span></a>";
       }).join("") + "</div></div>";
     var links = drop + NAV_TOP.map(function (p) {
       return '<a href="' + href(p) + '"' + (cur === p ? ' aria-current="page"' : "") + ">" + t("nav." + p) + "</a>";
@@ -271,14 +271,13 @@
       '<nav class="main-nav" aria-label="' + esc(tp("nav.main")) + '">' + links + "</nav>" +
       '<div class="header-actions">' +
       '<a class="header-lang" href="' + href(route.page, ol, route.sub) + '" hreflang="' + ol + '" lang="' + ol + '" aria-label="' + esc(I18N[ol].meta.langName) + '">' + I18N[ol].meta.short + "</a>" +
-      '<a class="btn btn-ghost" href="' + href("live") + '">' + t("nav.live") + "</a>" +
-      '<a class="btn btn-action" href="' + href("start") + '">' + t("nav.start") + "</a>" +
+      '<a class="btn btn-action" href="' + href("start") + '"><span class="lbl-long">' + t("nav.start") + '</span><span class="lbl-short">' + t("nav.startShort") + "</span></a>" +
       '<button type="button" class="btn btn-quiet menu-toggle" aria-expanded="false" aria-controls="mobile-nav" data-action="menu">' + t("nav.menu") + "</button>" +
       "</div></div>" +
       '<nav class="mobile-nav" id="mobile-nav" hidden aria-label="' + esc(tp("nav.main")) + '"><ul>' +
       mobileItems.map(function (p) { return '<li><a href="' + navHref(p) + '"' + (cur === p ? ' aria-current="page"' : "") + ">" + t("nav." + p) + "</a></li>"; }).join("") +
       '<li class="mobile-lang"><a href="' + href(route.page, ol, route.sub) + '" hreflang="' + ol + '" lang="' + ol + '">' + esc(I18N[ol].meta.langName) + "</a></li>" +
-      '</ul><a class="btn btn-ghost" href="' + href("live") + '">' + t("nav.live") + "</a></nav>" +
+      "</ul></nav>" +
       "</div></header>";
   }
 
@@ -288,7 +287,7 @@
     }).join("");
     return '<footer class="site-footer"><div class="wrap"><div class="footer-grid">' +
       '<div style="display:grid;gap:12px;align-content:start">' + brand() + '<p class="small">' + t("footer.tagline") + "</p></div>" +
-      "<div><h2>" + t("footer.product") + "</h2><ul>" + ["demo", "routines", "plugins", "fields", "data", "pricing", "blog", "live", "start"].map(function (p) {
+      "<div><h2>" + t("footer.product") + "</h2><ul>" + ["demo", "routines", "plugins", "fields", "data", "pricing", "blog", "start"].map(function (p) {
         return '<li><a href="' + navHref(p) + '">' + t("nav." + p) + "</a></li>";
       }).join("") + "</ul></div>" +
       "<div><h2>" + t("footer.legal") + "</h2><ul>" +
@@ -321,13 +320,17 @@
     var ba = get(I18N[lang], "home.beforeAfter.rows");
     if (route.sub && SECTIONS.indexOf(route.sub) > -1) state.actionTab = route.sub;
     var sec = state.actionTab;
-    return '<section class="hero hero-compact"><div class="wrap hero-row">' +
-      '<div class="hero-copy"><p class="eyebrow">' + t(h + "eyebrow") + '</p><h1 tabindex="-1">' + t(h + "h1") + '</h1><p class="lead">' + t(h + "lead") + "</p></div>" +
-      '<div class="hero-side"><div class="hero-ctas"><a class="btn btn-action" href="' + href("start") + '">' + t(h + "ctaStart") + '</a><a class="btn btn-ghost" href="' + href("live") + '">' + t(h + "ctaLive") + "</a></div>" +
-      '<p class="availability">' + t(h + "availability") + "</p></div></div></section>" +
+    return '<section class="hero-v2"><div class="wrap">' +
+      '<h1 tabindex="-1">' + t(h + "h1") + '</h1>' +
+      '<p class="hero-tagline">' + t(h + "tagline") + "</p>" +
+      '<p class="hero-proof"><span class="ico" aria-hidden="true">✓</span>' + t(h + "promise") + "</p>" +
+      '<p class="hero-lead">' + t(h + "lead2") + "</p>" +
+      '<div class="hero-cta-row"><a class="btn btn-action btn-xl" href="' + href("start") + '">' + t(h + "ctaStart") + ' <span aria-hidden="true">→</span></a>' +
+      '<button type="button" class="link-demo" data-action="to-demo">' + t(h + "ctaDemo") + ' <span aria-hidden="true">↓</span></button></div>' +
+      '<p class="hero-note">' + t(h + "ctaNote") + "</p></div></section>" +
 
       '<section class="demo-section" id="demo" aria-labelledby="demo-title"><div class="wrap">' +
-      '<div class="demo-head"><h2 id="demo-title">' + t(h + "demoTitle") + '</h2><p class="small muted">' + t("action.hint") + "</p></div>" +
+      '<div class="demo-head"><p class="eyebrow">' + t(h + "demoKicker") + '</p><h2 id="demo-title">' + t(h + "demoTitle") + '</h2><p class="muted">' + t(h + "demoHint") + "</p></div>" +
       '<p class="scenario-intro"><b>' + t("app.nav." + sec) + "</b> · " + t("action.intro." + sec) + "</p>" +
       appFrame(t("app.nav." + sec), view(), { active: sec, inPlace: true }) +
       '<p class="small muted" style="margin-top:12px">' + t("common.fictiveLong") + "</p></div></section>" +
@@ -350,7 +353,7 @@
 
   function finalBand() {
     return '<section class="band"><div class="wrap band-inner"><h2>' + t("home.final.title") + "</h2><p>" + t("home.final.text") + "</p>" +
-      '<div class="hero-ctas"><a class="btn btn-on-band" href="' + href("start") + '">' + t("home.final.cta") + '</a><a class="btn btn-outline-band" href="' + href("live") + '">' + t("home.final.cta2") + "</a></div></div></section>";
+      '<div class="hero-ctas"><a class="btn btn-on-band" href="' + href("start") + '">' + t("home.final.cta") + "</a></div></div></section>";
   }
 
   /* ---------------------------------------------------------------- */
@@ -1003,7 +1006,7 @@
   function pageRoutines() {
     if (!state.routine || state.routine.lang !== lang) { state.routine = routineDefaults(); state.routineLog = null; state.routineApproved = {}; }
     var p = get(I18N[lang], "routines");
-    return '<div class="wrap">' + pageHead("routines") +
+    return '<div class="wrap">' + pageHead("routines", '<p class="notice notice-info" style="margin-top:16px"><span class="ico" aria-hidden="true">ⓘ</span><span>' + t("routines.notice") + "</span></p>") +
       '<section class="section-tight" style="padding-top:0"><h2 class="group-title">' + esc(p.anatomy.title) + '</h2><ul class="anatomy">' +
       p.anatomy.items.map(function (a) { return '<li><span class="k">' + esc(a.k) + '</span><span class="v">' + esc(a.v) + "</span></li>"; }).join("") + "</ul></section>" +
       '<section class="section"><div class="section-head"><h2>' + esc(p.editor.title) + '</h2><p class="muted">' + esc(p.editor.sub) + "</p></div>" + routineEditor() + "</section>" +
@@ -1033,13 +1036,14 @@
     if (d.noLive) return "";
     var items = (d.watch || []).map(function (w, i) {
       var k = tab + i, st = state.watch[k];
-      var actions = st
+      var actions = d.soon ? '<button type="button" class="btn btn-quiet btn-sm" data-src="' + reg(w.src) + '">' + t("common.openSource") + "</button>" : st
         ? '<span class="pill ' + (st === "ok" ? "pill-success" : "pill-neutral") + '">' + esc(st === "ok" ? "✓ " + L.added : L.ignored) + '</span><button type="button" class="btn btn-quiet btn-sm" data-action="watch" data-k="' + k + '" data-v="">' + t("common.undo") + "</button>"
         : '<button type="button" class="btn btn-quiet btn-sm" data-src="' + reg(w.src) + '">' + t("common.openSource") + '</button><button type="button" class="btn btn-quiet btn-sm" data-action="watch" data-k="' + k + '" data-v="no">' + esc(L.ignore) + '</button><button type="button" class="btn btn-primary btn-sm" data-action="watch" data-k="' + k + '" data-v="ok">' + esc(L.add) + "</button>";
       return '<div class="ax-card ax-prop' + (st ? " is-done" : "") + '"><div class="ax-prop-main"><div class="ax-meta"><span class="ax-chip ax-chip-accent">' + esc(L.news) + "</span> " + esc(w.date) + '</div><p class="ax-name">' + esc(w.title) + '</p><p class="ax-meta"><b>' + esc(L.concerns) + ' :</b> <span class="ax-chip ax-chip-folder">' + esc(w.folder) + '</span></p><p class="ax-meta">' + esc(L.why) + " : " + esc(w.why) + '</p></div><div class="ax-actions">' + actions + "</div></div>";
     }).join("");
-    return '<div class="watch-block"><div class="section-head" style="margin-bottom:12px"><h3>' + esc(L.title) + '</h3><p class="muted">' + fmt(L.sub) + "</p></div>" +
-      appFrame(esc(L.title), '<div class="scan-bar"><span class="scan-dot" aria-hidden="true"></span><b>' + esc(L.scan) + '</b><span class="ax-meta"><span id="scan-count">' + esc(L.scanned.replace("{n}", scanCount.toLocaleString(locale()))) + "</span> · " + esc(L.matched.replace("{n}", (d.watch || []).length)) + '</span><span class="scan-track" aria-hidden="true"><i></i></span></div>' +
+    var bar = d.soon ? '<div class="scan-bar is-soon"><b>' + esc(L.soonBar) + '</b><span class="ax-meta">' + esc(L.soonMeta) + "</span></div>" : null;
+    return '<div class="watch-block' + (d.soon ? " is-soon" : "") + '"><div class="section-head" style="margin-bottom:12px"><h3>' + esc(L.title) + (d.soon ? ' <span class="pill pill-accent">' + esc(L.soonTag) + "</span>" : "") + '</h3><p class="muted">' + fmt(d.soon ? L.soonSub : L.sub) + "</p></div>" +
+      appFrame(esc(L.title), (bar ||  '<div class="scan-bar"><span class="scan-dot" aria-hidden="true"></span><b>' + esc(L.scan) + '</b><span class="ax-meta"><span id="scan-count">' + esc(L.scanned.replace("{n}", scanCount.toLocaleString(locale()))) + "</span> · " + esc(L.matched.replace("{n}", (d.watch || []).length)) + '</span><span class="scan-track" aria-hidden="true"><i></i></span></div>') +
         '<div class="ax-stack" aria-live="polite">' + items + '</div><p class="small ax-muted">' + esc(L.note) + "</p>") + "</div>";
   }
   function pageFields() {
@@ -1205,10 +1209,17 @@
       consentField("demo") +
       '<div><button type="submit" class="btn btn-action"' + (state.booking.ts ? "" : ' aria-disabled="true"') + ">" + t("start.demo.confirm") + "</button></div></form></div>";
   }
+  function videoBlock() {
+    var url = C.demoVideoUrl;
+    var inner = url
+      ? '<video controls preload="metadata" src="' + esc(url) + '"></video>'
+      : '<div class="video-ph"><span class="play" aria-hidden="true">▶</span><b>' + t("start.demo.video") + "</b>" + fmt(get(I18N[lang], "start.demo.videoSoon")) + "</div>";
+    return '<div class="video-box">' + inner + "</div>";
+  }
   function startPanel() {
     var tab = state.startTab;
     var head = '<div style="display:grid;gap:8px;margin-bottom:24px;max-width:640px"><h2>' + t("start." + tab + ".title") + '</h2><p class="muted">' + t("start." + tab + ".text") + "</p></div>";
-    if (tab === "demo") return head + bookingBlock();
+    if (tab === "demo") return head + videoBlock() + '<h3 class="live-title">' + t("start.demo.live") + "</h3>" + bookingBlock();
     if (state.sent[tab]) return head + sentBlock(state.sent[tab]) + (tab === "signup" ? nextSteps() : "");
     var body = "";
     if (tab === "request") body = baseFields("req") + profileField("req");
@@ -1220,7 +1231,7 @@
       '<div><button type="submit" class="btn btn-action">' + t(btn) + "</button></div></form>";
   }
   function pageStart() {
-    var tabsIds = ["demo", "request", "signup", "team"];
+    var tabsIds = ["signup", "request", "team", "demo"];
     if (route.page === "live") state.startTab = "demo";
     else if (route.sub && tabsIds.indexOf(route.sub) > -1) state.startTab = route.sub;
     return '<div class="wrap">' + pageHead("start") + '<section class="section-tight" style="padding-top:0">' +
@@ -1635,6 +1646,11 @@
       return;
     }
     if (el.hasAttribute("data-src")) { openSource(Number(el.getAttribute("data-src"))); return; }
+    if (el.getAttribute("data-action") === "to-demo") {
+      var demo = document.getElementById("demo");
+      if (demo) { demo.scrollIntoView({ behavior: "smooth", block: "start" }); var dt = document.getElementById("demo-title"); if (dt) { dt.setAttribute("tabindex", "-1"); dt.focus({ preventScroll: true }); } }
+      return;
+    }
     if (el.getAttribute("data-action") === "pw-toggle") {
       var pw = document.getElementById(el.getAttribute("data-for"));
       if (pw) { var shown = pw.type === "password"; pw.type = shown ? "text" : "password"; el.setAttribute("aria-pressed", String(shown)); el.textContent = tp(shown ? "start.form.hide" : "start.form.show"); }
@@ -1678,7 +1694,7 @@
         rerender();
         if (pv === "ok") {
           var nat = A().proposals[pi].nature, msgs = A().review;
-          toast(nat === "deadline" ? msgs.acceptedDeadline : nat === "fact" ? msgs.acceptedFact : nat === "filing" ? msgs.acceptedFiling : nat === "task" ? msgs.acceptedTask : msgs.acceptedRoutine);
+          toast(nat === "deadline" ? msgs.acceptedDeadline : nat === "fact" ? msgs.acceptedFact : nat === "filing" ? msgs.acceptedFiling : msgs.acceptedTask);
         }
         break;
       }

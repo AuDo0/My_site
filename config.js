@@ -47,6 +47,9 @@ window.SITE_CONFIG = {
 
   /* Formulaires : "mock" = maquette, rien n'est envoyé. */
   formsMode: "mock",
+  /* Vidéo de démonstration (page Commencer, onglet « Voir une démo »).
+     null = emplacement « vidéo à produire ». Fichier hébergé sur le site, pas de plateforme tierce. */
+  demoVideoUrl: null,
   formEndpoint: "[POINT D'ACCÈS FORMULAIRES UE]",
   responseTimeHours: 48,
 
